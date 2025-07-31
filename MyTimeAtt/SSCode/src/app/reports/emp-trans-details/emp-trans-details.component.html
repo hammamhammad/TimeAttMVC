@@ -1,0 +1,112 @@
+
+    <div class="col-md-12 float-none" id='MGRTransDetailsDialog'>
+        <div class="PopDate">
+            <h4 class="cntr" id="transactiondate">{{transDetailsDay?.m_date}}</h4>
+        </div>
+        <!-- معلومات الموظف -->
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <h4>{{'EmployeeInformation' | translate}}</h4>
+            </div>
+            <div class="panel-body">
+                <div class="form-detail">
+                    <label class="cell-2 pr0">{{'EmployeeNo' | translate}} :</label>
+                    <span id="transactionempno">{{transDetailsDay?.emp_no}}</span>
+                </div>
+                <div class="form-detail">
+                    <label class="cell-2 pr0">{{'EmployeeName' | translate}} :</label>
+                    <span id="transactionempname">{{cultureLang == 'ar' ? transDetailsDay?.emp_name:  transDetailsDay?.emp_nameEn}}</span>
+                </div>
+                <div class="form-detail">
+                    <label class="cell-2 pr0">{{'DepartmentName' | translate}} :</label>
+                    <span id="transactionsecname">{{transDetailsDay?.sec_name}}</span>
+                </div>
+            </div>
+        </div>
+        <!-- معلومات الوردية -->
+        <div class="alert alert-warning col-md-12 float-none">
+            <label class="cell-2 pr0">{{'ShiftTitle'| translate}}</label>
+            <label id="txt_transshift">{{transDetailsDay?.shiftinfo + ' ' + transDetailsDay?.shift_name}}</label>
+        </div>
+        <div class="Transinfo">
+            <!-- معلومات الحركات -->
+            <h4>{{'TransactioninfoTitle'| translate}}</h4>
+            <div class="Transinfodiv TBL_Wrapper" *ngIf="transDetailsDay?.TransData?.length != 0">
+                <table id="transmanagerdalydetails" width="100%" class="dataTable table table-striped table-bordered table-hover no-footer">
+                    <thead>
+                        <tr>
+                            <th>{{'ClmTime'| translate}}</th>
+                            <th>{{'ClmStatus'| translate}}</th>
+                            <th>{{'DeviceNameLabel'| translate}}</th>
+                            <th>{{'ReasonNameLable'| translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of transDetailsDay?.TransData; let i = index">
+                            <td>{{row.m_time}}</td>
+                            <td>{{row.m_unit}}</td>
+                            <td>{{row.AStatus}}</td>
+                            <td>{{row.TransReason}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- لا يوجد الحركات -->
+            <div class="col-md-12 alert alert-danger" id="Transinfodiv_nodata" *ngIf="transDetailsDay?.TransData == null && transDetailsDay?.TransData?.length == 0">
+                <div>{{'NoMovements'| translate}}</div>
+            </div>
+        </div>
+        <!-- معلومات الإستئذان -->
+        <div class="execuseinfo" *ngIf=" transDetailsDay?.exc_id != 0">
+            <h4>{{'ExcuseInfoTitle'| translate}}</h4>
+            <div class="col-md-12 alert alert-info float-none">
+                <span id="txt_transexecuse">{{ transDetailsDay?.Excuseinfo }}</span>
+            </div>
+        </div>
+        <!-- معلومات الإجازة -->
+        <div class="vacationinfo" *ngIf=" transDetailsDay?.m_vac_id != 0">
+            <h4>{{'VacationInfoTitle'| translate}}</h4>
+            <div class="col-md-12 alert alert-info float-none">
+                <span id="txt_transvacation">{{ transDetailsDay?.vacinfo }}</span>
+            </div>
+        </div>
+        <!-- تفاصيل الدوام -->
+        <div class="attendanceinfo" *ngIf=" transDetailsDay?.TotalLate != '--:--' || transDetailsDay?.LateIn != '--:--' || transDetailsDay?.Earlyout != '--:--'">
+            <h4>{{'DutyDetails'| translate}}</h4>
+            <div class="TBL_Wrapper">
+                <table class="Vlt dataTable table table-striped table-bordered table-hover no-footer" cellspacing="1">
+                    <thead>
+                        <tr>
+                            <th colspan="2">{{'LoginTitle'| translate}}</th>
+                            <th colspan="2">{{'LinkLogoff'| translate}}</th>
+                            <th rowspan="2">{{'Clmtotallate'| translate}}</th>
+                        </tr>
+                        <tr>
+                            <th>{{'LoginTitle'| translate}}</th>
+                            <th>{{'Delayed'| translate}}</th>
+                            <th>{{'ActualTime'| translate}} </th>
+                            <th>{{'Early'| translate}}</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            <span id="txt_transtimefin">{{ transDetailsDay?.timefin }}</span>
+                        </td>
+                        <td>
+                            <span id="txt_transLateIn">{{ transDetailsDay?.LateIn }}</span>
+                        </td>
+                        <td>
+                            <span id="txt_transtimefout">{{ transDetailsDay?.timefout }}</span>
+                        </td>
+                        <td>
+                            <span id="txt_transEarlyout">{{ transDetailsDay?.Earlyout }}</span>
+                        </td>
+                        <td>
+                            <span id="txt_transTotalLate">{{ transDetailsDay?.TotalLate }}</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>

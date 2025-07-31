@@ -1,0 +1,158 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body-top">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">@Resources.Resources.SearchOptionsTitle</h3>
+                        <span class="pull-right flip clickable" id="pn_violationspan"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                    </div>
+                    <div class="panel-body" id="pn_violationbody">
+                        <div class="row">
+                            <div class="row top10-buffer">
+                                <div class="col-md-12">
+                                    <div class="searchBy">
+                                        <div class="col-md-4">
+                                            <label for="txt_Select_ViolationYear" class="control-label">@Resources.Resources.YearTitle</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_Select_ViolationYear" class="form-control" placeholder="@Resources.Resources.YearTitle" data-id="0" readonly>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_ViolationYear:not(:disabled)').length == 0) { return }; Select_Year_Control = $('#txt_Select_ViolationYear'); $('#YearDialog').modal('show'); LoadYearListTable()"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_ViolationYear:not(:disabled)').length == 0) { return }; $('#txt_Select_ViolationYear').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="txt_Select_ViolationMonth" class="control-label">@Resources.Resources.MonthTitle</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_Select_ViolationMonth" class="form-control" placeholder="@Resources.Resources.MonthTitle" data-id="0" readonly>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_ViolationMonth:not(:disabled)').length == 0) { return }; Select_Month_Control = $('#txt_Select_ViolationMonth'); $('#MonthDialog').modal('show'); LoadMonthListTable()"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_ViolationMonth:not(:disabled)').length == 0) { return }; $('#txt_Select_ViolationMonth').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="txt_Select_ViolationBranch" class="control-label">@Resources.Resources.BranchLable</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_Select_ViolationBranch" class="form-control" placeholder="@Resources.Resources.BranchNameLable" data-id="0" readonly>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_ViolationBranch:not(:disabled)').length == 0) { return }; Select_Branch_Control = $('#txt_Select_ViolationBranch'); $('#BranchDialog').modal('show'); LoadBranchListTable()"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_ViolationBranch:not(:disabled)').length == 0) { return }; $('#txt_Select_ViolationBranch').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row col-centered">
+                            <hr />
+                            <button class="btn btn-success btn-lg" id="ViolationbtSearch" onclick="SearchViolation();">@Resources.Resources.btSearch </button>
+                            <button class="btn btn-info btn-lg" id="printViolation">@Resources.Resources.btPrint</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body-top fixed-panelWithScrollTimeSheet">
+
+                        <div id="ViolationTimeSheetTablediv">
+                            <table id="ViolationTimeSheetTable" class="table  table-bordered  timesheet-table" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>@Resources.Resources.ClmEmpNo </th>
+                                        <th>@Resources.Resources.ClmEmployeeName</th>
+                                        <th>@Resources.Resources.ClmAbsenceDuration</th>
+                                        <th>@Resources.Resources.ClmAbs_NumberOfRepletion</th>
+                                        <th>@Resources.Resources.Clmabs_ViolationText</th>
+                                        <th>@Resources.Resources.ClmDelayDuration</th>
+                                        <th>@Resources.Resources.ClmTotalLateStr</th>
+                                        <th>@Resources.Resources.ClmLate_NumberOfRepletion</th>
+                                        <th>@Resources.Resources.Clmlate_ViolationText</th>
+                                        <th>@Resources.Resources.ClmUploadMonth</th>
+                                        <th>@Resources.Resources.EmployeeTypeLable</th>
+                                        <th>@Resources.Resources.ClmTermination_date</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal-wide  fade unfold-3d" data-backdrop="static" role="dialog" id="ViolationDetailsAttendanceDialog">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="pull-right flip">
+                    <button type="button" class="btn btn-toolbar space2" aria-label="Close"><span class="glyphicon glyphicon-remove"></span></button>
+                </div>
+                <h4 class="modal-title" id="gridSystemModalViolationDetailsAttendance">@Resources.Resources.DetailsAttendanceTitle </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel-body form-inline">
+                            <div class="form-group">
+                                <label for="txt_employeno_Violationdetails" class="control-label">@Resources.Resources.EmployeeNoLable</label>
+                                <input type="text" id="txt_employeno_Violationdetails" readonly="readonly" class="smallerText form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="txt_employename_Violationdetails" class="control-label">@Resources.Resources.EmployeeNameLable</label>
+                                <input type="text" id="txt_employename_Violationdetails" readonly="readonly" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="txt_sec_Violationdetails" class="control-label">@Resources.Resources.SectionNameLable</label>
+                                <input type="text" id="txt_sec_Violationdetails" readonly="readonly" class=" form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p id="ViolationDetails_DateRangeInfo" class="bg-primary padding10 col-centered">من تاريخ 01/05/2015 إلى تاريخ 01/06/2015</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body-top">
+
+                                <div id="ViolationLateTablediv">
+                                    <table id="ViolationLateTable" class="table  compact timesheet-table" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>@Resources.Resources.ClmDate</th>
+                                                <th>@Resources.Resources.ClmLateHours</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div id="ViolationAbsenceTablediv">
+                                    <table id="ViolationAbsenceTable" class="table  compact  timesheet-table" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>@Resources.Resources.FromDateLable</th>
+                                                <th>@Resources.Resources.ToDateLable</th>
+                                                <th>@Resources.Resources.ClmAbsenceDuration</th>
+
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="row">
+                    <div class="row col-centered">
+
+                        <button class="btn btn-info btn-lg" id="printViolationDetails">@Resources.Resources.btPrint</button>
+                    </div>
+                </div>*@
+            </div>
+        </div>
+    </div>
+</div>

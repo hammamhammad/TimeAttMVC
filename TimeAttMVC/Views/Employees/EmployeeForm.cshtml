@@ -1,0 +1,160 @@
+﻿<div class="modal fade unfold-3d" role="dialog" id="EmployeeFormDialog" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="EmployeeFormDialogTitle">@Resources.Resources.EmployeeesTitle  </h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default">
+                    <div class="panel-body texr-start">
+                        <form class="form form-horizontal" data-delay="0" role="form" id="EmployeeForm">
+                            <div class="col-md-12">
+                                <div class="form-group has-feedback">
+                                    <label for="txt_Select_BySection" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.SectionNameLable </label>
+                                    <div class="col-xs-10 col-sm-9 col-md-10">
+                                        <div class="input-group">
+                                            <input type="text" id="txt_Select_BySection" class="form-control" placeholder="@Resources.Resources.SectionNameLable" data-id="0" readonly data-required="true" data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <span class="input-group-addon add-on" onclick="if (IsDisabled(this)) return; Select_Section_Control = $('#txt_Select_BySection'); $('#SectionDialog').modal('show'); LoadSectionListTable()"><span class="glyphicon glyphicon-list-alt blue "></span></span>
+                                        </div>
+                                        <span class="help-block with-errors smallmargin-bottom pull-left flip"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label for="txt_Select_ByBranch" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.BranchNameLable </label>
+                                    <div class="col-xs-10 col-sm-9 col-md-10">
+                                        <div class="input-group">
+                                            <input type="text" id="txt_Select_ByBranch" class="form-control" placeholder="@Resources.Resources.BranchNameLable" data-id="0" readonly data-required="true" data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <span class="input-group-addon add-on" onclick="if (IsDisabled(this)) return; Select_Branch_Control = $('#txt_Select_ByBranch'); $('#BranchDialog').modal('show'); LoadBranchListTable()"><span class="glyphicon glyphicon-list-alt blue "></span></span>
+                                        </div>
+                                        <span class="help-block with-errors smallmargin-bottom pull-left flip"></span>
+                                    </div>
+
+                                </div>
+                                <div class="form-group  has-feedback">
+                                    <label for="txt_EmpNo_edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.EmployeeNoLable</label>
+                                    <div class="col-xs-10 col-sm-9 col-md-10">
+                                        <input type="text" class="form-control" id="txt_EmpNo_edit" placeholder="@Resources.Resources.EmployeeNoLable" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                        <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                                        <span class="help-block with-errors"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group  has-feedback">
+                                    <label for="txt_EmpName_edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.EmployeeNameLable </label>
+                                    <div class=col-xs-10 col-sm-9 col-md-10">
+                                        <input type="text" class="form-control " id="txt_EmpName_edit" placeholder="@Resources.Resources.EmployeeNameLable" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                        <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                                        <span class="help-block with-errors"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group  ">
+                                    <label for="txt_EmpIDNo_edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.EmployeeIDNoLable</label>
+                                    <div class="col-xs-10 col-sm-9 col-md-10">
+                                        <input type="text" class="form-control" id="txt_EmpIDNo_edit" placeholder="@Resources.Resources.EmployeeIDNoLable">
+
+                                        <span class="help-block with-errors"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group ">
+                                    <label for="txt_EmpJobTitle_edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.EmployeeJobTitleLable </label>
+                                    <div class=col-xs-10 col-sm-9 col-md-10">
+                                        <input type="text" class="form-control " id="txt_EmpJobTitle_edit" placeholder="@Resources.Resources.EmployeeJobTitleLable">
+
+                                        <span class="help-block with-errors"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label for="txt_Select_Schedule" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.ScheduleNameLable </label>
+                                    <div class="col-xs-10 col-sm-9 col-md-10">
+
+                                        <div class="input-group">
+                                            <input type="text" id="txt_Select_Schedule" class="form-control" placeholder="@Resources.Resources.ScheduleNameLable" data-id="0" readonly data-required="true" data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <span class="input-group-addon add-on" onclick="if (IsDisabled(this)) return; Select_Schedule_Control = $('#txt_Select_Schedule'); $('#ScheduleDialog').modal('show'); LoadScheduleListTable()"><span class="glyphicon glyphicon-list-alt blue "></span></span>
+                                        </div>
+                                        <span class="help-block with-errors smallmargin-bottom pull-left flip"></span>
+                                        <span id="hasschgroup" class="help-block smallmargin-bottom pull-left flip"></span>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group  has-feedback">
+                                    <label for="dd_EmpType_edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.EmployeeTypeLable</label>
+                                    <div class="col-xs-10 col-sm-9 col-md-10">
+                                        <select class="form-control" id="dd_EmpType_edit" required data-error="@Resources.Resources.FieldRequiredValidationMsg"></select>
+                                        <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                                        <span class="help-block with-errors"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group  has-feedback">
+                                    <label for="txt_EmpSendEmail_edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.SendEmailLable</label>
+                                    <div class="col-xs-10 col-sm-9 col-md-10">
+                                        <select class="form-control" id="dd_EmpSendEmail_edit" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                            <option value="-1">@Resources.Resources.BySectionLable</option>
+                                            <option value="1">@Resources.Resources.YesLable</option>
+                                            <option value="0">@Resources.Resources.NoLable</option>
+                                        </select>
+                                        <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                                        <span class="help-block with-errors"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="EmpGroupCheckBoxes col-md-offset-2">
+                                        <div class="col-xs-10 col-sm-9 col-md-10 columns">
+                                            <label for="Chk_ExceptionReport" class="checkbox-inline">
+                                                <input id="Chk_ExceptionReport" name="Checkboxes" type="checkbox">
+                                                @Resources.Resources.ExceptionReportLable
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="EmpGroupCheckBoxes col-md-offset-2">
+                                        <div class="col-xs-10 col-sm-9 col-md-10 columns">
+                                            <label for="Chk_ExceptionViolation" class="checkbox-inline">
+                                                <input id="Chk_ExceptionViolation" name="Checkboxes" type="checkbox">
+                                                @Resources.Resources.ExceptionViolationLable
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="EmpGroupCheckBoxes col-md-offset-2" id="divExceptionInPeriod">
+                                        <div class="col-xs-10 col-sm-9 col-md-10 columns">
+                                            <label for="Chk_ExceptionInPeriod" class="checkbox-inline">
+                                                <input id="Chk_ExceptionInPeriod" name="Checkboxes" type="checkbox">
+                                                @Resources.Resources.ExceptionReportLableInPeriod
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback" id="divExceptionInPeriodDate">
+                                    <div class="col-xs-10 col-sm-9 col-md-offset-2 col-md-10 form-inline">
+                                        <label for="ex_FromDate" class="control-label">@Resources.Resources.FromLable</label>
+                                        <div class="input-group dateinput">
+                                            <input type="text" id="ex_FromDate" class="form-control dpd" data-date-autoclose="true" data-date-format="yyyy-mm-dd" data-date-language="@Resources.Resources.lang" placeholder="@Resources.Resources.FromDateLable" readonly>
+                                            <span class="input-group-addon add-on" onclick="$('#ex_FromDate').datepicker('show');"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        </div>
+                                        <label for="ex_ToDate" class="control-label">@Resources.Resources.ToLable</label>
+                                        <div class="input-group dateinput">
+                                            <input type="text" id="ex_ToDate" class="form-control dpd" data-date-autoclose="true" data-date-format="yyyy-mm-dd" data-date-language="@Resources.Resources.lang" placeholder="@Resources.Resources.ToDateLable" readonly>
+                                            <span class="input-group-addon add-on" onclick="$('#ex_ToDate').datepicker('show');"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-lg" id="bt_saveEmployee"><span class="glyphicon glyphicon-ok"></span> @Resources.Resources.btSave</button>
+                <button type="button" class="btn btn-warning btn-lg" id="bt_CancelEmployee" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove"></span>@Resources.Resources.btCancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

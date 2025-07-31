@@ -1,0 +1,36 @@
+<div class="container PT20">
+    <!-- <ngb-tabset (tabChange)="TabChange($event)" >
+        <ngb-tab [index]="0">
+    
+            <ng-template ngbTabTitle>
+                <b>{{'ExcuseReq' | translate}}</b>
+            </ng-template>
+            <ng-template ngbTabContent>
+                <excuse></excuse>    
+            </ng-template>
+        </ngb-tab>
+        <ngb-tab [index]="1" *ngIf="isManager">
+            <ng-template ngbTabTitle>
+                <b>{{'ExcuseReqForEmp' | translate}}</b>
+            </ng-template>
+            <ng-template ngbTabContent>
+                <MgrExcuse></MgrExcuse>
+            </ng-template>
+        </ngb-tab>
+    </ngb-tabset> -->
+
+    
+
+<mat-tab-group>
+    <mat-tab [label]="'ExcuseReq' | translate">  
+    <excuse></excuse>    
+          
+ </mat-tab>
+    <mat-tab *ngIf="isManager" [label]="'ExcuseReqForEmp' | translate">             
+        <MgrExcuse></MgrExcuse>
+         
+    </mat-tab>
+   </mat-tab-group>
+    </div>
+    
+    

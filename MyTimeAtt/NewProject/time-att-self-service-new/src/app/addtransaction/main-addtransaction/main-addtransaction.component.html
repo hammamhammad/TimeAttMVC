@@ -1,0 +1,34 @@
+<div class="container PT20">
+    <!-- <ngb-tabset (tabChange)="TabChange($event)" >
+        <ngb-tab [index]="0">
+    
+            <ng-template ngbTabTitle>
+                <b>{{'FingerPrintReq' | translate}}</b>
+            </ng-template>
+            <ng-template ngbTabContent>
+                <addtransaction></addtransaction>    
+            </ng-template>
+        </ngb-tab>
+        <ngb-tab [index]="1" *ngIf="isManager">
+            <ng-template ngbTabTitle>
+                <b>{{'FingerPrintReqMGR' | translate}}</b>
+            </ng-template>
+            <ng-template ngbTabContent>
+                <mgr-addtransaction></mgr-addtransaction>
+            </ng-template>
+        </ngb-tab>
+    </ngb-tabset> -->
+
+
+    
+
+<mat-tab-group>
+    <mat-tab [label]="'FingerPrintReq' | translate">  
+    <addtransaction></addtransaction>  </mat-tab>
+    <mat-tab *ngIf="isManager" [label]="'FingerPrintReqMGR' | translate">             
+        <mgr-addtransaction></mgr-addtransaction>
+    </mat-tab>
+   </mat-tab-group>
+    </div>
+    
+    

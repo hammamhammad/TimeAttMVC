@@ -1,0 +1,69 @@
+﻿<div id="PrintModeDialog" class="modal fade" data-backdrop="static" role="dialog">
+
+    <div class="modal-dialog modal-lm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="pull-right flip">
+                    <button type="button" class="btn btn-toolbar space2" aria-label="Close"><span class="glyphicon glyphicon-remove"></span></button>
+                </div>
+                <h4 class="modal-title" id="gridSystemModalPrintModeTitle">@Resources.Resources.PrintModeTitle </h4>
+            </div>
+            <div class="modal-body ">
+                <div id="ReportGroupBy">
+                <div class="row">
+                    <div class="form-group ReportGroupByRadios">
+                        <div class="col-md-12">
+
+                            <label for="RBR_ByBranch" class="radio-inline rg">
+                                <input id="RBR_ByBranch" name="ReportGroup" class="rg" value="bybranch" type="radio">
+                                @Resources.Resources.ReportByBranch
+                            </label>
+
+                            <label for="RBR_BySection" class="radio-inline rg">
+                                <input id="RBR_BySection" name="ReportGroup" class="rg" value="bysection" type="radio">
+                                @Resources.Resources.ReportBySection
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+                    <div class="row padding15">
+                    </div>
+            </div>
+                <div class="row">
+                    <button type="button" class="btn btn-default" print-mode="PR" onclick="PrintReportMode(this)" title="@Resources.Resources.PrintReport">
+                        <i class="fa fa-print fa-5x"></i>
+                    </button>
+                    <button type="button" class="btn btn-default" print-mode="ETPDF" onclick="PrintReportMode(this)" title="@Resources.Resources.ExportToPDF">
+                        <i class="fa fa-file-pdf-o fa-5x"></i>
+
+                    </button>
+                    <button type="button" class="btn btn-default" print-mode="ETExcel" onclick="PrintReportMode(this)" title="@Resources.Resources.ExportToExcel">
+                        <i class="fa fa-file-excel-o fa-5x"></i>
+
+                    </button>
+                    <button type="button" class="btn btn-default" print-mode="ETExcelD" onclick="PrintReportMode(this)" title="@Resources.Resources.ExportExcelData">
+                        <i class="fa fa-file-text-o fa-5x"></i>
+
+                    </button>
+                    <button type="button" class="btn btn-default" print-mode="ETWord" onclick="PrintReportMode(this)" title="@Resources.Resources.ExportToWord">
+                        <i class="fa fa-file-word-o fa-5x"></i>
+
+                    </button>
+
+                </div>
+                <div class="row padding15">
+                </div>
+                <div class="row">
+                    <p class="text-danger">@Resources.Resources.ReportNote</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    jQuery(function () {
+        InitializePrintModeView();
+    });
+</script>
+

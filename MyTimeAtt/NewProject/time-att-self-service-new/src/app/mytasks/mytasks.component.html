@@ -1,0 +1,73 @@
+<form #f="ngForm">
+    <div class="container PT20">
+        <div class="form-input Filters_Select">
+            <label>{{ 'lbl_ReqStatus' | translate }}</label>
+            <select
+                id="ddlTaskStatus"
+                name="taskStatus"
+                [(ngModel)]="taskStatus"
+                (change)="GetMyAllTasks() "
+            >
+                <option [value]="null">{{ 'lbl_All' | translate }}</option>
+                <option
+                    *ngFor="let row of taskStatusList"
+                    [value]="row.STID"
+                >
+                    {{(this.cultureLang == 'ar' ? row.STName_Ar : row.STName_En)}}
+                </option>
+            </select>
+        </div>
+        <div class="TBL_Wrapper">
+            <table
+                id="MyTasksTable"
+                datatable
+                #MyTasksTable=datatable
+                class="dataTable table table-striped table-bordered table-hover  no-footer"
+                cellspacing="1"
+                [dtOptions]="dtOptionsMyTasksTable"
+                [dtTrigger]="dtTriggerMyTasksTable"
+            >
+                <thead>
+                    <tr>
+                        <th>{{"RequestNumber" | translate }}</th>
+                        <th>{{"RequestTitle" | translate }}</th>
+                        <th>{{"lblRequester" | translate }}</th>
+                        <th>{{"StatusRequest" | translate }}</th>
+                        <th>{{"RequestDate" | translate }}</th>
+                        <th>{{"lb_ApproveReject" | translate }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of myRequestsList">
+                        <td>{{row.TaskNo}}</td>
+                        <td>
+                            {{(this.cultureLang == 'ar' ? row.Title : row.TitleEN) }}
+                        </td>
+                        <td>
+                            {{(this.cultureLang == 'ar' ?row.FullName : row.FullNameEN)}}
+                        </td>
+                        <!-- <td>{{(this.cultureLang == 'ar' ? row.RequestType_Ar : row.RequestType_En)}}</td> -->
+                        <td>
+                            {{(this.cultureLang == 'ar' ? row.TaskStatus_Ar : row.TaskStatus_En)}}
+                        </td>
+                        <td>{{row.Created | date: 'dd/MM/yyyy'}}</td>
+                        <td>
+                            <a [routerLink]="row.TaskUrl !== '#'?['/mytasks', row.TaskID]:['/mytasks', row.TaskID,'1']">
+                                {{ (row.WFStatus==2 ? ("lb_ApproveReject" | translate ):("lb_ViewReq" | translate))  }}
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+
+<alertmsg
+    #alert
+    backdropModal='static'
+   (onClose)="onCloseAlert($event)"
+    (onOpened)="onOpenAlert()"
+    (onDismissed)="onDismissAlert()"
+>
+</alertmsg>

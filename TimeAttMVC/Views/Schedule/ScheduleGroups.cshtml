@@ -1,0 +1,23 @@
+﻿<div>
+   
+        <div class="col-xs-12 col-sm-12">
+            <div class="input-group">
+                <input type="text" id="txt_Select_Employee" class="form-control" placeholder="@Resources.Resources.ClmEmployeeName" data-id="0" readonly>
+                <span class="input-group-addon add-on" onclick="if (IsDisabled(this)) return; Select_Employee_Control = $('#txt_Select_Employee'); $('#EmployeeDialog').modal('show'); LoadEmployeeListTable(0, 0)"><span class="glyphicon glyphicon-list-alt"></span></span>
+                <span class="input-group-addon add-on" onclick="if (IsDisabled(this)) return; $('#txt_Select_Employee').attr('data-id', 0).val('').html(''); FillScheduleGroupsInformationByEmployee(0)"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+            <div class="top10-buffer"></div>
+      
+    </div>
+    <div id="SchedulesGroupTablediv">
+        <table id="ScheduleGroupTable" class="table table-striped table-bordered " cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>@Resources.Resources.tabScheduleGroup</th>
+                    <th>@Resources.Resources.ScheduleNameLable</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>

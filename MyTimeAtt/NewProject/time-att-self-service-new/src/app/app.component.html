@@ -1,0 +1,10 @@
+
+<navbar></navbar>
+<router-outlet></router-outlet>
+<simple-notifications [options]="getOption()"></simple-notifications>
+<!-- //<ng4-loading-spinner [threshold]="500" [template]="template" [loadingText]="lodingtext" [zIndex]="9999"> </ng4-loading-spinner> -->
+
+<div class="spinner-container" *ngIf="isLoading">
+    <mat-spinner [diameter]="50" [strokeWidth]="5" [color]=""></mat-spinner>
+
+  </div>

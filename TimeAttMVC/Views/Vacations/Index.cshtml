@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = Resources.Resources.VacationsManagmentTitle;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewBag.Title</title>
+    @Scripts.Render("~/bundles/timeattvacations")
+</head>
+<body>
+    <div class="page-header">
+        <h2>@Resources.Resources.VacationsManagmentTitle</h2>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+
+           
+            <div class="panel panel-default">
+                <div class="panel-body panel-body-top panelTimeSheet">
+                    <ul class="nav nav-pills nav-justified navbar-btn btn-default " role="tablist" id="VacationsTabs">
+                        <li role="presentation" class="active" id="VacationTypetab-li"><a id="VacationTypetab-link" href="#VacationTypetab" aria-controls="VacationTypetab" role="tab" data-toggle="tab">@Resources.Resources.VacationsTypeTitle</a></li>
+                        <li role="presentation" id="Vacationstab-li"><a id="Vacationstab-link" href="#Vacationstab" aria-controls="Vacationstab" role="tab" data-toggle="tab">@Resources.Resources.VacationsManagmentTitle</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content top10-buffer">
+                        <div role="tabpanel" class="tab-pane active" id="VacationTypetab">@Html.Partial("VacationTypeView")</div>
+                        <div role="tabpanel" class="tab-pane" id="Vacationstab">@Html.Partial("VacationsView")</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+       
+    </div>
+    @Html.Partial("EmployeeDialog")
+    @Html.Partial("SectionDialog")
+    @Html.Partial("BranchesDialog")
+    <script>
+    jQuery(function () {
+        InitializeVacationsView();
+    });
+    </script>
+
+</body>
+</html>

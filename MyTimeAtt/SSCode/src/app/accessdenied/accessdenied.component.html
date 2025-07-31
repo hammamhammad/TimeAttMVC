@@ -1,0 +1,22 @@
+<div class="container PT20">
+  <div class="wrapper row2">
+    <div id="container" class="clear">
+    
+      <section id="fof" class="clear">
+    
+        <div class="hgroup">
+          <h1 *ngIf="!IsRTL"><span><strong>4</strong></span><span><strong>0</strong></span><span><strong>3</strong></span></h1>
+          <h1 *ngIf="IsRTL"><span><strong>3</strong></span><span><strong>0</strong></span><span><strong>4</strong></span></h1>
+          <h2 *ngIf="!IsRTL">Error ! <span>Access Denied</span></h2>
+          <h2 *ngIf="IsRTL">حدث خطأ ! <span>رفض الوصول</span></h2>
+        </div>
+        <p *ngIf="!IsRTL">For some reason the requested page needs permissions to access it, please contact your admin for more information</p>
+        <p *ngIf="IsRTL">لسبب ما تحتاج الصفحة المطلوبة الأذونات للوصول إليها، يرجى الاتصال بالمسؤول للحصول على مزيد من المعلومات</p>
+        <p *ngIf="!IsRTL"><a href="javascript:history.go(-1)">&laquo; Go Back</a> / <a href="#">Go Home &raquo;</a></p>
+          <p *ngIf="IsRTL"><a href="javascript:history.go(-1)">&laquo; الرجوع إلى الصفحة السابقة</a> / <a href="#">الذهاب إلى الصفحة الرئيسية &raquo;</a></p>
+      
+      </section>
+  
+    </div>
+  </div>
+</div>

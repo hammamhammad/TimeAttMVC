@@ -1,0 +1,57 @@
+﻿@if (User == null || User.UserPer!=1)
+{
+    <div></div>
+}
+
+else
+{
+    <div id="SettingsFormDialog" class="modal fade" data-backdrop="static" role="dialog">
+
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="pull-right flip">
+                        <button type="button" class="btn btn-toolbar space2" aria-label="Close"><span class="glyphicon glyphicon-remove"></span></button>
+                    </div>
+                    <h4 class="modal-title" id="gridSystemModalSettingsTitle">@Resources.Resources.SystemSettingsTitle </h4>
+                </div>
+                <div class="modal-body texr-start">
+                    <div class="row">
+                        <form enctype="multipart/form-data" class="form-horizontal" data-delay="0" role="form" id="frmSettingsFormDialog">
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <label for="txt_CompanyName_Edit" class="control-label col-xs-2 col-sm-3 col-md-3">@Resources.Resources.CompanyNameLable </label>
+                                    <input type="text" id="txt_CompanyName_Edit" class="form-control col-xs-10 col-sm-9 col-md-9" placeholder="@Resources.Resources.CompanyNameLable" data-id="0">
+                                </div>
+                            </div>
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <label for="txt_Companylogo_Edit" class="control-label col-xs-2 col-sm-3 col-md-3">@Resources.Resources.CompanyLogoName </label>
+                                    <img id="uploadPreview" src="" class="companyImage" /><br />
+                                    <input id="uploadImage" type="file" name="p1" class="hide" onchange="PreviewImage();" />
+                                    <button type="button" class="btn btn-info btn-md" id="bt_AddCompanyLogo" onclick="choosefile();">@Resources.Resources.UploadCompanyLogo_bt</button>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-lg" id="bt_SaveSettings" onclick="saveSettings();"><span class="glyphicon glyphicon-ok"></span> @Resources.Resources.btSave</button>
+                    <button type="button" class="btn btn-warning btn-lg" id="bt_CancelSettings" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span>@Resources.Resources.btCancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        jQuery(function () {
+            $('#SettingsFormDialog').on('shown.bs.modal', function () {
+                LoadSettings();
+            });
+           
+        })
+    </script>
+}

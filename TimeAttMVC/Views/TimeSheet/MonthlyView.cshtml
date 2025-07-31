@@ -1,0 +1,214 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body-top">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">@Resources.Resources.SearchOptionsTitle</h3>
+                        <span class="pull-right flip clickable" id="pn_monthlyspan"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                    </div>
+                    <div class="panel-body" id="pn_monthlybody">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-inline">
+                                <div class="form-group">
+                                    <label for="monthly_FromDate" class="control-label">@Resources.Resources.FromLable</label>
+                                    <div class="input-group dateinput">
+                                        <input type="text" id="monthly_FromDate" class="form-control dpM" data-date-autoclose="true" data-date-format="yyyy-mm-dd" data-date-language="@Resources.Resources.lang" placeholder="@Resources.Resources.FromDateLable" readonly>
+                                        <span class="input-group-addon add-on" onclick="$('#monthly_FromDate').datepicker('show');"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="monthly_ToDate" class="control-label">@Resources.Resources.ToLable</label>
+                                    <div class="input-group dateinput">
+                                        <input type="text" id="monthly_ToDate" class="form-control dpM" data-date-autoclose="true" data-date-format="yyyy-mm-dd" data-date-language="@Resources.Resources.lang" placeholder="@Resources.Resources.ToDateLable" readonly>
+                                        <span class="input-group-addon add-on" onclick="$('#monthly_ToDate').datepicker('show');"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+
+
+                                </div>
+                                <div class="pull-right flip">
+                                    <label class="control-label"> @Resources.Resources.FilterLable </label>
+                                    <select class="form-control" id="MonthlyFilterdd"></select>
+                                    <select class="form-control" id="MonthlyOperationdd"> </select>
+                                    <input class="smallerText form-control" type="text" id="MontlyFilterValue" />
+                                </div>
+                            </div>
+                         
+                        </div>
+                        <div class="row">
+                            <div class="row top10-buffer">
+                                <div class="col-md-12">
+                                    <div class="searchBy">
+                                        <div class="col-md-3">
+                                            <label for="txt_Select_MonthlySection" class="control-label">@Resources.Resources.SectionLabe</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_Select_MonthlySection" class="form-control" placeholder="@Resources.Resources.SectionNameLable" data-id="0" readonly>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_MonthlySection:not(:disabled)').length == 0) { return }; Select_Section_Control = $('#txt_Select_MonthlySection'); $('#SectionDialog').modal('show'); LoadSectionListTable()"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_MonthlySection:not(:disabled)').length == 0) { return }; $('#txt_Select_MonthlySection').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="txt_Select_MonthlyBranch" class="control-label">@Resources.Resources.BranchLable</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_Select_MonthlyBranch" class="form-control" placeholder="@Resources.Resources.BranchNameLable" data-id="0" readonly>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_MonthlyBranch:not(:disabled)').length == 0) { return }; Select_Branch_Control = $('#txt_Select_MonthlyBranch'); $('#BranchDialog').modal('show'); LoadBranchListTable()"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_MonthlyBranch:not(:disabled)').length == 0) { return }; $('#txt_Select_MonthlyBranch').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="txt_Select_MonthlyLocation" class="control-label">@Resources.Resources.LocationNameLable</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_Select_MonthlyLocation" class="form-control" placeholder="@Resources.Resources.LocationNameLable" data-id="0" readonly>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_MonthlyLocation:not(:disabled)').length == 0) { return }; Select_Location_Control = $('#txt_Select_MonthlyLocation'); $('#LocationDialog').modal('show'); LoadLocationListTable()"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_MonthlyLocation:not(:disabled)').length == 0) { return }; $('#txt_Select_MonthlyLocation').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="txt_Select_Employee" class="control-label">@Resources.Resources.EmployeeLable</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_Select_MonthlyEmployee" class="form-control" placeholder="@Resources.Resources.EmployeeNameLable" data-id="0" readonly>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_MonthlyEmployee:not(:disabled)').length == 0) { return }; Select_Employee_Control = $('#txt_Select_MonthlyEmployee'); $('#EmployeeDialog').modal('show'); /*EmployeeListData = null;*/ LoadEmployeeListTable($('#txt_Select_MonthlySection').attr('data-id'), $('#txt_Select_MonthlyBranch').attr('data-id'))"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_MonthlyEmployee:not(:disabled)').length == 0) { return }; $('#txt_Select_MonthlyEmployee').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row col-centered">
+                            <hr />
+                            <button class="btn btn-success btn-lg" id="MonthlybtSearch" onclick="SearchMonthly();">@Resources.Resources.btSearch </button>
+                            <button class="btn btn-info btn-lg" id="printMonthly">@Resources.Resources.btPrint</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body-top fixed-panelWithScrollTimeSheet">
+
+                        <div id="MonthlyTimeSheetTablediv">
+                            <table id="MonthlyTimeSheetTable" class="table  table-bordered  timesheet-table" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>@Resources.Resources.ClmEmpNo </th>
+                                        <th>@Resources.Resources.ClmEmployeeName</th>
+                                        <th>@Resources.Resources.Clmdaysno</th>
+                                        <th>@Resources.Resources.Clmdaysabsent</th>
+                                        <th>@Resources.Resources.Clmdaysoff</th>
+                                        <th>@Resources.Resources.Clmdaysvication</th>
+                                        <th>@Resources.Resources.Clmtotalwork</th>
+                                        <th>@Resources.Resources.Clmac_work</th>
+                                        <th>@Resources.Resources.Clmtotallate</th>
+                                        <th>@Resources.Resources.Clmtotalover</th>
+                                        <th>@Resources.Resources.ClmtotalExecuse</th>
+
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal-wide  fade unfold-3d" data-backdrop="static" role="dialog" id="MonthlyDetailsAttendanceDialog">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="pull-right flip">
+                    <button type="button" class="btn btn-toolbar space2" aria-label="Close"><span class="glyphicon glyphicon-remove"></span></button>
+                </div>
+                <h4 class="modal-title" id="gridSystemModalMonthlyDetailsAttendance">@Resources.Resources.DetailsAttendanceTitle </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel-body form-inline">
+                            <div class="form-group">
+                                <label for="txt_employeno_Montlydetails" class="control-label">@Resources.Resources.EmployeeNoLable</label>
+                                <input type="text" id="txt_employeno_Montlydetails" readonly="readonly" class="smallerText form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="txt_employename_Montlydetails" class="control-label">@Resources.Resources.EmployeeNameLable</label>
+                                <input type="text" id="txt_employename_Montlydetails" readonly="readonly" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="txt_sec_Montlydetails" class="control-label">@Resources.Resources.SectionNameLable</label>
+                                <input type="text" id="txt_sec_Montlydetails" readonly="readonly" class=" form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p id="MonthlyDetails_DateRangeInfo" class="bg-primary padding10 col-centered">من تاريخ 01/05/2015 إلى تاريخ 01/06/2015</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body-top">
+
+                                <div id="MonthlyDailyTimeSheetTablediv">
+                                    <table id="MonthlyDailyTimeSheetTable" class="table  compact timesheet-table" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>@Resources.Resources.ClmDate</th>
+                                                <th>@Resources.Resources.ClmIN</th>
+                                                <th>@Resources.Resources.ClmOut</th>
+                                                <th>@Resources.Resources.ClmLateIn</th>
+                                                <th>@Resources.Resources.ClmEarlyOut</th>
+                                                <th>@Resources.Resources.ClmTimeTotal</th>
+                                                <th>@Resources.Resources.ClmActualTime</th>
+                                                <th>@Resources.Resources.ClmLateHours</th>
+                                                <th>@Resources.Resources.ClmOverHours</th>
+                                                <th>@Resources.Resources.ClmExecuse</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div id="MonthlyTimeSheetSummaryTablediv">
+                                    <table id="MonthlyTimeSheetSummaryTable" class="table  compact  timesheet-table" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>@Resources.Resources.Clmdaysno</th>
+                                                <th>@Resources.Resources.Clmdaysabsent</th>
+                                                <th>@Resources.Resources.Clmdaysoff</th>
+                                                <th>@Resources.Resources.Clmdaysvication</th>
+                                                <th>@Resources.Resources.Clmtotalwork</th>
+                                                <th>@Resources.Resources.Clmac_work</th>
+                                                <th>@Resources.Resources.Clmtotallate</th>
+                                                <th>@Resources.Resources.Clmtotalover</th>
+                                                <th>@Resources.Resources.ClmtotalExecuse</th>
+
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row col-centered">
+                       
+                        <button class="btn btn-info btn-lg" id="printMonthlyDetails">@Resources.Resources.btPrint</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

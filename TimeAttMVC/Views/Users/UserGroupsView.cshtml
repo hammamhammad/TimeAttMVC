@@ -1,0 +1,30 @@
+﻿<div class="row ">
+    <form class="form form-horizontal" data-delay="0" role="form" id="GroupForm">
+        <fieldset id="Groupfieldset" >
+            <legend>@Resources.Resources.GroupsUserTitle</legend>
+            <div class="GroupFormdiv">
+                <div class="form-group has-feedback">
+                    <label for="txt_GroupName_edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.GroupNameLable</label>
+                    <div class="col-xs-10 col-sm-9 col-md-10">
+
+                        <input type="text" class="form-control" id="txt_GroupName_edit" placeholder="@Resources.Resources.GroupNameLable" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                        <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                        <span class="help-block with-errors"></span>
+                    </div>
+           
+                </div>
+            </div>
+            <div id="Privilegediv">
+
+            </div>
+            <div class="clearfix"></div>
+            <hr class="colorgraph" />
+            <div class="">
+                <button type="submit" class="btn btn-primary btn-lg" id="bt_saveGroup"><span class="glyphicon glyphicon-ok"></span> @Resources.Resources.btSave</button>
+                <button type="button" class="btn btn-warning btn-lg" id="bt_CancelGroup">
+                    <span class="glyphicon glyphicon-remove"></span>@Resources.Resources.btCancel
+                </button>
+            </div>
+        </fieldset>
+        </form>
+    </div>

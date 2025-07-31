@@ -1,0 +1,44 @@
+<form #f="ngForm" >
+    <div class="container PT20">
+        <div class="form-input Filters_Select">
+            <label>{{ 'lbl_ReqStatus' | translate }}</label>
+            <select id="ddlTaskStatus" name="taskStatus" [(ngModel)]="taskStatus" (change)="GetMyRequests() ">
+                <option [value]="null">{{ 'lbl_All' | translate }}</option>
+                <option *ngFor="let row of taskStatusList" [value]="row.STID">{{(this.cultureLang == 'ar' ? row.STName_Ar : row.STName_En)}}</option>
+            </select>
+        </div>
+        <div class="TBL_Wrapper">
+            <table id="MyRequestTable" datatable #MyRequestTable=datatable class="dataTable table table-striped table-bordered table-hover  no-footer"
+                cellspacing="1" [dtOptions]="dtOptionsMyRequestTable" [dtTrigger]="dtTriggerMyRequestTable">
+                <thead>
+                    <tr>
+                        <th>{{"RequestNumber" | translate }}</th>
+                        <th>{{"RequestTitle" | translate }} </th>
+                        <th>{{"RequestType" | translate }}</th>
+                        <th>{{"StatusRequest" | translate }}</th>
+                        <th>{{"RequestDate" | translate }}</th>
+                        <th>{{"CancelRequestTitle" | translate }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of myRequestsList">
+                        <td>
+                            <a [routerLink]="['/myrequests', row.TaskID]">{{row.TaskNo}}</a>
+                        </td>
+                        <td>{{(this.cultureLang == 'ar' ? row.Title : row.TitleEN) }}</td>
+                        <td>{{(this.cultureLang == 'ar' ? row.RequestType_Ar : row.RequestType_En)}}</td>
+                        <td>{{(this.cultureLang == 'ar' ? row.TaskStatus_Ar : row.TaskStatus_En)}}</td>
+                        <td>{{row.Created | date: 'dd/MM/yyyy'}} </td>
+                        <td>
+                            <a [routerLink]="['/myrequests', row.TaskID]">{{ (row.WFStatus==1 ? ("CancelRequestTitle" | translate ):("lb_ViewReq" | translate)) }}</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+
+
+<alertmsg #alert backdropModal='static'  (onClose)="onCloseAlert($event)" (onOpened)="onOpenAlert()" (onDismissed)="onDismissAlert()">
+</alertmsg>

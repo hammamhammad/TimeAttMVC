@@ -1,0 +1,106 @@
+<form [ngClass]="this.cultureLang == 'ar'? 'form-ar' : 'form-en'" id="WFAcctionPage" class="sp-form">
+  <div class="container PT20">
+    <div class="col-md-12" >
+      <div id="canceleddiv" class="alert alert-warning" *ngIf="TaskDetails?.TaskStatus == 6">
+        <span id="taskerrorcontent"></span>
+        <span>{{'CancelRequest' | translate}}</span>
+      </div>
+      <div id="Actiondetailsdiv">
+        <div id="Task_formdetails" *ngIf="TaskInfo?.Response?.Status == 'OK'">
+          <div id="dataform">
+            <div class="Tlf">
+              <div class="Serv-detail">
+                <div class="serv-title">
+                    <label class="serv-nam" id="Task_title">{{'RequestTitle' | translate}}:{{this.cultureLang == 'ar' ? TaskDetails?.Title : TaskDetails?.TitleEN }}</label>
+                  <div class="rq-num">
+                    <label>{{'RequestNumber' | translate}}</label>
+                    <label id="Task_taskno">{{TaskDetails?.TaskNo}}</label>
+                  </div>
+                </div>
+                <div class="servDetialTBL">
+                  <div class="servDetialHD">
+                    <div class="User">
+                      <label id="Task_ReqEmpID">{{TaskDetails?.Requester_empid}}</label>
+                      <span>-</span>
+                      <label id="Task_requestername">{{TaskDetails?.Requester_fullname}}</label>
+                    </div>
+                    <div class="date">
+                      <label id="Task_createddate">{{TaskDetails?.Created | date: 'dd/MM/yyyy hh:MM a'}}</label>
+                    </div>
+                  </div>
+                  <div class="form-detail">
+                    <label class="cell-3 pr0">{{'LastModifiedReq' | translate}}</label>
+                    <label id="Task_lastupdate">{{TaskDetails?.Updated | date: 'dd/MM/yyyy hh:MM a'}}</label>
+                  </div>
+                  <span id="TaskDetailsBody" [innerHtml]="TaskDetails?.TaskDetailsBody  "></span>
+                  <!-- | safeHtml -->
+                  <div class="form-detail" *ngIf="AttachURL!=null">
+                    <label class="cell-3 pr0">{{'lblAttach' | translate}}</label>
+                    <a id="Task_Attach" target="_blank" [href]="AttachURL">{{'lblAttach' | translate}}</a>
+                </div>
+                </div>
+              </div>
+              <div id="Task_HDIV">
+                <div *ngFor="let row of TaskHistory" class='TaskTBL' [ngClass]="GetClassName(row.WFStatus)">
+                  <div class="TaskAll">
+                    <!-- <span [innerHtml]="row.Userimg"></span> -->
+                    <img src="assets/img/dflt.jpg" />
+                    <div class="TaskHD">
+                      <div class="ACTNam">
+                          <label>{{this.cultureLang == 'ar'? row.AName : row.ANameEn}} :</label>
+                        <span> {{row.CurrentUser}} </span>
+                      </div>
+                      <span [innerHtml]="row.Created"> </span>
+                      <div class="ACTSts hidden-xs">
+                        <label>{{(this.cultureLang == 'ar'? row.WFStatus_ar: row.WFStatus_en)}}</label>
+                      </div>
+                    </div>
+                    <div class="TaskCon">
+                      <div class="ACTNot">
+                        <label>{{row.TaskNote}} </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="clientbutton" class="form-input form-btn">
+              <button id="Task_bt_cancel" (click)="openForm()" class="btn btn-primary btn-lg" *ngIf="TaskDetails.CanCancel">{{'CancelRequestTitle' | translate}}</button>
+              <!-- <input type="button"  res-type="V" res-name="CancelRequestTitle" class="btn btn-gray btn-large" /> -->
+            </div>
+          </div>
+        </div>
+        <div id="Task_accessdenaied" class="alert alert-danger" *ngIf="TaskInfo?.Response?.Status != 'OK'">
+          <span>{{'NotHavePermissionView' | translate}}</span>
+          <label id="Task_msgerr">{{responseMSG}}</label>
+        </div>
+      </div>
+      <div id="TaskActionmsgsuccess" style="display: none">
+        <div class="alert alert-success">
+          <span id="tasksuccesscontent"></span>
+          <!-- <div>
+                        <div class="cell-6">
+                            <p><a href="/" res-type="H" res-name="HomePage"></a></p>
+                        </div>
+                        <div class="cell-6">
+                            <p class="left"><a href="/Tasks/Pages/Requests.aspx" res-type="H" res-name="PageMyRequest"></a></p>
+                        </div>
+                    </div> -->
+        </div>
+      </div>
+      <div id="TaskActionmsgerror" style="display: none">
+        <div class="alert alert-danger">
+          <span>{{'OopsErrorExecutionRequest' | translate}}</span>
+          <span id="taskerrorcontent"></span>
+          <!-- <div>
+                        <b>
+                            <a href="javascript:location.reload(false)" res-type="H" res-name="Clickheretorefreshpageandtryagain"></a>
+                        </b>
+                    </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<alertmsg #alert backdropModal='static'  (onClose)="onCloseAlert($event)" (onOpened)="onOpenAlert()" (onDismissed)="onDismissAlert()">
+</alertmsg>

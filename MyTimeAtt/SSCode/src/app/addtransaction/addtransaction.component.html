@@ -1,0 +1,114 @@
+<form #f="ngForm" (ngSubmit)="submit()" >
+<div class="container PT20">
+    <div id="addTransRequest" class="col-md-6">
+
+        <div class="form-group" [ngClass]="{'has-error':!f?.controls?.transDate?.valid && f?.controls?.transDate?.touched}">
+            <label for="">{{"ClmDate" | translate }}</label>
+            <div>
+                <datepicker-popup (dateSelected)="onDateChange($event,'PS')" name="transDate" [(ngModel)]="transForm.transDate" required>
+                </datepicker-popup>
+            </div>
+
+        </div>
+        <div class="form-input">
+            <label>{{"TransactionType" | translate }}</label>
+            <select id="ddlexecusetype" name="execusetype" [(ngModel)]="transForm.m_transtype" class="form-control" required>
+                <option [value]="null" disabled>{{"lb_PLZSelect" | translate }}</option>
+                <option value="1">{{ "lb_ShiftFirstIN" | translate}}</option>
+                <option value="2">{{ "lb_ShiftFirstOUT" | translate}}</option>
+                <option value="1">{{ "lb_ShiftSecondIN" | translate}}</option>
+                <option value="2">{{ "lb_ShiftSecondOUT" | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>{{ "ClmTime" | translate}}</label>
+            <div>
+                <input class="timepicker form-control" required [(ngModel)]="transForm.m_timeF" name="m_timeF" id="m_timeF" [options]="{disableTextInput: false,'timeFormat': 'H:i',showDuration: false,step:1,scrollDefault:'07:30'}"
+                    type="text" required #exc_ftime="ngModel">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ddexcexuserequestreson">{{"ClmTheReason" | translate }}</label>
+            <select id="ddexcexuserequestreson" name="ModifiedReasonID" [(ngModel)]="transForm.ModifiedReasonID" class="form-control"
+                #execuseReason_ID="ngModel" required>
+                <option [value]="null" disabled>{{"lb_PLZSelect" | translate }}</option>
+                <option *ngFor="let reason of reasons" [value]="reason.uptTransReason_id">{{(this.cultureLang == 'ar' ? reason.uptTransReason_name : reason.uptTransReason_nameEN)}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>{{"lblAttach" | translate }}</label>
+            <input class="uploadfile-style" [(ngModel)]="transForm.trans_Attach" (change)="fileChange($event)" name="trans_Attach" id="trans_Attach"
+                size="10" type="file">
+        </div>
+        <div class="form-group">
+            <label>{{"NotesLable" | translate }}</label>
+            <textarea name="exc_reason" id="exc_reason" [(ngModel)]="transForm.Note" col="30" rows="10" class="form-control" required></textarea>
+        </div>
+        <div>
+            <button id="bt_saveexcexuserequest" class="btn btn-primary btn-lg" [disabled]="!f.valid">{{"AddRequest" | translate }}</button>
+        </div>
+        <div id="errtransmsg" class="alert alert-danger" style="display: none"></div>
+    </div>
+    <div id="transmsgsuccess" style="display: none">
+        <div class="S-alert-s1">
+            <span>{{"Yourrequestimplementedsuccessfully" | translate }}</span>
+
+            <br>
+            <br>
+            <div>
+            </div>
+        </div>
+    </div>
+    <div id="transmsgerror" style="display: none">
+        <div class="E-alert-s1">
+            <span>{{"AddExcuseErrorMsg" | translate }}</span>
+
+            <br>
+            <br>
+            <div>
+            </div>
+        </div>
+    </div>
+    <div style="display: none">
+        <div id="transConfairmDiv">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div>
+                        <span>{{"ForgetFingerAddConfairm" | translate }}</span>
+                    </div>
+                </div>
+                <div class="panel-body" id="ExecBodyDiv">
+                    <div class="">
+                        <div>
+                            <div class="form-detail">
+                                <label class="cell-3 pr0">{{"ClmDate" | translate }}</label>
+                                <span id="lb_execdate">{{transForm.transDate}}</span>
+                            </div>
+                            <div class="form-detail">
+                                <label class="cell-3 pr0">{{"TransactionType" | translate }}</label>
+                                <span id="lb_exectype">{{this.getSelectedTranTypeText()}}</span>
+                            </div>
+                            <div class="form-detail">
+                                <label class="cell-3 pr0" res-type="H" res-name="Reason">{{"ClmTheReason" | translate }}</label>
+                                <span id="lb_execreseon">{{this.getSelectedReasonText()}}</span>
+                            </div>
+                            <div class="form-detail">
+                                <label class="cell-3 pr0" res-type="H" res-name="TransactionTime">{{"ClmTime" | translate }}</label>
+                                <span id="lb_exectime">{{transForm.m_timeF}}</span>
+                            </div>
+                            <div class="form-detail">
+                                <label class="cell-3 pr0" res-type="H" res-name="Notes">{{"NotesLable" | translate }}</label>
+                                <span id="lb_execnote">{{ transForm.Note}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+
+<alertmsg #alert backdropModal='static' show-close="true" (onClose)="onCloseAlert($event)" (onOpened)="onOpenAlert()" (onDismissed)="onDismissAlert()">
+</alertmsg>

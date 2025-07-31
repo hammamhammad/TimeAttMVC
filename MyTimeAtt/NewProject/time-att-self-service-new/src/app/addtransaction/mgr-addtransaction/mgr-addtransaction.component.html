@@ -1,0 +1,161 @@
+<form #f="ngForm" (ngSubmit)="submit()">
+    <div class="container PT20">
+        <div id="addTransRequest" class="col-md-6">
+            <div class="form-group">
+
+                <label class="control-label">{{'EmployeeLable'| translate}}</label>
+                <div *ngIf="localEmployeedata!=null">
+                    <!-- <select2 #select2Group [data]="localEmployeedata" [options]="Select2OptionsGroup" [(ngModel)]="localEmp.emp_id"
+                        ngDefaultControl (valueChanged)="localEmp.emp_id= $event?.value;localEmp.emp_name= $event.data[0].text"
+                        name="emp_id" id="emp_id" #emp_id="ngModel" required  [value]="localEmp.emp_id.toString()"></select2> -->
+                        <mat-form-field class="example-full-width" style="display: block;">
+                          
+                            <input type="text" matInput [formControl]="EmployeeCtrl"  [matAutocomplete]="auto2">
+                            <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayFn">
+                                <mat-option *ngFor="let Emp of filteredEmployees | async" [value]="Emp"> {{Emp.text}}</mat-option>
+                              
+                            </mat-autocomplete>
+                          </mat-form-field>
+                     
+                         
+                    </div>
+            </div>
+            <div class="form-group" [ngClass]="{'has-error':!f.controls['transDate_mgr']?.valid && f.controls['transDate_mgr']?.touched}">
+                <label for="">{{"ClmDate" | translate }}</label>
+                <div>
+                    <!-- <datepicker-popup (dateSelected)="onDateChange($event,'PS')" name="transDate_mgr" [(ngModel)]="transFormMGR.transDate"
+                        required>
+                    </datepicker-popup> -->
+                    <input type="date" placeholder="Choose a date"  [(ngModel)]="transFormMGR.transDate" required class="form-control" name="transDate_mgr">
+             
+                </div>
+
+            </div>
+            <div class="form-input" *ngIf="transFormMGR.transDate != ''">
+                <label>{{"TransactionType" | translate }}</label>
+                <select id="ddlexecusetype_mgr" name="execusetype_mgr" [(ngModel)]="transFormMGR.m_transtype" class="form-control" required >
+                    <option [value]="null" disabled>{{"lb_PLZSelect" | translate }}</option>
+                    <option value="1" *ngIf="!isTwoShift">{{ "lb_ShiftIN" | translate}}</option>
+                    <option value="2" *ngIf="!isTwoShift">{{ "lb_ShiftOUT" | translate}}</option>
+                    <option value="1" *ngIf="isTwoShift">{{ "lb_ShiftFirstIN" | translate}}</option>
+                    <option value="2" *ngIf="isTwoShift">{{ "lb_ShiftFirstOUT" | translate}}</option>
+                    <option value="3" *ngIf="isTwoShift">{{ "lb_ShiftSecondIN" | translate}}</option>
+                    <option value="4" *ngIf="isTwoShift">{{ "lb_ShiftSecondOUT" | translate}}</option>
+                   
+                </select>
+                <!-- <select id="ddlexecusetype_mgr" name="execusetype_mgr" [(ngModel)]="transFormMGR.m_transtype" class="form-control"
+                    required>
+                    <option [value]="null" disabled>{{"lb_PLZSelect" | translate }}</option>
+                    <option value="1">{{ "lb_ShiftFirstIN" | translate}}</option>
+                    <option value="2">{{ "lb_ShiftFirstOUT" | translate}}</option>
+                    <option value="1">{{ "lb_ShiftSecondIN" | translate}}</option>
+                    <option value="2">{{ "lb_ShiftSecondOUT" | translate}}</option>
+                </select> -->
+            </div>
+            <div class="form-group">
+                <label>{{ "ClmTime" | translate}}</label>
+                <div>
+                    <input class="timepicker form-control" required [(ngModel)]="transFormMGR.m_timeF" name="m_timeF_mgr"
+                        id="m_timeF_mgr" 
+                        type="time" required #exc_ftime="ngModel">
+                          <!-- [options]="{disableTextInput: false,'timeFormat': 'H:i',showDuration: false,step:1,scrollDefault:'07:30'}" -->
+                      
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ddexcexuserequestreson_mgr">{{"ClmTheReason" | translate }}</label>
+                <select id="ddexcexuserequestreson_mgr" name="ModifiedReasonID_mgr" [(ngModel)]="transFormMGR.ModifiedReasonID"
+                    class="form-control" #execuseReason_ID="ngModel" required>
+                    <option [value]="null" disabled>{{"lb_PLZSelect" | translate }}</option>
+                    <option *ngFor="let reason of reasons" [value]="reason.uptTransReason_id">{{(this.cultureLang ==
+                        'ar' ? reason.uptTransReason_name : reason.uptTransReason_nameEN)}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>{{"lblAttach" | translate }}</label>
+                <input class="uploadfile-style" [(ngModel)]="transFormMGR.trans_Attach" (change)="fileChange($event)"
+                    name="trans_Attach_mgr" id="trans_Attach_mgr" size="10" type="file">
+            </div>
+            <div class="form-group">
+                <label>{{"NotesLable" | translate }}</label>
+                <textarea name="exc_reason_mgr" id="exc_reason_mgr" [(ngModel)]="transFormMGR.Note" col="30" rows="10"
+                    class="form-control" required></textarea>
+            </div>
+            <div>
+                <button id="bt_saveexcexuserequest_mgr" class="btn btn-primary btn-lg" [disabled]="!f.valid">{{"AddRequest"
+                    | translate }}</button>
+            </div>
+            <div id="errtransmsg_mgr" class="alert alert-danger" style="display: none"></div>
+        </div>
+        <div id="transmsgsuccess_mgr" style="display: none">
+            <div class="S-alert-s1">
+                <span>{{"Yourrequestimplementedsuccessfully" | translate }}</span>
+
+                <br>
+                <br>
+                <div>
+                </div>
+            </div>
+        </div>
+        <div id="transmsgerror_mgr" style="display: none">
+            <div class="E-alert-s1">
+                <span>{{"AddExcuseErrorMsg" | translate }}</span>
+
+                <br>
+                <br>
+                <div>
+                </div>
+            </div>
+        </div>
+        <div style="display: none">
+            <div id="transConfairmDiv_mgr">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div>
+                            <span>{{"ForgetFingerAddConfairm" | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="panel-body" id="ExecBodyDiv_mgr">
+                        <div class="">
+                            <div>
+                                <div class='form-detail'>
+                                    <label class='cell-3 pr0' res-type='H' res-name='EmployeeName'>{{"EmployeeName" |
+                                        translate }}</label>
+                                    <span id='lb_execdate'>{{transFormMGR.emp_name}} </span>
+                                </div>
+                                <div class="form-detail">
+                                    <label class="cell-3 pr0">{{"ClmDate" | translate }}</label>
+                                    <span id="lb_execdate">{{transFormMGR.transDate}}</span>
+                                </div>
+                                <div class="form-detail">
+                                    <label class="cell-3 pr0">{{"TransactionType" | translate }}</label>
+                                    <span id="lb_exectype">{{this.getSelectedTranTypeText()}}</span>
+                                </div>
+                                <div class="form-detail">
+                                    <label class="cell-3 pr0" res-type="H" res-name="Reason">{{"ClmTheReason" |
+                                        translate }}</label>
+                                    <span id="lb_execreseon">{{this.getSelectedReasonText()}}</span>
+                                </div>
+                                <div class="form-detail">
+                                    <label class="cell-3 pr0" res-type="H" res-name="TransactionTime">{{"ClmTime" |
+                                        translate }}</label>
+                                    <span id="lb_exectime">{{transFormMGR.m_timeF}}</span>
+                                </div>
+                                <div class="form-detail">
+                                    <label class="cell-3 pr0" res-type="H" res-name="Notes">{{"NotesLable" | translate
+                                        }}</label>
+                                    <span id="lb_execnote">{{ transFormMGR.Note}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<alertmsg #alert backdropModal='static' (onClose)="onCloseAlert($event)" (onOpened)="onOpenAlert()"
+    (onDismissed)="onDismissAlert()">
+</alertmsg>

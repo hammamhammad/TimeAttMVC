@@ -1,0 +1,37 @@
+<div class="container PT20">
+<!-- <ngb-tabset  >
+    <ngb-tab [index]="0">
+
+        <ng-template ngbTabTitle>
+            <b>{{'MyAttendanceReport' | translate}}</b>
+        </ng-template>
+        <ng-template ngbTabContent>
+            <myattreport></myattreport>
+
+        </ng-template>
+    </ngb-tab>
+    <ngb-tab [index]="1" *ngIf="isManager">
+        <ng-template ngbTabTitle>
+            <b>{{'MyEmpAttReport' | translate}}</b>
+        </ng-template>
+        <ng-template ngbTabContent>
+            <MgrAttReport></MgrAttReport>
+        </ng-template>
+    </ngb-tab>
+</ngb-tabset> -->
+
+
+
+<mat-tab-group>
+    <mat-tab [label]="'MyAttendanceReport' | translate">  
+        <!-- <ng-template>
+        <b>{{'MyAttendanceReport' | translate}}</b>
+    </ng-template> -->
+       <myattreport></myattreport>
+ </mat-tab>
+    <mat-tab *ngIf="isManager" [label]="'MyEmpAttReport' | translate">             
+        <MgrAttReport></MgrAttReport>
+    </mat-tab>
+   </mat-tab-group>
+</div>
+

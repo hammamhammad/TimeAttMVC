@@ -1,0 +1,132 @@
+﻿<div class="row ">
+    <form class="form-horizontal"  data-delay="0" role="form" id="SchForm">
+        <fieldset id="Schfieldset">
+            <legend>@Resources.Resources.ScheduleTitle</legend>
+            <div class="scheduleFormdiv">
+
+                <div class="form-group has-feedback">
+                    <label for="txt_ScheduleName_edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.NameLable</label>
+                    <div class="col-xs-10 col-sm-9 col-md-10">
+                        <input type="text" class="form-control" id="txt_ScheduleName_edit" placeholder="@Resources.Resources.ScheduleOnlyNameLable" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                        <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                        <span class="help-block with-errors"></span>
+                    </div>
+
+                </div>
+                <div class="form-group has-feedback">
+                    <label for="txt_SchDesc_edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.DescriptionLabel</label>
+                    <div class="col-xs-10 col-sm-9 col-md-10">
+                        <input type="text" class="form-control" id="txt_SchDesc_edit" placeholder="@Resources.Resources.DescriptionLabel">
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="">
+                        <label class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.WeekDaysNameLable </label>
+                        <div class="col-xs-12 col-sm-9 col-md-10">
+                            <div class="panel panel-default">
+                                <div class="panel-body forshifttime">
+                                    <div class="form-group col-md-12">
+                                      
+                                      
+                                        <div class="form-group col-xs-6 has-feedback">
+                                            <label for="txt_shiftForSun" class="control-label">@Resources.Resources.SunDayNameLable</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_shiftForSun" class="form-control" placeholder="@Resources.Resources.ShiftNameLable" data-id="0" readonly data-required="true" data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                                <span class="input-group-addon add-on" onclick="if (IsDisabled(this)) { return }; Select_Shift_Control = $('#txt_shiftForSun'); $('#ShiftDialog').modal('show'); LoadShiftListTable()"><span class="glyphicon glyphicon-list-alt blue "></span></span>
+                                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                             </div>
+                                            <span class="help-block with-errors smallmargin-bottom"></span>
+                                        </div>
+
+                                        <div class="col-md-1"></div>
+                                        <div class="form-group col-xs-6 has-feedback">
+                                            <label for="txt_shiftForMon" class="control-label">@Resources.Resources.MonDayNameLable</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_shiftForMon" class="form-control" placeholder="@Resources.Resources.ShiftNameLable" data-id="0" readonly data-required="true" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                                <span class="input-group-addon add-on" onclick="if (IsDisabled(this)) { return }; Select_Shift_Control = $('#txt_shiftForMon'); $('#ShiftDialog').modal('show'); LoadShiftListTable()"><span class="glyphicon glyphicon-list-alt blue "></span></span>
+                                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+
+                                            <span class="help-block with-errors smallmargin-bottom"></span>
+                                        </div>
+                                        
+                                        <div class="form-group col-xs-6 has-feedback">
+                                            <label for="txt_shiftForTue" class="control-label">@Resources.Resources.TueDayNameLable</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_shiftForTue" class="form-control" placeholder="@Resources.Resources.ShiftNameLable" data-id="0" readonly data-required="true" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_shiftForTue:not(:disabled)').length == 0) { return }; Select_Shift_Control = $('#txt_shiftForTue'); $('#ShiftDialog').modal('show'); LoadShiftListTable()"><span class="glyphicon glyphicon-list-alt blue "></span></span>
+                                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+
+                                            <span class="help-block with-errors smallmargin-bottom"></span>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                        <div class="form-group col-xs-6 has-feedback">
+                                            <label for="txt_shiftForWed" class="control-label">@Resources.Resources.WedDayNameLable</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_shiftForWed" class="form-control" placeholder="@Resources.Resources.ShiftNameLable" data-id="0" readonly data-required="true" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                                <span class="input-group-addon add-on" onclick="if (IsDisabled(this)) { return }; Select_Shift_Control = $('#txt_shiftForWed'); $('#ShiftDialog').modal('show'); LoadShiftListTable()"><span class="glyphicon glyphicon-list-alt blue "></span></span>
+                                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+
+                                            <span class="help-block with-errors smallmargin-bottom"></span>
+                                        </div>
+                                       
+                                        <div class="form-group col-xs-6 has-feedback">
+                                            <label for="txt_shiftForThu" class="control-label">@Resources.Resources.ThuDayNameLable</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_shiftForThu" class="form-control" placeholder="@Resources.Resources.ShiftNameLable" data-id="0" readonly data-required="true" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                                <span class="input-group-addon add-on" onclick="if (IsDisabled(this)) { return }; Select_Shift_Control = $('#txt_shiftForThu'); $('#ShiftDialog').modal('show'); LoadShiftListTable()"><span class="glyphicon glyphicon-list-alt blue "></span></span>
+                                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+
+                                            <span class="help-block with-errors smallmargin-bottom"></span>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                        <div class="form-group col-xs-6 has-feedback">
+                                            <label for="txt_shiftForFri" class="control-label">@Resources.Resources.FriDayNameLable</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_shiftForFri" class="form-control" placeholder="@Resources.Resources.ShiftNameLable" data-id="0" readonly data-required="true" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_shiftForFri:not(:disabled)').length == 0) { return }; Select_Shift_Control = $('#txt_shiftForFri'); $('#ShiftDialog').modal('show'); LoadShiftListTable()"><span class="glyphicon glyphicon-list-alt blue "></span></span>
+                                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+                                            <span class="help-block with-errors smallmargin-bottom"></span>
+                                        </div>
+                                        
+                                        <div class="form-group col-xs-6 has-feedback">
+                                            <label for="txt_shiftForSat" class="control-label">@Resources.Resources.SatDayNameLable</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_shiftForSat" class="form-control" placeholder="@Resources.Resources.ShiftNameLable" data-id="0" readonly data-required="true" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                                <span class="input-group-addon add-on" onclick="if (IsDisabled(this)) { return }; Select_Shift_Control = $('#txt_shiftForSat'); $('#ShiftDialog').modal('show'); LoadShiftListTable()"><span class="glyphicon glyphicon-list-alt blue "></span></span>
+                                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            </div>
+
+                                            <span class="help-block with-errors smallmargin-bottom"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <hr class="colorgraph" />
+            <div class="">
+                <button type="submit" class="btn btn-primary btn-lg" id="bt_saveSchedule"><span class="glyphicon glyphicon-ok"></span> @Resources.Resources.btSave</button>
+                <button type="button" class="btn btn-warning btn-lg" id="bt_CancelSchedule">
+                    <span class="glyphicon glyphicon-remove"></span>@Resources.Resources.btCancel
+                </button>
+            </div>
+        </fieldset>
+    </form>
+    </div>
+    <script>
+       
+    </script>
+
+

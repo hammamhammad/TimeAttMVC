@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1F5F1E4D-4B08-4E1D-944E-BC8297B53941}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TimeAtt.Model</RootNamespace>
+    <AssemblyName>TimeAtt.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Notification, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Notification.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=2.0.12.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>External Lib\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DBContext\DBContextBase.cs" />
+    <Compile Include="DBContext\WorkFlowDB.cs" />
+    <Compile Include="Helper\ExtensionMethods.cs" />
+    <Compile Include="Helper\HttpRequestMessageExtensions.cs" />
+    <Compile Include="Helper\Tuple.cs" />
+    <Compile Include="Models\APCTimeSheetIntegration.cs" />
+    <Compile Include="Models\CourseRegistration.cs" />
+    <Compile Include="Models\Credentials.cs" />
+    <Compile Include="Models\Devices.cs" />
+    <Compile Include="Models\EmailEntity.cs" />
+    <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\ExemptionsTimeSheet.cs" />
+    <Compile Include="Models\FormParameters.cs" />
+    <Compile Include="Models\MonthlyTimeSheet.cs" />
+    <Compile Include="Models\DailyTimeSheet.cs" />
+    <Compile Include="Models\DataTableData.cs" />
+    <Compile Include="Models\DataTableParameters.cs" />
+    <Compile Include="Models\PermissionGroups.cs" />
+    <Compile Include="Models\ResponseStatus.cs" />
+    <Compile Include="Models\ShiftMT.cs" />
+    <Compile Include="Models\TaskDataDetailsResponse.cs" />
+    <Compile Include="Models\TaskInfo.cs" />
+    <Compile Include="Models\TimeAttEmployees_Absence.cs" />
+    <Compile Include="Models\TimeAttEmployees_LATE.cs" />
+    <Compile Include="Models\TimeAttEmployees_Violation.cs" />
+    <Compile Include="Models\Transactions.cs" />
+    <Compile Include="Models\TransactionsMT.cs" />
+    <Compile Include="Models\TransDetails.cs" />
+    <Compile Include="Models\Violations.cs" />
+    <Compile Include="Repository\EmployeesRepository.cs" />
+    <Compile Include="Helper\ResponseResult.cs" />
+    <Compile Include="Repository\ExcusesRepository .cs" />
+    <Compile Include="Repository\CompanyRepository.cs" />
+    <Compile Include="Repository\OracleIntegrationRepository.cs" />
+    <Compile Include="Repository\RegionsRepository.cs" />
+    <Compile Include="Repository\SceduleGroupRepository.cs" />
+    <Compile Include="Repository\ScheduleRepository.cs" />
+    <Compile Include="Repository\ShiftRepository.cs" />
+    <Compile Include="Repository\TimeSheetRepositry.cs" />
+    <Compile Include="Repository\TransReasonRepository.cs" />
+    <Compile Include="Repository\VacationsRepository.cs" />
+    <Compile Include="Repository\VacationsTypeRepository.cs" />
+    <Compile Include="Repository\WorkFlowRepository.cs" />
+    <Compile Include="Security\AuthenticationFailureResult.cs" />
+    <Compile Include="Helper\Common.cs" />
+    <Compile Include="Security\CustomAuthorizeAttribute .cs" />
+    <Compile Include="Security\CustomAuthorizeMVCAttribute.cs" />
+    <Compile Include="Security\CustomPrincipal .cs" />
+    <Compile Include="Security\CustomPrincipalSerializeModel.cs" />
+    <Compile Include="Models\Constant.cs" />
+    <Compile Include="Repository\GenericRepository.cs" />
+    <Compile Include="Repository\SectionsRepository.cs" />
+    <Compile Include="Models\tb_employee.cs" />
+    <Compile Include="Models\tb_execuse.cs" />
+    <Compile Include="Models\tb_execuseReason.cs" />
+    <Compile Include="Models\tb_logtype.cs" />
+    <Compile Include="Models\tb_organization.cs" />
+    <Compile Include="Models\tb_Regions.cs" />
+    <Compile Include="Models\tb_schedule.cs" />
+    <Compile Include="Models\tb_schGroup.cs" />
+    <Compile Include="Models\tb_schGroupEmployees.cs" />
+    <Compile Include="Models\tb_section.cs" />
+    <Compile Include="Models\tb_shift.cs" />
+    <Compile Include="Models\tb_uptTransReason.cs" />
+    <Compile Include="Models\tb_userlog.cs" />
+    <Compile Include="Models\tb_userperm.cs" />
+    <Compile Include="Models\tb_users.cs" />
+    <Compile Include="Models\tb_UsersRegions.cs" />
+    <Compile Include="Models\tb_vacation.cs" />
+    <Compile Include="Models\tb_vacationtype.cs" />
+    <Compile Include="DBContext\TimeAttDBModel.cs" />
+    <Compile Include="Helper\TreeNodes.cs" />
+    <Compile Include="Repository\UsersRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\MyIdentity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Resources\Resources.csproj">
+      <Project>{b908eba0-8404-4fed-9962-7e10b3fff476}</Project>
+      <Name>Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="External Lib\Oracle.ManagedDataAccess.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

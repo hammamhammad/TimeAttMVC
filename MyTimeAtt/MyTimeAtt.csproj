@@ -1,0 +1,429 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{772A3A62-7F6F-4CE3-9236-4063587597FC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyTimeAtt</RootNamespace>
+    <AssemblyName>MyTimeAtt</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="dist\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="dist\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="dist\assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="dist\assets\fonts\FontAwesome.otf" />
+    <Content Include="dist\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="dist\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="dist\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="dist\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="dist\inline.bundle.js.map" />
+    <Content Include="dist\main.bundle.js.map" />
+    <Content Include="dist\polyfills.bundle.js.map" />
+    <Content Include="dist\scripts.bundle.js.map" />
+    <Content Include="dist\styles.bundle.js.map" />
+    <Content Include="dist\vendor.bundle.js.map" />
+    <None Include="packages.config" />
+    <Content Include="SSCode\.editorconfig" />
+    <Content Include="SSCode\.gitignore" />
+    <Content Include="SSCode\.vscode\launch.json" />
+    <Content Include="SSCode\e2e\tsconfig.e2e.json" />
+    <Content Include="SSCode\package-lock.json" />
+    <Content Include="SSCode\package.json" />
+    <Content Include="SSCode\README.md" />
+    <Content Include="SSCode\src\app\%40types\jquery.cookie\LICENSE" />
+    <Content Include="SSCode\src\app\%40types\jquery.cookie\package.json" />
+    <Content Include="SSCode\src\app\%40types\jquery.cookie\README.md" />
+    <Content Include="SSCode\src\app\addtransaction\main-addtransaction\main-addtransaction.component.css" />
+    <Content Include="SSCode\src\app\addtransaction\main-addtransaction\main-addtransaction.component.html" />
+    <Content Include="SSCode\src\app\addtransaction\mgr-addtransaction\mgr-addtransaction.component.css" />
+    <Content Include="SSCode\src\app\addtransaction\mgr-addtransaction\mgr-addtransaction.component.html" />
+    <Content Include="SSCode\src\app\excuse\main-excuse\main-excuse.component.css" />
+    <Content Include="SSCode\src\app\excuse\main-excuse\main-excuse.component.html" />
+    <Content Include="SSCode\src\app\excuse\mgr-excuse\mgr-excuse.component.css" />
+    <Content Include="SSCode\src\app\excuse\mgr-excuse\mgr-excuse.component.html" />
+    <Content Include="SSCode\src\app\header\header.component.css" />
+    <Content Include="SSCode\src\app\header\header.component.html" />
+    <Content Include="SSCode\src\app\reports\emp-trans-details\emp-trans-details.component.css" />
+    <Content Include="SSCode\src\app\reports\emp-trans-details\emp-trans-details.component.html" />
+    <Content Include="SSCode\src\app\reports\month-trans-view\month-trans-view.component.css" />
+    <Content Include="SSCode\src\app\reports\month-trans-view\month-trans-view.component.html" />
+    <Content Include="SSCode\src\app\reports\violation\violation.component.css" />
+    <Content Include="SSCode\src\app\reports\violation\violation.component.html" />
+    <Content Include="SSCode\src\app\select2\ng2-select2.component.css" />
+    <Content Include="SSCode\src\assets\.gitkeep" />
+    <Content Include="SSCode\src\assets\css\select2.min.css" />
+    <Content Include="SSCode\src\assets\fonts\DroidKufi-Regular.svg" />
+    <Content Include="SSCode\src\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="SSCode\src\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="SSCode\src\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="SSCode\src\assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="SSCode\src\assets\fonts\FontAwesome.otf" />
+    <Content Include="SSCode\src\assets\fonts\GESSTwoLight.svg" />
+    <Content Include="SSCode\src\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="SSCode\src\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="SSCode\src\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="SSCode\src\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="SSCode\src\assets\img\b01-En.gif" />
+    <Content Include="SSCode\src\assets\img\b01.gif" />
+    <Content Include="SSCode\src\assets\img\b02-En.gif" />
+    <Content Include="SSCode\src\assets\img\b02.gif" />
+    <Content Include="SSCode\src\assets\img\b03-En.gif" />
+    <Content Include="SSCode\src\assets\img\b03.gif" />
+    <Content Include="SSCode\src\assets\img\b04-En.gif" />
+    <Content Include="SSCode\src\assets\img\b04.gif" />
+    <Content Include="SSCode\src\assets\img\b05-En.gif" />
+    <Content Include="SSCode\src\assets\img\b05.gif" />
+    <Content Include="SSCode\src\assets\img\b06-En.gif" />
+    <Content Include="SSCode\src\assets\img\b06.gif" />
+    <Content Include="SSCode\src\assets\img\dec-img.png" />
+    <Content Include="SSCode\src\assets\img\Footer-icon.gif" />
+    <Content Include="SSCode\src\assets\img\home.png" />
+    <Content Include="SSCode\src\assets\img\mlogo-Sub.gif" />
+    <Content Include="SSCode\src\assets\img\WBG.gif" />
+    <Content Include="SSCode\src\assets\js\i18n\ar.js" />
+    <Content Include="SSCode\src\assets\js\select2.full.min.js" />
+    <Content Include="SSCode\src\tsconfig.app.json" />
+    <Content Include="SSCode\src\tsconfig.spec.json" />
+    <Content Include="SSCode\tsconfig.json" />
+    <Content Include="SSCode\tslint.json" />
+    <Content Include="SSCode\src\assets\fonts\GESSTwoLight.eot" />
+    <Content Include="SSCode\src\assets\fonts\GESSTwoLight.otf" />
+    <Content Include="SSCode\src\assets\fonts\GESSTwoLight.ttf" />
+    <Content Include="SSCode\src\assets\fonts\GESSTwoLight.woff" />
+    <Content Include="SSCode\src\assets\fonts\DroidKufi-Bold.ttf" />
+    <Content Include="SSCode\src\assets\fonts\DroidKufi-Regular.eot" />
+    <Content Include="SSCode\src\assets\fonts\DroidKufi-Regular.ttf" />
+    <Content Include="SSCode\src\assets\fonts\DroidKufi-Regular.woff" />
+    <Content Include="SSCode\angular.json" />
+    <Content Include="web.config" />
+    <Content Include="SSCode\src\assets\UserManual\AR.pdf" />
+    <Content Include="SSCode\src\assets\UserManual\EN.pdf" />
+    <Content Include="SSCode\src\assets\Policies\Attendance\AR.docx" />
+    <Content Include="SSCode\src\assets\Policies\Attendance\EN.docx" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\assets\css\animate.css" />
+    <Content Include="dist\assets\css\bootstrap-datepicker3.min.css" />
+    <Content Include="dist\assets\css\bootstrap-flipped.min.css" />
+    <Content Include="dist\assets\css\bootstrap-rtl.min.css" />
+    <Content Include="dist\assets\css\bootstrap.min.css" />
+    <Content Include="dist\assets\css\dataTables.bootstrap.min.css" />
+    <Content Include="dist\assets\css\font-awesome.min.css" />
+    <Content Include="dist\assets\css\jquery.timepicker.css" />
+    <Content Include="dist\assets\css\styles.css" />
+    <Content Include="dist\assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="dist\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="dist\assets\img\ar-SA.png" />
+    <Content Include="dist\assets\img\BG.jpg" />
+    <Content Include="dist\assets\img\en-US.png" />
+    <Content Include="dist\assets\img\male.png" />
+    <Content Include="dist\assets\img\mlogo.gif" />
+    <Content Include="dist\assets\img\TopBG.jpg" />
+    <Content Include="dist\assets\js\bootstrap-datepicker.ar.min.js" />
+    <Content Include="dist\assets\js\bootstrap-datepicker.js" />
+    <Content Include="dist\assets\js\bootstrap-datepicker.min.js" />
+    <Content Include="dist\assets\js\bootstrap.min.js" />
+    <Content Include="dist\assets\js\common.js" />
+    <Content Include="dist\assets\js\jquery.cookie.js" />
+    <Content Include="dist\assets\js\jquery.timepicker.min.js" />
+    <Content Include="dist\favicon.ico" />
+    <Content Include="dist\index.html" />
+    <Content Include="dist\inline.bundle.js" />
+    <Content Include="dist\main.bundle.js" />
+    <Content Include="dist\polyfills.bundle.js" />
+    <Content Include="dist\scripts.bundle.js" />
+    <Content Include="dist\styles.bundle.js" />
+    <Content Include="dist\vendor.bundle.js" />
+    <Content Include="SSCode\karma.conf.js" />
+    <Content Include="SSCode\protractor.conf.js" />
+    <Content Include="SSCode\src\app\accessdenied\accessdenied.component.html" />
+    <Content Include="SSCode\src\app\addtransaction\addtransaction.component.css" />
+    <Content Include="SSCode\src\app\addtransaction\addtransaction.component.html" />
+    <Content Include="SSCode\src\app\app.component.css" />
+    <Content Include="SSCode\src\app\app.component.html" />
+    <Content Include="SSCode\src\app\excuse\excuse.component.css" />
+    <Content Include="SSCode\src\app\excuse\excuse.component.html" />
+    <Content Include="SSCode\src\app\home\home.component.css" />
+    <Content Include="SSCode\src\app\home\home.component.html" />
+    <Content Include="SSCode\src\app\login\login.component.html" />
+    <Content Include="SSCode\src\app\myrequests\myrequests.component.css" />
+    <Content Include="SSCode\src\app\myrequests\myrequests.component.html" />
+    <Content Include="SSCode\src\app\mytasks\mytasks.component.css" />
+    <Content Include="SSCode\src\app\mytasks\mytasks.component.html" />
+    <Content Include="SSCode\src\app\navbar\navbar.component.css" />
+    <Content Include="SSCode\src\app\navbar\navbar.component.html" />
+    <Content Include="SSCode\src\app\not-found\not-found.component.css" />
+    <Content Include="SSCode\src\app\not-found\not-found.component.html" />
+    <Content Include="SSCode\src\app\reports\mgr-report\mgr-report.component.css" />
+    <Content Include="SSCode\src\app\reports\mgr-report\mgr-report.component.html" />
+    <Content Include="SSCode\src\app\reports\my-report\my-report.component.css" />
+    <Content Include="SSCode\src\app\reports\my-report\my-report.component.html" />
+    <Content Include="SSCode\src\app\reports\reports.component.css" />
+    <Content Include="SSCode\src\app\reports\reports.component.html" />
+    <Content Include="SSCode\src\app\task-action\task-action.component.css" />
+    <Content Include="SSCode\src\app\task-action\task-action.component.html" />
+    <Content Include="SSCode\src\app\task-details\task-details.component.css" />
+    <Content Include="SSCode\src\app\task-details\task-details.component.html" />
+    <Content Include="SSCode\src\app\vacation\vacation.component.css" />
+    <Content Include="SSCode\src\app\vacation\vacation.component.html" />
+    <Content Include="SSCode\src\assets\css\animate.css" />
+    <Content Include="SSCode\src\assets\css\bootstrap-datepicker3.min.css" />
+    <Content Include="SSCode\src\assets\css\bootstrap-flipped.min.css" />
+    <Content Include="SSCode\src\assets\css\bootstrap-rtl.min.css" />
+    <Content Include="SSCode\src\assets\css\bootstrap.min.css" />
+    <Content Include="SSCode\src\assets\css\dataTables.bootstrap.min.css" />
+    <Content Include="SSCode\src\assets\css\font-awesome.min.css" />
+    <Content Include="SSCode\src\assets\css\jquery.timepicker.css" />
+    <Content Include="SSCode\src\assets\css\styles.css" />
+    <Content Include="SSCode\src\assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="SSCode\src\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="SSCode\src\assets\img\ar-SA.png" />
+    <Content Include="SSCode\src\assets\img\BG.jpg" />
+    <Content Include="SSCode\src\assets\img\clrimg.gif" />
+    <Content Include="SSCode\src\assets\img\dflt.jpg" />
+    <Content Include="SSCode\src\assets\img\En-clrimg.gif" />
+    <Content Include="SSCode\src\assets\img\en-US.png" />
+    <Content Include="SSCode\src\assets\img\male.png" />
+    <Content Include="SSCode\src\assets\img\mlogo.gif" />
+    <Content Include="SSCode\src\assets\img\mlogo_old.gif" />
+    <Content Include="SSCode\src\assets\img\TopBG.jpg" />
+    <Content Include="SSCode\src\assets\js\bootstrap-datepicker.ar.min.js" />
+    <Content Include="SSCode\src\assets\js\bootstrap-datepicker.js" />
+    <Content Include="SSCode\src\assets\js\bootstrap-datepicker.min.js" />
+    <Content Include="SSCode\src\assets\js\bootstrap.min.js" />
+    <Content Include="SSCode\src\assets\js\common.js" />
+    <Content Include="SSCode\src\assets\js\jquery.cookie.js" />
+    <Content Include="SSCode\src\assets\js\jquery.timepicker.min.js" />
+    <Content Include="SSCode\src\favicon.ico" />
+    <Content Include="SSCode\src\index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TimeAtt.Model\TimeAtt.Model.csproj">
+      <Project>{1F5F1E4D-4B08-4E1D-944E-BC8297B53941}</Project>
+      <Name>TimeAtt.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="SSCode\e2e\app.e2e-spec.ts" />
+    <TypeScriptCompile Include="SSCode\e2e\app.po.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\%40types\bootstrap-datepicker\index.d.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\%40types\common\index.d.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\%40types\jquery.cookie\index.d.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\%40types\select2\index.d.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\accessdenied\accessdenied.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\addtransaction\addtransaction.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\addtransaction\addtransaction.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\addtransaction\main-addtransaction\main-addtransaction.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\addtransaction\main-addtransaction\main-addtransaction.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\addtransaction\mgr-addtransaction\mgr-addtransaction.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\addtransaction\mgr-addtransaction\mgr-addtransaction.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\app.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\app.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\app.module.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\datatable\angular-datatables.directive.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\datatable\angular-datatables.module.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\datepicker\datepicker-popup.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\datepicker\datepicker.module.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\excuse\excuse.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\excuse\excuse.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\excuse\main-excuse\main-excuse.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\excuse\main-excuse\main-excuse.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\excuse\mgr-excuse\mgr-excuse.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\excuse\mgr-excuse\mgr-excuse.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\header\header.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\header\header.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\home\home.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\home\home.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\login\login.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\Modals\alert.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\Modals\autofocus.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\Modals\modal-body.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\Modals\modal-footer.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\Modals\modal-header.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\Modals\modal-instance.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\Modals\modal.module.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\Modals\modal.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\myrequests\myrequests.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\myrequests\myrequests.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\mytasks\mytasks.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\mytasks\mytasks.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\navbar\navbar.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\navbar\navbar.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\not-found\not-found.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\not-found\not-found.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\reports\emp-trans-details\emp-trans-details.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\reports\emp-trans-details\emp-trans-details.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\reports\mgr-report\mgr-report.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\reports\mgr-report\mgr-report.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\reports\month-trans-view\month-trans-view.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\reports\month-trans-view\month-trans-view.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\reports\my-report\my-report.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\reports\my-report\my-report.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\reports\reports.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\reports\reports.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\reports\violation\violation.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\reports\violation\violation.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\select2\ng2-select2.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\select2\ng2-select2.interface.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\select2\ng2-select2.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\shared\apiRestful.service.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\shared\auth.service.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\shared\authguard.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\shared\customhttp.service.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\shared\global.settings.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\shared\loadingspinner.service.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\shared\notifications.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\shared\responseresult.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\shared\rxjs-operatiors.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\shared\safehtml.pipe.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\shared\shared.module.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\shared\stringformat.pipe.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\shared\TranslateLoader.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\shared\TranslateModule.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\shared\TranslatePipe.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\shared\TranslateService.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\shared\usertokeninfo.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\Tap\tab-config.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\Tap\tab.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\Tap\tab.modal.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\task-action\task-action.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\task-action\task-action.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\task-details\task-details.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\task-details\task-details.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\timepicker\timepicker.module.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\timepicker\timepicker.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\vacation\vacation.component.spec.ts" />
+    <TypeScriptCompile Include="SSCode\src\app\vacation\vacation.component.ts" />
+    <TypeScriptCompile Include="SSCode\src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="SSCode\src\environments\environment.ts" />
+    <TypeScriptCompile Include="SSCode\src\main.ts" />
+    <TypeScriptCompile Include="SSCode\src\polyfills.ts" />
+    <TypeScriptCompile Include="SSCode\src\test.ts" />
+    <TypeScriptCompile Include="SSCode\src\typings.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SSCode\src\assets\Policies\Company\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>35306</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:35306/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

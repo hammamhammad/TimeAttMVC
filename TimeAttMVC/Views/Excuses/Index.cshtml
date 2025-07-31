@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = Resources.Resources.ExcuseManagmentTitle;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewBag.Title</title>
+    @Scripts.Render("~/bundles/timeattexcuses")
+</head>
+<body>
+    <div class="page-header">
+        <h2>@Resources.Resources.ExcuseManagmentTitle</h2>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+
+
+            <div class="panel panel-default">
+                <div class="panel-body panel-body-top panelTimeSheet">
+                    <ul class="nav nav-pills nav-justified navbar-btn btn-default " role="tablist" id="ExcusesTabs">
+                        <li role="presentation" class="active" id="ExcuseReasontab-li"><a id="ExcuseReasontab-link" href="#ExcuseReasontab" aria-controls="ExcuseReasontab" role="tab" data-toggle="tab">@Resources.Resources.ExcuesReasonsTitle</a></li>
+                        <li role="presentation" id="Excusestab-li"><a id="Excusestab-link" href="#Excusestab" aria-controls="Excusestab" role="tab" data-toggle="tab">@Resources.Resources.ExcuseManagmentTitle</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content top10-buffer">
+                        <div role="tabpanel" class="tab-pane active" id="ExcuseReasontab">@Html.Partial("ExcuseReasonsView")</div>
+                        <div role="tabpanel" class="tab-pane" id="Excusestab">@Html.Partial("ExcusesView")</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+    @Html.Partial("EmployeeDialog")
+    @Html.Partial("SectionDialog")
+    @Html.Partial("BranchesDialog")
+    <script>
+    jQuery(function () {
+        InitializeExcusesView();
+    });
+    </script>
+
+</body>
+</html>
+

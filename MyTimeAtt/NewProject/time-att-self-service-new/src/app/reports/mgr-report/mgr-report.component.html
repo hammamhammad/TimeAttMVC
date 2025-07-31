@@ -1,0 +1,168 @@
+<form #f="ngForm" >
+    <div class="container PT20">
+        <div class="panel-body" id="pn_dailybody">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div [ngClass]="{'has-error':!f.controls['fdateF']?.valid && f.controls['fdateF']?.touched}">
+                            <label for="">{{"FromLable" | translate }}</label>
+                            <div>
+                                <!-- <datepicker-popup (dateSelected)="onDateChange($event,'PS')" name="fdateF" [(ngModel)]="mgrReportForm.fdateF" required>
+                                </datepicker-popup> -->
+                                <!-- <mat-form-field>
+                                    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="mgrReportForm.fdateF" required>
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field> -->
+                                <input type="date" placeholder="Choose a date" [(ngModel)]="mgrReportForm.fdateF" required class="form-control">
+                            </div>
+                        </div>
+                        <div [ngClass]="{'has-error':!f.controls['tdateF']?.valid && f.controls['tdateF']?.touched}">
+                            <label for="">{{"ToLable" | translate }}</label>
+                            <div>
+                                <!-- <datepicker-popup (dateSelected)="onDateChange($event,'PS')" name="tdateF" [(ngModel)]="mgrReportForm.tdateF" required>
+                                </datepicker-popup> -->
+                                <input type="date" placeholder="Choose a date" [(ngModel)]="mgrReportForm.tdateF" required class="form-control" name="tdateF">
+                          
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="control-label">{{'EmployeeLable'| translate}}</label>
+                        <div *ngIf="localEmployeedata!=null">
+                        <!-- <select2 #select2Group [data]="localEmployeedata" [options]="Select2OptionsGroup" [(ngModel)]="localEmp.emp_id" ngDefaultControl
+                            (valueChanged)="localEmp.emp_id= $event?.value" name="emp_id" id="emp_id" #emp_id="ngModel" required
+                             [value]="localEmp.emp_id!.toString()" ></select2>
+                        -->
+
+                              <mat-form-field class="example-full-width" style="display: block;">
+                          
+                                <input type="text" matInput [formControl]="EmployeeCtrl"  [matAutocomplete]="auto2">
+                                <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayFn">
+                                    <mat-option *ngFor="let Emp of filteredEmployees | async" [value]="Emp"> {{Emp.text}}</mat-option>
+                                  
+                                </mat-autocomplete>
+                              </mat-form-field>
+                         
+                             
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{ "ReportType" | translate}}</label>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <!-- -->
+                                <input id="repdailymanager" name="reportType" [(ngModel)]="reportType" value="1" type="radio" (change)="ViewSelectedDiv(1)"
+                                    required>
+                                <label for="repdailymanager">{{ "DailyReport" | translate}} </label>
+                            </li>
+                            <li class="list-group-item">
+                                <input id="repdailymanager" name="reportType" [(ngModel)]="reportType" value="2" type="radio" (change)="ViewSelectedDiv(2)"
+                                    required>
+                                <label for="repdailymanager">{{ "MonthlyReport" | translate}}</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-centered" id="MGRPrintReport">
+                        <button class="btn btn-primary btn-lg" id="DailybtSearch" (click)="GetReport()">{{'btSearch' | translate}} </button>
+                        <button class="btn btn-primary btn-lg" id="printDaily" (click)="printMonthlyReport()">{{'PrintModeTitle' | translate }}</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="divDailySummary" class="TBL_Wrapper">
+                        <table id="MGRTimeSheetSummaryTable" datatable #MGRTimeSheetSummaryTable=datatable width="100%" class="table table-striped table-bordered table-hover no-footer"
+                            [dtOptions]="dtOptionsSummaryTable" [dtTrigger]="dtTriggerSummaryTable">
+                            <thead>
+                                <tr>
+                                    <th style="width:2%">{{'ClmEmpNo' | translate}} </th>
+                                    <th style="width:20%">{{'EmployeeNameLable' | translate}} </th>
+                                    <th *ngIf="1!=1" style="width:20%">{{'ClmSectionName' | translate}} </th>
+                                    <th>{{'ClmDate' | translate}} </th>
+                                    <th>{{'ClmIN' | translate}}</th>
+                                    <th>{{'ClmOut' | translate}}</th>
+                                    <th>{{'LateInLable' | translate}}</th>
+                                    <th>{{'ClmEarlyOut' | translate}}</th>
+                                    <th>{{'ClmTimeTotal' | translate}}</th>
+                                    <th *ngIf="1!=1">{{'Clmac_work' | translate}}</th>
+                                    <th>{{'ClmLateHours' | translate}}</th>
+                                    <th *ngIf="1!=1">{{'ClmOverHours' | translate}}</th>
+                                    <th>{{'ClmtotalExecuse' | translate}}</th>
+                                     <th>{{'ClmStatus' | translate}}</th>
+                                    <!-- <th>{{'ClmExecuse' | translate}}</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of empDailyList; let i = index" (click)='UserSelectiontoviewDailyDetails(row.emp_id, row.m_dateno)'
+                                [ngClass]="returnRowColor(row)">
+
+                                    <td>{{row.emp_no }} </td>
+                                    <td>{{cultureLang == 'ar' ? row.emp_name: row.emp_nameEn}} </td>
+                                    <td *ngIf="1!=1">{{row.sec_Name}} </td>
+                                    <td>{{row.m_date}} </td>
+                                    <td>{{row.timefin}}</td>
+                                    <td>{{row.timefout}}</td>
+                                    <td>{{row.LateIn}}</td>
+                                    <td>{{row.Earlyout}}</td>
+                                    <td>{{row.timeTotal}}</td>
+                                    <td *ngIf="1!=1">{{row.ActualTime}}</td>
+                                    <td>{{row.TotalLate}}</td>
+                                    <td *ngIf="1!=1">{{row.OverTime}}</td>
+                                    <td>{{row.exc_hours}}</td>
+                                     <td>{{row.TStatus}}</td>
+                                    <!-- <td>
+                                        <div [ngClass]="row.exc_id != 0 ? 'alertIco-on' : 'alertIco-off'"></div>
+                                    </td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="divMonthlySummary" style="display:none" class="TBL_Wrapper">
+                        <table id="TimeSheetForManagerTableMonthlySummaryTable" datatable #TimeSheetForManagerTableMonthlySummaryTable=datatable
+                            width="100%" class="table table-striped table-bordered table-hover no-footer" [dtOptions]="dtOptionsMonthlyTable"
+                            [dtTrigger]="dtTriggerMonthlyTable">
+                            <thead>
+                                <tr>
+                                    <th>{{'EmployeeNameLable' | translate}} </th>
+                                    <th *ngIf="1!=1">{{'ClmSectionName' | translate}} </th>
+                                    <th>{{'Clmdaysno' | translate}} </th>
+                                    <th>{{'Clmdaysabsent' | translate}}</th>
+                                    <th>{{'Clmdaysoff' | translate}}</th>
+                                    <th>{{'Clmdaysvication' | translate}}</th>
+                                    <th>{{'ClmTimeTotal' | translate}}</th>
+                                    <th *ngIf="1!=1">{{'Clmac_work' | translate}}</th>
+                                    <th>{{'ClmLateHours' | translate}}</th>
+                                    <th *ngIf="1!=1">{{'ClmOverHours' | translate}}</th>
+                                    <th>{{'ClmtotalExecuse' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of empMonthlyList; let i = index" (click)="UserSelectiontoviewMS(row.emp_id,row.fdateno,row.tdateno)">
+
+                                    <td>{{cultureLang == 'ar' ? row.emp_name: row.emp_nameEn}} </td>
+                                    <td *ngIf="1!=1">{{row.sec_name}} </td>
+                                    <td>{{row.daysno}} </td>
+                                    <td>{{row.daysabsent}}</td>
+                                    <td>{{row.daysoff}}</td>
+                                    <td>{{row.daysvication}}</td>
+                                    <td>{{row.totalwork}}</td>
+                                    <td *ngIf="1!=1">{{row.ac_work}}</td>
+                                    <td>{{row.totallate}}</td>
+                                    <td *ngIf="1!=1">{{row.totalover}}</td>
+                                    <td>{{row.totalExecuse}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<alertmsg #alert backdropModal='static'  (onDismissed)="onDismissAlert()">
+</alertmsg>

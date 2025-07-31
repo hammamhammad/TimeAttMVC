@@ -1,0 +1,97 @@
+<form #f="ngForm">
+  <div class="container PT20">
+    <div *ngIf="responseMSG == null">
+      <div class="form-detail">
+        <label class="cell-3 pr0">{{ "BranchLable" | translate}} : </label>
+        <span> {{CompanyName}}</span>
+      </div>
+      <div class="form-detail">
+        <label class="cell-3 pr0">{{ "PeriodLable" | translate}} : </label>
+        <span> {{ "FromLable" | translate}} {{PeriodStart | date: 'dd/MM/yyyy'}} {{ "ToLable" | translate}} {{PeriodEnd
+          |
+          date: 'dd/MM/yyyy'}}</span>
+      </div>
+
+      <div class="TBL_Wrapper">
+        <div class="form-detail">
+          <label class="cell-3 pr0">{{ "AbsTableLable" | translate}}</label>
+        </div>
+        <table id="AbsenceTable" datatable #AbsenceTable=datatable class="dataTable table table-striped table-bordered table-hover  no-footer"
+          cellspacing="1" [dtOptions]="dtOptionsAbsenceTable" [dtTrigger]="dtTriggerAbsenceTable">
+          <thead>
+            <tr>
+              <th>{{"EmployeeNo" | translate }}</th>
+              <th>{{"ClmEmployeeName" | translate }}</th>
+              <th>{{"FromDateLable" | translate }} </th>
+              <th>{{"ToDateLable" | translate }}</th>
+              <th>{{"DurationLable" | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of AbsenceList">
+              <td> {{row.EmpNo}} </td>
+              <td>{{(this.cultureLang == 'ar' ? row.EMPNAME : row.ENG_NAME)}}</td>
+              <td>{{row.AbsenceStart | date: 'dd/MM/yyyy' }}</td>
+              <td>{{row.AbsenceEnd | date: 'dd/MM/yyyy'}}</td>
+              <td>{{row.Duration }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="TBL_Wrapper">
+        <div class="form-detail">
+          <label class="cell-3 pr0">{{ "LateTableLable" | translate}}</label>
+        </div>
+        <table id="LateTable" datatable #LateTable=datatable class="dataTable table table-striped table-bordered table-hover  no-footer"
+          cellspacing="1" [dtOptions]="dtOptionsLateTable" [dtTrigger]="dtTriggerLateTable">
+          <thead>
+            <tr>
+              <th>{{"EmployeeNo" | translate }}</th>
+              <th>{{"ClmEmployeeName" | translate }}</th>
+              <th>{{"TotalLateLable" | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of LateList">
+              <td> {{row.EmpNo}} </td>
+              <td>{{(this.cultureLang == 'ar' ? row.EMPNAME : row.ENG_NAME)}}</td>
+              <td> {{row.TotalLateStr}} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="TBL_Wrapper">
+        <div class="form-detail">
+          <label class="cell-3 pr0">{{ "SanctionsTableLable" | translate}}</label>
+        </div>
+        <table id="ViolationTable" datatable #ViolationTable=datatable class="dataTable table table-striped table-bordered table-hover  no-footer"
+          cellspacing="1" [dtOptions]="dtOptionsViolationTable" [dtTrigger]="dtTriggerViolationTable">
+          <thead>
+            <tr>
+              <th>{{"EmployeeNo" | translate }}</th>
+              <th>{{"ClmEmployeeName" | translate }}</th>
+              <th>{{"TotalLateLable" | translate }}</th>
+              <th>{{"PenaltyofLateLable" | translate }}</th>
+              <th>{{"AbsDurationLable" | translate }}</th>
+              <th>{{"PenaltyofabsenceLable" | translate }} </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of ViolationList">
+              <td> {{row.EmpNo}} </td>
+              <td>{{(this.cultureLang == 'ar' ? row.EMPNAME : row.ENG_NAME)}}</td>
+              <td> {{row.TotalLateStr}} </td>
+              <td>{{(this.cultureLang == 'ar' ? row.late_ViolationText : row.late_ViolationTextEN)}}</td>
+              <td> {{row.AbsenceDuration}} </td>
+              <td>{{(this.cultureLang == 'ar' ? row.abs_ViolationText : row.abs_ViolationTextEN)}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <div class="col-md-12 alert alert-danger" id="Transinfodiv_nodata" *ngIf="responseMSG != null">
+      <div class="E-alert-s1">{{responseMSG}}</div>
+    </div>
+  </div>
+</form>

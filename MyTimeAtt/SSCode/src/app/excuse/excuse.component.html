@@ -1,0 +1,129 @@
+<form #f="ngForm" (ngSubmit)="submit()" >
+    <div class="container PT20">
+        <div id="execuserequest" class="col-md-6">
+            <div class="form-group">
+                <label for="ddlexecusetype">{{ "ExcuseTypeLable" | translate}}</label>
+                <select id="ddlexecusetype" name="exc_type" [(ngModel)]="excuseForm.exc_type" (change)="GetReasons()" class="form-control"
+                    required>
+                    <option [value]="null" disabled>{{"lb_PLZSelect" | translate }}</option>
+                    <option value="1">{{ "ExcuseTypePersonal" | translate}}</option>
+                    <option value="2">{{ "ExcuseTypeOfficialDuty" | translate}}</option>
+                </select>
+            </div>
+            <div class="form-group" [ngClass]="{'has-error':!f?.controls?.exc_dateF?.valid && f?.controls?.exc_dateF?.touched}">
+                <label for="">{{"ExcuseDateClm" | translate }}</label>
+                <div>
+                    <datepicker-popup container='body' (dateSelected)="onDateChange($event,'PS')" name="exc_dateF" [(ngModel)]="excuseForm.exc_dateF"
+                        required>
+                    </datepicker-popup>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ddexcexuserequestreson">{{"Excuse_Reason" | translate }}</label>
+                <select id="ddexcexuserequestreson" name="execuseReason_ID" [(ngModel)]="excuseForm.execuseReason_ID" class="form-control"
+                    #execuseReason_ID="ngModel" required>
+                    <option [value]="null" disabled>{{"lb_PLZSelect" | translate }}</option>
+                    <option *ngFor="let reason of reasons" [value]="reason.execuseReason_id">{{(this.cultureLang == 'ar' ? reason.execuseReason_name : reason.execuseReason_nameEN) }}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>{{"ExcuseTime" | translate }}</label>
+                <div>
+                    <label> {{"FromLable" | translate }} </label>
+                    <input class="timepicker form-control" required [(ngModel)]="excuseForm.exc_ftime" name="exc_ftime" id="exc_ftime" [options]="ftimeoption"
+                        type="text" required #exc_ftime="ngModel">
+                </div>
+                <div>
+                    <label> {{"ToLable" | translate }} </label>
+                    <input class="timepicker form-control" [(ngModel)]="excuseForm.exc_ttime" name="exc_ttime" id="exc_ttime" [options]="ttimeoption"
+                        type="text" required #exc_ttime="ngModel">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>{{"lblAttach" | translate }}</label>
+                <input class="uploadfile-style" [(ngModel)]="excuseForm.exc_Attach" (change)="fileChange($event)" name="exc_Attach" id="exc_Attach"
+                    size="10" type="file">
+            </div>
+            <div class="form-group">
+
+                <label>{{"NotesLable" | translate }}</label>
+                <textarea name="exc_reason" id="exc_reason" [(ngModel)]="excuseForm.exc_reason" col="30" rows="10" class="form-control" required></textarea>
+            </div>
+            <div>
+                <button id="bt_saveexcexuserequest" class="btn btn-primary btn-lg" [disabled]="!f.valid">{{"AddRequest" | translate }}</button>
+            </div>
+            <!-- {{ JSON.stringify({ reasons }) }} -->
+            <div class="alert alert-danger" id="errexecusemsg" style="display:none"></div>
+        </div>
+        <div id="execusemsgsuccess" style="display: none">
+            <div class="S-alert-s1">
+                <span>{{"Yourrequestimplementedsuccessfully" | translate }}</span>
+
+                <br>
+                <br>
+                <div>
+                </div>
+            </div>
+        </div>
+        <div id="execusemsgerror" style="display: none">
+            <div class="E-alert-s1">
+                <span>{{"AddExcuseErrorMsg" | translate }}</span>
+
+                <br>
+                <br>
+                <div>
+                </div>
+            </div>
+        </div>
+        <div style="display: none">
+            <div id="ExecConfairmDiv">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div>
+                            <span>{{"ExceuseAddConfairm" | translate }}</span>
+                        </div>
+                    </div>
+                    <div id="ExecBodyDiv" class="panel-body">
+                        <div class="">
+                            <div>
+                                <div class="form-detail">
+                                    <label class="cell-3 pr0" res-type="H" res-name="ExcuseDateClm">{{"ExcuseDateClm" | translate }}</label>
+                                    <span id="lb_execdate"> {{excuseForm.exc_dateF}} </span>
+                                </div>
+                                <div class="form-detail">
+                                    <label class="cell-3 pr0" res-type="H" res-name="ExcuseTypeLable">{{ "ExcuseTypeLable" | translate}}</label>
+                                    <span id="lb_exectype">{{this.getExcuseTypeText()}}</span>
+                                </div>
+                                <div class="form-detail">
+                                    <label class="cell-3 pr0" res-type="H" res-name="Excuse_Reason">{{"Excuse_Reason" | translate }}</label>
+                                    <span id="lb_execreseon">{{this.getSelectedReasonText()}} </span>
+                                </div>
+                                <div class="form-detail">
+                                    <label class="cell-3 pr0" res-type="H" res-name="ExcuseTime">{{"ExcuseTime" | translate }}</label>
+                                    <span id="lb_exectime">
+                                        <span res-type="H" res-name="FromLable"> {{"FromLable" | translate }} </span>
+                                        <span> {{this.excuseForm.exc_ftime}}</span>
+                                        <span res-type="H" res-name="ToLable"> {{"ToLable" | translate }} </span>
+                                        <span>{{this.excuseForm.exc_ttime }}</span>
+                                        <span res-type="H" res-name="ExcuseTotalLable">{{"ExcuseTotalLable" | translate }}</span>
+                                    </span>
+                                    <b>
+                                        <span id="lb_exectotaltime">{{this.CalculateExecuseHours() }}</span>
+                                    </b>
+                                </div>
+                                <div class="form-detail">
+                                    <label class="cell-3 pr0" res-type="H" res-name="NotesLable">{{"NotesLable" | translate }}</label>
+                                    <span id="lb_execnote">{{ this.excuseForm.exc_reason }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<alertmsg #alert backdropModal='static' show-close="true" (onClose)="onCloseAlert($event)" (onOpened)="onOpenAlert()" (onDismissed)="onDismissAlert()">
+</alertmsg>

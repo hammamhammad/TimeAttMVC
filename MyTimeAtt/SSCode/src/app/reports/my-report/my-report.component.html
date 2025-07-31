@@ -1,0 +1,188 @@
+<div class="container PT20">
+    <div >
+        <div class="Filters_Select">
+            <div class="col-sm-8">
+                <select id="ddlYear" class="width-80">
+                </select>
+                <select id="ddlMonth" class="width-130">
+
+                </select>
+                <button class="btn btn-primary btn-lg" id="MonthlybtSearch" (click)="getMyAtt()">{{'btSearch' | translate}}</button>
+            </div>
+            <div class="col-md-4">
+
+                <button class="btn btn-primary btn-lg" id="printMonthly" (click)="printReport()">{{'PrintModeTitle' | translate }}</button>
+            </div>
+
+        </div>
+        <div class="col-centered">
+            <hr>
+
+        </div>
+        <div class="TBL_Wrapper">
+            <table id="Mytimesheetdetails" width="100%" class="dataTable table table-striped table-bordered table-hover  no-footer">
+                <thead>
+                    <tr>
+                        <th>{{'ClmDate' | translate}} </th>
+                        <th>{{'ClmIN' | translate}} </th>
+                        <th>{{'ClmOut' | translate}} </th>
+                        <th>{{'ClmLateIn' | translate}}</th>
+                        <th>{{'EarlyOutLable' | translate}}</th>
+                        <th>{{'ClmTimeTotal' | translate}}</th>
+                        <th>{{'Clmac_work' | translate}}</th>
+                        <th>{{'ClmLateHours' | translate}}</th>
+                        <th *ngIf="1!=1">{{'ClmOverHours' | translate}}</th>
+                        <th>{{'ClmtotalExecuse' | translate}}</th>
+                        <!-- <th>{{'ClmExecuse' | translate}}</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of MyAttDetails; let i = index" (click)='UserSelectiontoviewDailyDetailsEMP(row.emp_id, row.m_dateno)'
+                        [ngClass]="returnRowColor(row)" (dblclick)="preventDBLClick($event)">
+                        <td>{{row.m_date}}</td>
+                        <td>{{row.timefin}}</td>
+                        <td>{{row.timefout}}</td>
+                        <td>{{row.LateIn}}</td>
+                        <td>{{row.Earlyout}}</td>
+                        <td>{{row.timeTotal}}</td>
+                        <td>{{row.ActualTime}}</td>
+                        <td>{{row.TotalLate}}</td>
+                        <td *ngIf="1!=1">{{row.OverTime}}</td>
+                        <td>{{row.exc_hours}}</td>
+                        <!-- <td>
+                            <div [ngClass]="row.exc_id != 0 ? 'alertIco-on' : 'alertIco-off'"></div>
+                        </td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="TBL_Wrapper">
+            <table id="MyTimeSheetSummaryTable" width="100%" class="Vlt dataTable table table-striped table-bordered table-hover no-footer">
+                <thead>
+                    <tr>
+                        <th>{{'Clmdaysno' | translate}} </th>
+                        <th>{{'Clmdaysabsent' | translate}} </th>
+                        <th>{{'Clmdaysoff' | translate}} </th>
+                        <th>{{'Clmdaysvication' | translate}}</th>
+                        <th>{{'ClmTimeTotal' | translate}}</th>
+                        <th>{{'Clmac_work' | translate}}</th>
+                        <th>{{'ClmLateHours' | translate}}</th>
+                        <th *ngIf="1!=1">{{'ClmOverHours' | translate}}</th>
+                        <th>{{'ClmtotalExecuse' | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of MyAttSummary; let i = index">
+                        <td>{{row.daysno}}</td>
+                        <td>{{row.daysabsent}}</td>
+                        <td>{{row.daysoff}}</td>
+                        <td>{{row.daysvication}}</td>
+                        <td>{{row.totalwork}}</td>
+                        <td>{{row.ac_work}}</td>
+                        <td>{{row.totallate}}</td>
+                        <td *ngIf="1!=1">{{row.totalover}}</td>
+                        <td>{{row.totalExecuse}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Popup -->
+<div style="display:none">
+    <div class="col-md-12 float-none" id='TransDetailsDialog'>
+        <div class=" PopDate">
+            <h4 class="cntr" id="transactiondate">{{transDetails?.m_date}}</h4>
+        </div>
+        <div class="alert alert-warning col-md-12 float-none">
+            <!-- معلومات الوردية -->
+            <label>{{'ShiftTitle'| translate}}</label>
+            <label id="txt_transshift">{{transDetails?.shiftinfo + ' ' + transDetails?.shift_name}}</label>
+        </div>
+        <div class="Transinfo">
+            <!-- معلومات الحركات -->
+            <h4>{{'TransactioninfoTitle'| translate}}</h4>
+            <div class="Transinfodiv" *ngIf="transDetails?.TransData?.length != 0">
+                <div class="TBL_Wrapper">
+                    <table id="transmanagerdalydetails" width="100%" class="dataTable table table-striped table-bordered table-hover no-footer">
+                        <thead>
+                            <tr>
+                                <th>{{'ClmTime'| translate}}</th>
+                                <th>{{'ClmStatus'| translate}}</th>
+                                <th>{{'DeviceNameLabel'| translate}}</th>
+                                <th>{{'ReasonNameLable'| translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of transDetails?.TransData; let i = index">
+                                <td>{{row.m_time}}</td>
+                                <td>{{row.AStatus}}</td>
+                                <td>{{row.m_unit}}</td>
+                                <td>{{row.TransReason}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- لا يوجد الحركات -->
+            <div class="col-md-12 alert alert-danger" id="Transinfodiv_nodata" *ngIf="transDetails?.TransData == null || transDetails?.TransData?.length == 0">
+                <div class="E-alert-s1">{{'NoMovements'| translate}}</div>
+            </div>
+        </div>
+        <!-- معلومات الإستئذان -->
+        <div class="execuseinfo  " *ngIf=" transDetails?.exc_id != 0">
+            <h4>{{'ExcuseInfoTitle'| translate}}</h4>
+            <div class="col-md-12 alert alert-info float-none">
+                <span id="txt_transexecuse">{{ transDetails?.Excuseinfo }}</span>
+            </div>
+        </div>
+        <!-- معلومات الإجازة -->
+        <div class="vacationinfo " *ngIf=" transDetails?.m_vac_id != 0">
+            <h4>{{'VacationInfoTitle'| translate}}</h4>
+            <div class="col-md-12 alert alert-info float-none">
+                <span id="txt_transvacation">{{ transDetails?.vacinfo }}</span>
+            </div>
+        </div>
+        <!-- تفاصيل الدوام -->
+        <div class="attendanceinfo" *ngIf=" transDetails?.TotalLate != '--:--' || transDetails?.LateIn != '--:--' || transDetails?.Earlyout != '--:--'">
+            <h4>{{'DutyDetails'| translate}}</h4>
+            <div class="TBL_Wrapper">
+                <table class="Vlt dataTable table table-striped table-bordered table-hover no-footer" cellspacing="1">
+                    <thead>
+                        <tr>
+                            <th colspan="2">{{'LoginTitle'| translate}}</th>
+                            <th colspan="2">{{'LinkLogoff'| translate}}</th>
+                            <th rowspan="2">{{'Clmtotallate'| translate}}</th>
+                        </tr>
+                        <tr>
+                            <th>{{'LoginTitle'| translate}}</th>
+                            <th>{{'Delayed'| translate}}</th>
+                            <th>{{'ActualTime'| translate}} </th>
+                            <th>{{'Early'| translate}}</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            <span id="txt_transtimefin">{{ transDetails?.timefin }}</span>
+                        </td>
+                        <td>
+                            <span id="txt_transLateIn">{{ transDetails?.LateIn }}</span>
+                        </td>
+                        <td>
+                            <span id="txt_transtimefout">{{ transDetails?.timefout }}</span>
+                        </td>
+                        <td>
+                            <span id="txt_transEarlyout">{{ transDetails?.Earlyout }}</span>
+                        </td>
+                        <td>
+                            <span id="txt_transTotalLate">{{ transDetails?.TotalLate }}</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Popup -->
+<alertmsg #alert backdropModal='static' show-close="true" (onDismissed)="onDismissAlert()">
+</alertmsg>

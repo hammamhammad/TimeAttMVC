@@ -1,0 +1,148 @@
+﻿<div class="row ">
+    <form class="form form-horizontal" data-delay="0" role="form" id="ShiftForm">
+        <fieldset id="Shiftfieldset">
+            <legend>@Resources.Resources.ShiftTitle</legend>
+            <div class="shiftFormdiv">
+                <div class="form-group has-feedback">
+                    <label for="txt_ShiftName_edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.ShiftNameLable</label>
+                    <div class="col-xs-10 col-sm-9 col-md-10">
+                        <input type="text" class="form-control" id="txt_ShiftName_edit" placeholder="@Resources.Resources.ShiftNameLable" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                        <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                        <span class="help-block with-errors"></span>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="has-feedback">
+                        <label class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.ShiftTimeLable </label>
+                        <div class="col-xs-10 col-sm-9 col-md-10">
+                            <div class="panel panel-default">
+                                <div class="panel-body forshifttime">
+                                    <span id="helpBlock" class="Helpmsg">@Resources.Resources.ShiftNoteLable</span>
+                                    <div class="form-group col-md-12">
+                                        <div class="form-group has-feedback   col-xs-6">
+                                            <label for="shiftfromtime"> @Resources.Resources.FromLable </label>
+                                            <div>
+                                                <input autocomplete="off" id="shiftfromtime" class="form-control" placeholder="@Resources.Resources.TimeFromLable" data-scroll-default="07:00" type="text" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                                <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                                            </div>
+
+                                            <span class="help-block with-errors"></span>
+                                        </div>
+                                        <div class="form-group  has-feedback  col-xs-6">
+                                            <label for="shifttotime">@Resources.Resources.ToLable</label>
+                                            <div>
+                                                <input autocomplete="off" id="shifttotime" class="form-control" data-scroll-default="16:00" placeholder="@Resources.Resources.TimeToLable" type="text" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                                <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                                            </div>
+
+                                            <span class="help-block with-errors"></span>
+
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group  ShiftCheckBoxes">
+                                        <div class=" col-md-12 columns">
+
+                                            <label for="Chk_NightShift" class="checkbox-inline">
+                                                <input id="Chk_NightShift" name="Checkboxes" type="checkbox">
+                                                @Resources.Resources.NightShiftLable
+                                            </label>
+
+
+                                            <label for="Chk_OpenHours" class="checkbox-inline">
+                                                <input id="Chk_OpenHours" name="Checkboxes" type="checkbox">
+                                                @Resources.Resources.OpenHoursLable
+                                            </label>
+
+                                        </div>
+                                        <div class=" col-md-12 columns">
+                                            <label for="Chk_AutoTrans" id="allowautoTrans" class="checkbox-inline">
+                                                <input id="Chk_AutoTrans" name="Checkboxes" type="checkbox">
+                                                @Resources.Resources.lb_AutoTrans
+                                            </label>
+
+                                            <label for="Chk_FlexibleHour" class="checkbox-inline">
+                                                <input id="Chk_FlexibleHour" name="Checkboxes" type="checkbox">
+                                                @Resources.Resources.FlexibleHourLable
+                                            </label>
+
+                                            <label for="Chk_TwoShifts" id="allowtwoshifts" class="checkbox-inline" style="visibility:hidden">
+                                                <input id="Chk_TwoShifts" name="Checkboxes" type="checkbox">
+                                                @Resources.Resources.lb_TwoShifts
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="form-group col-md-12" id="FlexibleHourdiv">
+
+                                        <div class="form-group  col-xs-6">
+                                            <label for="shiftfromtimeFH"> @Resources.Resources.FromLable</label>
+                                            <div>
+                                                <input autocomplete="off" id="shiftfromtimeFH" class="form-control" placeholder="@Resources.Resources.TimeFromLable" data-scroll-default="07:00" type="text" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                            </div>
+                                            <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                                            <span class="help-block with-errors"></span>
+                                        </div>
+                                        <div class="form-group  col-xs-6">
+                                            <label for="shifttotimeFH">@Resources.Resources.ToLable </label>
+                                            <div>
+                                                <input autocomplete="off" id="shifttotimeFH" class="form-control" data-scroll-default="08:00" placeholder="@Resources.Resources.TimeToLable" type="text" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                                <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                                                <span class="help-block with-errors"></span>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+
+
+                                    <div class="form-group col-md-12 spinnerinputs">
+                                        @*<div class="form-group has-feedback">*@
+                                        <div class="form-group col-md-5">
+                                            <label for="AllowMinIN">@Resources.Resources.AllowMinutesInLable</label>
+
+                                            <input type="text" id="AllowMinIN" value="0" class="form-control  spinnerinput">
+
+
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                        <div class="form-group col-md-5">
+                                            <label for="AllowMinOut" class="">@Resources.Resources.AllowMinutesOutLable</label>
+
+                                            <input type="text" id="AllowMinOut" value="0" class="form-control  spinnerinput">
+
+
+                                        </div>
+                                        @*</div>*@
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <hr class="colorgraph" />
+            <div class="">
+                <button type="submit" class="btn btn-primary btn-lg" id="bt_saveShift"><span class="glyphicon glyphicon-ok"></span> @Resources.Resources.btSave</button>
+                <button type="button" class="btn btn-warning btn-lg" id="bt_CancelShift">
+                    <span class="glyphicon glyphicon-remove"></span>@Resources.Resources.btCancel
+                </button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+
+

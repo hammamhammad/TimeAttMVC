@@ -1,0 +1,85 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button aria-expanded="false" (click)="isNavbarCollapsed = !isNavbarCollapsed"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-9" data-toggle="collapse"
+        type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="mobileview hidden-md hidden-lg">  {{'HelloUser' | translate }} {{UserInfoData}}</div>
+    <div  [class.show]="!isNavbarCollapsed" id="bs-example-navbar-collapse-9" aria-expanded="false" class="navbar-collapse collapse" style="height: 1px;">
+
+      <div class="row nav-row">
+        <div class="col-md-4 col-md-push-8 navInfodiv">
+
+          <ul class="navInfo">
+            <li class="usrInfo hidden-sm hidden-xs">
+              {{'HelloUser' | translate }} {{UserInfoData}}
+            </li>
+            <li>
+              <a class="Lang" (click)="ChangeLang()">
+                <div [ngClass]="this.cultureLang == 'ar'? 'enlangimag' : 'arlangimag'" [title]="this.cultureLang == 'ar'? 'English version' : 'النسخة العربية'">
+                  {{'lblLang' | translate }}
+                </div>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="col-md-8 col-md-pull-4">
+          <ul class="nav navbar-nav">
+            <li>
+              <a routerLink="" class="hidden-xs" (click)="menuClick($event)">
+                <img src="assets/img/home.png" />
+              </a>
+              <a routerLink="" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse" (click)="menuClick($event)">
+                <img src="assets/img/home.png" />
+              </a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="report" class="hidden-xs" (click)="menuClick($event)">{{'TimeSheetManagmentTitle' | translate}}</a>
+              <a routerLink="report" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse" (click)="menuClick($event)">{{'TimeSheetManagmentTitle' | translate}}</a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="excuce" class="hidden-xs" (click)="menuClick($event)">{{'ExcuseReq' | translate}}</a>
+              <a routerLink="excuce" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse" (click)="menuClick($event)">{{'ExcuseReq' | translate}}</a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="fingerprint" class="hidden-xs" (click)="menuClick($event)">{{'FingerPrintReq' | translate}}</a>
+              <a routerLink="fingerprint" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse" (click)="menuClick($event)">{{'FingerPrintReq' | translate}}</a>
+            </li>
+            <li routerLinkActive="active" class="hidden">
+                <a routerLink="vacation" class="hidden-xs" (click)="menuClick($event)">{{'VacationReq' | translate}}</a>
+                <a routerLink="vacation" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse" (click)="menuClick($event)">{{'VacationReq' | translate}}</a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="myrequests" class="hidden-xs" (click)="menuClick($event)">{{'MyRequestlbl' | translate}}</a>
+              <a routerLink="myrequests" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse" (click)="menuClick($event)">{{'MyRequestlbl' | translate}}</a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="mytasks" class="hidden-xs" (click)="menuClick($event)">{{'MyTaskslbl' | translate}}</a>
+              <a routerLink="mytasks" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse" (click)="menuClick($event)">{{'MyTaskslbl' | translate}}</a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="Remote" class="hidden-xs" (click)="menuClick($event)">{{'RemotelyWorkLable' | translate}}</a>
+              <a routerLink="Remote" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse" (click)="menuClick($event)">{{'RemoteWorklbl' | translate}}</a>
+            </li>
+            <li routerLinkActive="active">
+              <a href="{{this.cultureLang == 'ar'? '/assets/UserManual/AR.pdf' : '/assets/UserManual/EN.pdf'}}" class="hidden-xs" target="_blank" >{{'UserManual' | translate}}</a>
+              <a href="{{this.cultureLang == 'ar'? '/assets/UserManual/AR.pdf' : '/assets/UserManual/EN.pdf'}}" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse" target="_blank" >{{'UserManual' | translate}}</a>
+            </li>
+          </ul>
+        </div>
+
+
+      </div>
+
+
+    </div>
+  </div>
+</nav>

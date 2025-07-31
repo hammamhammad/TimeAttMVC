@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = Resources.Resources.UsersManagmentTitle;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewBag.Title</title>
+    @Scripts.Render("~/bundles/timeattusers")
+</head>
+<body>
+    <div class="page-header">
+        <h2>@Resources.Resources.UsersManagmentTitle</h2>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 pull-left flip">
+
+                <nav class="navbar navbar-default">
+                    <div class="navbar-form pull-right flip">
+                        <button class="btn btn-primary btn-md" id="reloadUsers" onclick="ModulesData = null; UsersGroupData = null; BrachesData = null; UsersInfoData = null; CurrentView = 'Group'; ShowTab($('#UsersTab a:first'));">@Resources.Resources.btReload
+                        </button>
+                    </div>
+                </nav>
+                <div class="panel panel-default">
+                    <div class="panel-body fixed-panelWithScroll">
+                        <ul class="nav nav-tabs " role="tablist" id="UsersTab">
+                            <li role="presentation" class="active"><a id="linkgrouptab" href="#grouptab" aria-controls="grouptab" role="tab" data-toggle="tab">@Resources.Resources.GroupsUserTitle</a></li>
+                            <li role="presentation"><a id="linkusertab" href="#usertab" aria-controls="usertab" role="tab" data-toggle="tab">@Resources.Resources.UsersInfoTitle</a></li>
+
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content top10-buffer">
+                            <div role="tabpanel" class="tab-pane active" id="grouptab">@Html.Partial("Groups")</div>
+                            <div role="tabpanel" class="tab-pane" id="usertab">@Html.Partial("Users")</div>
+                           
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 pull-right flip">
+
+
+
+                <nav class="navbar navbar-default">
+
+                    <div class="navbar-form pull-right flip">
+                        <button class="btn btn-info btn-md" id="bt_AddUserGroup" onclick="SetUserGroupFormForAdd();">@Resources.Resources.btAdd</button>
+                        <button class="btn btn-info btn-md" id="bt_EditUserGroup" onclick="SetUserGroupFormForEdit();">@Resources.Resources.btEdit</button>
+                        <button class="btn btn-danger btn-md" id="bt_DeleteUserGroup" onclick="DeleteUserFormGroup();">@Resources.Resources.btDelete</button>
+
+                    </div>
+                </nav>
+                <div class="panel panel-default">
+                    <div class="" id="Groupformsdiv">
+                        <div class="panel-body fixed-panel UsersGroupsforms" id="Groupformdiv">
+                            @Html.Partial("UserGroupsView")
+                        </div>
+                        <div class="panel-body fixed-panel UsersGroupsforms hide" id="Userformdiv">
+                            @Html.Partial("UsersView")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("EmployeeDialog")
+    
+    <script>
+    jQuery(function () {
+        InitializeUsersView();
+    });
+    </script>
+
+</body>
+</html>
+
+

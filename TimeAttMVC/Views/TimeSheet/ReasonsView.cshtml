@@ -1,0 +1,72 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body-top">
+        <div class="pull-right flip padding10bottom">
+            <button class="btn btn-info btn-md" id="bt_AddReason" onclick="AddReasonRow();">@Resources.Resources.btAdd</button>
+            <button class="btn btn-primary btn-md" id="reloadReasons" onclick="ReloadReason();">@Resources.Resources.btReload</button>
+        </div>
+
+        <table id="ReasonTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>@Resources.Resources.ClmTheReason</th>
+                    <th>@Resources.Resources.ClmTheReasonEN</th>
+                    <th>@Resources.Resources.ClmEdit</th>
+                    <th>@Resources.Resources.ClmDelete</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="modal fade unfold-3d" role="dialog" id="ReasonDialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    @*<div class="pull-right flip">
+
+                        </div>*@
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalReason">@Resources.Resources.ReasonAddTitle </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <form class="form form-horizontal" data-delay="0" role="form" id="ReasonForm">
+                                <div class="col-md-12">
+                                    <div class="form-group has-feedback">
+                                        <label for="txt_ReasonName_Edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.ReasonNameLable  </label>
+                                        <div class="col-xs-10 col-sm-9 col-md-10">
+                                            <div>
+                                                <input type="text" id="txt_ReasonName_Edit" class="form-control" placeholder="@Resources.Resources.ReasonNameLable" data-required="true" data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                                <span class="help-block with-errors smallmargin-bottom pull-left flip"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group has-feedback">
+                                        <label for="txt_ReasonNameEN_Edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.ReasonNameLableEN  </label>
+                                        <div class="col-xs-10 col-sm-9 col-md-10">
+                                            <div>
+                                                <input type="text" id="txt_ReasonNameEN_Edit" class="form-control" placeholder="@Resources.Resources.ReasonNameLableEN" data-required="true" data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                                <span class="help-block with-errors smallmargin-bottom pull-left flip"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-lg" id="bt_saveReason"><span class="glyphicon glyphicon-ok"></span> @Resources.Resources.btSave</button>
+                    <button type="button" class="btn btn-warning btn-lg" id="bt_CancelReason" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span>@Resources.Resources.btCancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>                 
+

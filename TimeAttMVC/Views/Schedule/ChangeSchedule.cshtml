@@ -1,0 +1,102 @@
+﻿<div class="modal fade" role="dialog" id="ChangeScheduleDialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                @*<div class="pull-right flip">
+                 
+                </div>*@
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalchangeSchLabel">@Resources.Resources.ChangeScheduleTitle </h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="form form-horizontal" data-delay="0" role="form" id="ChangeScheduleForm">
+                            <div class="col-md-12">
+                                <div class="form-group has-feedback">
+                                    <label for="txt_Select_Schedule" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.ScheduleNameLable </label>
+                                    <div class="col-xs-10 col-sm-9 col-md-10">
+
+                                        <div class="input-group">
+                                            <input type="text" id="txt_Select_ChangeSchedule" class="form-control" placeholder="@Resources.Resources.ScheduleNameLable" data-id="0" readonly data-required="true" data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <span class="input-group-addon add-on" onclick="if (IsDisabled(this)) return; Select_Schedule_Control = $('#txt_Select_ChangeSchedule'); $('#ScheduleDialog').modal('show'); LoadScheduleListTable()"><span class="glyphicon glyphicon-list-alt blue "></span></span>
+                                        </div>
+                                        <span class="help-block with-errors smallmargin-bottom pull-left flip"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <div class="form-group ChangeScheduleRadios">
+                                            <div class=" col-md-12 columns">
+
+                                                <label for="RB_ByAllEmployees" class="radio-inline">
+                                                    <input id="RB_ByAllEmployees" name="ChangeSchedule" value="divchangeschedulebyallemployee" type="radio" onchange="ChangeScheduleRadioChanged(this);">
+                                                    @Resources.Resources.ChangeScheduleByAllEmployees
+                                                </label>
+
+
+                                                <label for="RB_ByBranch" class="radio-inline">
+                                                    <input id="RB_ByBranch" name="ChangeSchedule" value="divchangeschedulebybranch" type="radio" onchange="ChangeScheduleRadioChanged(this);">
+                                                    @Resources.Resources.ChangeScheduleByBranch
+                                                </label>
+
+                                                <label for="RB_BySection" class="radio-inline">
+                                                    <input id="RB_BySection" name="ChangeSchedule" value="divchangeschedulebysection" type="radio" onchange="ChangeScheduleRadioChanged(this);">
+                                                    @Resources.Resources.ChangeScheduleBySection
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 fixed-panel-60" style="display:none">
+                                            <div id="divchangeschedulebyallemployee" class="alert alert-warning ChangeScheduleRadiosdiv" style="display:none" role="alert">@Resources.Resources.ChangeScheduleByAllEmployeesMsg</div>
+                                            <div id="divchangeschedulebybranch" style="display:none" class="ChangeScheduleRadiosdiv">
+                                                <div class="form-group has-feedback">
+                                                    <label for="txt_Select_ByBranch" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.BranchNameLable </label>
+                                                    <div class="col-xs-10 col-sm-9 col-md-10">
+                                                        <div class="input-group">
+                                                            <input type="text" id="txt_Select_ByBranch" class="form-control" placeholder="@Resources.Resources.BranchNameLable" data-id="0" readonly data-required="true" data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                                            <span class="input-group-addon add-on" onclick="if (IsDisabled(this)) return; Select_Branch_Control = $('#txt_Select_ByBranch'); $('#BranchDialog').modal('show'); LoadBranchListTable()"><span class="glyphicon glyphicon-list-alt blue "></span></span>
+                                                        </div>
+                                                        <span class="help-block with-errors smallmargin-bottom pull-left flip"></span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div id="divchangeschedulebysection" style="display:none" class="ChangeScheduleRadiosdiv">
+                                                <div class="form-group has-feedback">
+                                                    <label for="txt_Select_BySchedule" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.SectionNameLable </label>
+                                                    <div class="col-xs-10 col-sm-9 col-md-10">
+                                                        <div class="input-group">
+                                                            <input type="text" id="txt_Select_BySchedule" class="form-control" placeholder="@Resources.Resources.SectionNameLable" data-id="0" readonly data-required="true" data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                                            <span class="input-group-addon add-on" onclick="if (IsDisabled(this)) return; Select_Section_Control = $('#txt_Select_BySchedule'); $('#SectionDialog').modal('show'); LoadSectionListTable()"><span class="glyphicon glyphicon-list-alt blue "></span></span>
+                                                        </div>
+                                                        <span class="help-block with-errors smallmargin-bottom pull-left flip"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="colorgraph" />
+                            <div class="">
+                                <button type="submit" class="btn btn-primary btn-lg" id="bt_saveChangeSchedule"><span class="glyphicon glyphicon-ok"></span> @Resources.Resources.btSave</button>
+                                <button type="button" class="btn btn-warning btn-lg" id="bt_CancelChangeSchedule" data-dismiss="modal">
+                                    <span class="glyphicon glyphicon-remove"></span>@Resources.Resources.btCancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

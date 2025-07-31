@@ -1,0 +1,185 @@
+﻿<div class="row ">
+    <form class="form form-horizontal" data-delay="0" role="form" id="UserForm">
+        <fieldset id="Userfieldset">
+            <legend>@Resources.Resources.UsersTitle</legend>
+            <div class="UserFormdiv">
+                <div class="form-group has-feedback">
+                    <label for="txt_UserName_edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.UserNameLable </label>
+                    <div class="col-xs-10 col-sm-9 col-md-10">
+
+                        <input type="text" class="form-control" id="txt_UserName_edit" placeholder="@Resources.Resources.UserNameLable" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                        <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                        <span class="help-block with-errors"></span>
+                    </div>
+                   
+                </div>
+                @if (User.AuthType != "W")
+                {
+                    <div class="form-group has-feedback">
+                        <label for="txt_UserPassword_edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.PasswordLabled </label>
+                        <div class="col-xs-10 col-sm-9 col-md-10">
+
+                            <input type="password" class="form-control" id="txt_UserPassword_edit" placeholder="@Resources.Resources.PasswordLabled" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                            <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                            <span class="help-block with-errors"></span>
+                        </div>
+
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group has-feedback hide">
+                        <label for="txt_UserPassword_edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.PasswordLabled </label>
+                        <div class="col-xs-10 col-sm-9 col-md-10">
+
+                            <input type="password" class="form-control" id="txt_UserPassword_edit" value="123456" placeholder="@Resources.Resources.PasswordLabled" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                            <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                            <span class="help-block with-errors"></span>
+                        </div>
+
+                    </div>
+                }
+                <div class="form-group">
+                    <label for="txt_Select_UserformEmployee" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.EmployeeNameLable </label>
+                    <div class="col-xs-10 col-sm-9 col-md-10">
+                        <div class="input-group">
+                            <input type="text" id="txt_Select_UserformEmployee" class="form-control" placeholder="@Resources.Resources.EmployeeNameLable" data-id="0" readonly >
+                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_UserformEmployee:not(:disabled)').length == 0) { return }; Select_Employee_Control = $('#txt_Select_UserformEmployee'); $('#EmployeeDialog').modal('show'); LoadEmployeeListTable(0, 0)"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_UserformEmployee:not(:disabled)').length == 0) { return }; $('#txt_Select_UserformEmployee').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                        </div>
+                        <span class="help-block with-errors smallmargin-bottom pull-left flip"></span>
+                    </div>
+
+                </div>
+                <div class="form-group has-feedback">
+                    <label for="UserFormType" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.UserTypeClm  </label>
+                    <div class=" col-xs-10 col-sm-9 col-md-10">
+                        <div class="ChangeUserFormTypeRadios columns">
+
+                            <label for="RB_FormEmployee" class="radio-inline">
+                                <input id="RB_FormEmployee" name="UserFormType" value="3" type="radio" required onchange="UserFormTypeRadioChanged(this);">
+                                @Resources.Resources.EmployeeUserType
+                            </label>
+
+                            <label for="RB_FormManager" class="radio-inline">
+                                <input id="RB_FormManager" name="UserFormType" value="2" type="radio" required onchange="UserFormTypeRadioChanged(this);">
+                                @Resources.Resources.ManagerUserType
+                            </label>
+                            <label for="RB_FormAdmin" class="radio-inline">
+                                <input id="RB_FormAdmin" name="UserFormType" value="1" type="radio" required onchange="UserFormTypeRadioChanged(this);">
+                                @Resources.Resources.AdminUserType
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div id="GroupforUserdiv">
+                    <div class="form-group has-feedback">
+                        <label for="txt_Select_GroupforUser" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.UserGroupLabale </label>
+                        <div class="col-xs-10 col-sm-9 col-md-10">
+                            <div class="input-group">
+                                <input type="text" id="txt_Select_GroupforUser" class="form-control" placeholder="@Resources.Resources.UserGroupLabale" data-id="0" readonly data-required="true" data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_GroupforUser:not(:disabled)').length == 0) { return }; Select_UserGroup_Control = $('#txt_Select_GroupforUser'); $('#UserGroupListDialog').modal('show'); ReloadUserGroupList(false);"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+
+                            </div>
+                            <span class="help-block with-errors smallmargin-bottom pull-left flip"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txt_Select_UserBranchesAccess" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.UserBranchesLable </label>
+                        <div class="col-xs-10 col-sm-9 col-md-10">
+                            <div class="input-group">
+                                <input type="text" id="txt_Select_UserBranchesAccess" class="form-control" placeholder="@Resources.Resources.UserBranchesLable" data-id="0" readonly>
+                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_UserBranchesAccess:not(:disabled)').length == 0) { return }; Select_UserBranch_Control = $('#txt_Select_UserBranchesAccess'); $('#UserBranchDialog').modal('show'); "><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_UserBranchesAccess:not(:disabled)').length == 0) { return }; $('#txt_Select_UserBranchesAccess').attr('data-id', 0).val('').html(''); UserBranchesData = null;"><span class="glyphicon glyphicon-remove red"></span></span>
+                            </div>
+                            <span class="help-block with-errors smallmargin-bottom pull-left flip"></span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group ">
+
+                    <label for="chk_UserStatus" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.UserStatusLable</label>
+                    <div class="col-xs-10 col-sm-9 col-md-10 checkbox" id="togglechk">
+                        <input data-toggle="toggle" data-on="@Resources.Resources.chkEnabled" data-off="@Resources.Resources.chkDesabled" type="checkbox" id="chk_UserStatus">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clearfix"></div>
+            <hr class="colorgraph" />
+            <div class="">
+                <button type="submit" class="btn btn-primary btn-lg" id="bt_saveUser"><span class="glyphicon glyphicon-ok"></span> @Resources.Resources.btSave</button>
+                <button type="button" class="btn btn-warning btn-lg" id="bt_CancelUser">
+                    <span class="glyphicon glyphicon-remove"></span>@Resources.Resources.btCancel
+                </button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="modal fade" role="dialog" id="UserGroupListDialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="pull-right flip">
+                    <button type="button" class="btn btn-toolbar space2" onclick="ReloadUserGroup(true); ReloadUserGroupList(false);" title="@Resources.Resources.btReload"><span class="glyphicon glyphicon-refresh"></span></button>
+
+                    <button type="button" class="btn btn-toolbar space2" aria-label="Close"><span class="glyphicon glyphicon-remove"></span></button>
+                </div>
+                <h4 class="modal-title" id="gridSystemModalUserGroupListDialogLabel">@Resources.Resources.GroupsUserTitle  </h4>
+
+            </div>
+            <div class="modal-body">
+                <div id="UserGroupListTablediv">
+                    <table id="UserGroupListTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>@Resources.Resources.GroupsUserTitle</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" role="dialog" id="UserBranchDialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="pull-right flip">
+                    <button type="button" class="btn btn-toolbar space2" aria-label="Close"><span class="glyphicon glyphicon-remove"></span></button>
+                </div>
+                <h4 class="modal-title" id="gridSystemModalSchLabel">@Resources.Resources.BranchListTitle </h4>
+
+            </div>
+            <div class="modal-body">
+                <div id="UserBranchListTablediv">
+                    <table id="UserBranchListTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>@Resources.Resources.ChoseClm</th>
+                                <th>@Resources.Resources.ClmBranchNumber</th>
+                                <th>@Resources.Resources.ClmBranchName</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <div class="">
+                    <button type="submit" class="btn btn-primary btn-lg" id="bt_saveUserBranchData"><span class="glyphicon glyphicon-ok"></span> @Resources.Resources.ChoseClm</button>
+                    <button type="button" class="btn btn-warning btn-lg" id="bt_CancelUserBranchData" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span>@Resources.Resources.btCancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

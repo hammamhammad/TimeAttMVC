@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = Resources.Resources.SchedulesManagmentTitle;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewBag.Title</title>
+    @Scripts.Render("~/bundles/timeattschedules")
+</head>
+<body>
+    <div class="page-header">
+        <h2>@Resources.Resources.SchedulesManagmentTitle</h2>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 pull-left flip">
+
+                <nav class="navbar navbar-default">
+                    <div class="navbar-form pull-right flip">
+                        <button class="btn btn-primary btn-md" id="reloadSchedules" onclick="ReloadScheduleData(); CurrentView == 'Shift';ShowTab( $('#ScheduleTab a:first'));">@Resources.Resources.btReload</button>
+                        <button class="btn btn-success  btn-md" id="bt_ChangeSchedule" onclick="ShowChangeScheduleDialog();">@Resources.Resources.btChangeSchedule</button>
+                    </div>
+                </nav>
+                <div class="panel panel-default">
+                    <div class="panel-body fixed-panelWithScroll">
+                        <ul class="nav nav-tabs " role="tablist" id="ScheduleTab">
+                            <li role="presentation" class="active"><a id="linkshifttab" href="#shifttab" aria-controls="shifttab" role="tab" data-toggle="tab">@Resources.Resources.tabShifts</a></li>
+                            <li role="presentation"><a id="linkscheduletab" href="#scheduletab" aria-controls="scheduletab" role="tab" data-toggle="tab">@Resources.Resources.tabSchedules</a></li>
+                            <li role="presentation"><a id="linkschgrouptab" href="#schgrouptab" aria-controls="schgrouptab" role="tab" data-toggle="tab">@Resources.Resources.tabScheduleGroup </a></li>
+
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content top10-buffer">
+                            <div role="tabpanel" class="tab-pane active" id="shifttab">@Html.Partial("Shifts")</div>
+                            <div role="tabpanel" class="tab-pane" id="scheduletab">@Html.Partial("Schedules")</div>
+                            <div role="tabpanel" class="tab-pane" id="schgrouptab">@Html.Partial("ScheduleGroups")</div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 pull-right flip">
+
+               
+
+                    <nav class="navbar navbar-default">
+
+                        <div class="navbar-form pull-right flip">
+                            <button class="btn btn-info btn-md" id="bt_AddSechedule" onclick="SetScheduleFormForAdd();">@Resources.Resources.btAdd</button>
+                            <button class="btn btn-info btn-md" id="bt_EditSechedule" onclick="SetScheduleFormForEdit();">@Resources.Resources.btEdit</button>
+                            <button class="btn btn-danger btn-md" id="bt_DeleteSechedule" onclick="DeleteSchedule();">@Resources.Resources.btDelete</button>
+
+                        </div>
+                    </nav>
+                <div class="panel panel-default">
+                    <div class="" id="scheduleformsdiv">
+                        <div class="panel-body fixed-panel schedulforms" id="shiftformdiv">
+                            @Html.Partial("ShiftForm")
+                        </div>
+                        <div class="panel-body fixed-panel schedulforms hide" id="scheduleformdiv">
+                            @Html.Partial("ScheduleForm")
+                        </div>
+                        <div class="panel-body fixed-panel schedulforms hide" id="schedulegroupformdiv">
+                            @Html.Partial("SchedulGroupForm")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("ChangeSchedule")
+    @Html.Partial("EmployeeDialog")
+    @Html.Partial("ScheduleDialog")
+    @Html.Partial("ShiftsDialog")
+    @Html.Partial("BranchesDialog")
+    @Html.Partial("SectionDialog")
+    <script>
+        jQuery(function () {
+            InitializeSchedulesView();
+            
+        });
+    </script>
+</body>
+</html>

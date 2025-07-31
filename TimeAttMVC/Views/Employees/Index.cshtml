@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = Resources.Resources.EmployeesManagmentTitle;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewBag.Title</title>
+    @Scripts.Render("~/bundles/timeattemployees")
+</head>
+<body>
+    <div class="page-header">
+        <h2>@Resources.Resources.EmployeesManagmentTitle</h2>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+
+
+            <div class="col-md-4 col-lg-4 col-sm-3 pull-left flip">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="pull-right flip">
+                            <a href="#" class="btn btn-success btn-md" id="searchtree">@Resources.Resources.btSearch </a>
+                            <a href="#" class="btn btn-info btn-md" id="printemployee">@Resources.Resources.btPrint</a>
+                            <a href="#" class="btn btn-primary btn-md" id="reloadtree">@Resources.Resources.btReload</a>
+
+                        </div>
+                        <h4>@Resources.Resources.SectionTree</h4>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-body fixed-panelWithScroll">
+
+                        @Html.Partial("SectionsTree")
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8 col-lg-8 col-sm-9 pull-right flip">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="pull-right flip">
+                            <button class="btn btn-info btn-md" id="bt_AddEmployee">@Resources.Resources.btAdd</button>
+                        </div>
+                        <h4 id="secSelectedTitle">@Resources.Resources.InformationTitle</h4>
+                    </div>
+
+                    <div class="panel-body fixed-panelWithScroll">
+                        <div id="EmployeesTablediv">
+                            <table id="EmployeesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th ></th>
+                                        <th>@Resources.Resources.ClmCardNo </th>
+                                        <th>@Resources.Resources.ClmEmpNo </th>
+                                        <th>@Resources.Resources.ClmEmployeeName</th>
+                                        <th>@Resources.Resources.ClmSectionName</th>
+                                        <th>@Resources.Resources.ClmBranchName</th>
+                                        <th>@Resources.Resources.ClmScheduleName</th>
+                                        <th>@Resources.Resources.ClmEdit</th>
+                                        <th>@Resources.Resources.ClmDelete</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @Html.Partial("EmployeeForm")
+    @Html.Partial("SectionDialog")
+    @Html.Partial("ScheduleDialog")
+    @Html.Partial("BranchesDialog")
+   
+    <script>
+        jQuery(function () {
+            InitializeEmployeesView();
+        });
+    </script>
+</body>
+</html>
+

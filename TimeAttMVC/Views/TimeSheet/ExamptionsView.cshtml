@@ -1,0 +1,83 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body-top">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">@Resources.Resources.SearchOptionsTitle</h3>
+                        <span class="pull-right flip clickable" id="pn_Exemptionsspan"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                    </div>
+                    <div class="panel-body" id="pn_Exemptionsbody">
+                     
+                        <div class="row">
+                            <div class="row top10-buffer">
+                                <div class="col-md-12">
+                                    <div class="searchBy">
+                                        <div class="col-md-4">
+                                            <label for="txt_Select_ExemptionsSection" class="control-label">@Resources.Resources.SectionLabe</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_Select_ExemptionsSection" class="form-control" placeholder="@Resources.Resources.SectionNameLable" data-id="0" readonly>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_ExemptionsSection:not(:disabled)').length == 0) { return }; Select_Section_Control = $('#txt_Select_ExemptionsSection'); $('#SectionDialog').modal('show'); LoadSectionListTable()"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_ExemptionsSection:not(:disabled)').length == 0) { return }; $('#txt_Select_ExemptionsSection').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="txt_Select_ExemptionsBranch" class="control-label">@Resources.Resources.BranchLable</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_Select_ExemptionsBranch" class="form-control" placeholder="@Resources.Resources.BranchNameLable" data-id="0" readonly>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_ExemptionsBranch:not(:disabled)').length == 0) { return }; Select_Branch_Control = $('#txt_Select_ExemptionsBranch'); $('#BranchDialog').modal('show'); LoadBranchListTable()"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_ExemptionsBranch:not(:disabled)').length == 0) { return }; $('#txt_Select_ExemptionsBranch').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="txt_Select_Employee" class="control-label">@Resources.Resources.EmployeeLable</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_Select_ExemptionsEmployee" class="form-control" placeholder="@Resources.Resources.EmployeeNameLable" data-id="0" readonly>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_ExemptionsEmployee:not(:disabled)').length == 0) { return }; Select_Employee_Control = $('#txt_Select_ExemptionsEmployee'); $('#EmployeeDialog').modal('show'); /*EmployeeListData = null;*/ LoadEmployeeListTable($('#txt_Select_ExemptionsSection').attr('data-id'), $('#txt_Select_ExemptionsBranch').attr('data-id'))"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_Select_ExemptionsEmployee:not(:disabled)').length == 0) { return }; $('#txt_Select_ExemptionsEmployee').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row col-centered">
+                            <hr />
+                            <button class="btn btn-success btn-lg" id="ExemptionsbtSearch" onclick="SearchExemptions();">@Resources.Resources.btSearch </button>
+                            <button class="btn btn-info btn-lg" id="printExemptions">@Resources.Resources.btPrint</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body-top fixed-panelWithScrollTimeSheet">
+
+                        <div id="ExemptionsTimeSheetTablediv">
+                            <table id="ExemptionsTimeSheetTable" class="table  table-bordered  timesheet-table" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>@Resources.Resources.ClmEmpNo </th>
+                                        <th>@Resources.Resources.ClmEmployeeName</th>
+                                        <th>@Resources.Resources.ClmBranchName</th>
+                                        <th>@Resources.Resources.DepartmentName</th>
+                                        <th>@Resources.Resources.ClmAttendanceExempted</th>
+                                        <th>@Resources.Resources.ClmPenaltyExempted</th>
+
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

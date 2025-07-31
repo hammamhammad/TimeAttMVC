@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = @Resources.Resources.HomePageTitle;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewBag.Title</title>
+    @Scripts.Render("~/bundles/chart")
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>@Resources.Resources.ApplicationName</h1>
+        <p class="lead"></p>
+        <p></p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <canvas id="myChart1"  ></canvas>
+        </div>
+        <div class="col-md-4">
+            <canvas id="myChart2" ></canvas>
+        </div>
+        <div class="col-md-4">
+            <canvas id="myChart3" ></canvas>
+        </div>
+    </div>
+    <script>
+        jQuery(function () {
+            LoadCharts();
+        });
+    </script>
+</body>
+</html>

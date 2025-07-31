@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = Resources.Resources.TimeSheetManagmentTitle;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewBag.Title</title>
+    @Scripts.Render("~/bundles/timeatttimesheet")
+</head>
+<body>
+    <div class="page-header">
+        <h2>@Resources.Resources.TimeSheetManagmentTitle</h2>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="panel panel-default">
+                <div class="panel-body panel-body-top panelTimeSheet">
+                    <ul class="nav nav-pills nav-justified navbar-btn btn-default " role="tablist" id="TimeSheetTabs">
+                        <li role="presentation" class="active" id="Reasonstab-li"><a id="Reasonstab-link" href="#Reasonstab" aria-controls="Reasonstab" role="tab" data-toggle="tab">@Resources.Resources.TransactionEditReasonsTitle</a></li>
+                        <li role="presentation" id="Dailytab-li"><a id="Dailytab-link" href="#Dailytab" aria-controls="Dailytab" role="tab" data-toggle="tab">@Resources.Resources.DailyReportTitle</a></li>
+                        <li role="presentation" id="Monthlytab-li"><a id="Monthlytab-link" href="#Monthlytab" aria-controls="Monthlytab" role="tab" data-toggle="tab">@Resources.Resources.MonthlyReportTitle</a></li>
+                        <li role="presentation" id="Transactionstab-li"><a id="Transactionstab-link" href="#Transactionstab" aria-controls="Transactionstab" role="tab" data-toggle="tab">@Resources.Resources.TransactionDetailsReportTitle </a></li>
+                        <li role="presentation" id="Violatiotab-li"><a id="Violationtab-link" href="#Violationtab" aria-controls="Violationtab" role="tab" data-toggle="tab">@Resources.Resources.ViolationReportTitle </a></li>
+                        <li role="presentation" id="FingerPrinttab-li"><a id="FingerPrinttab-link" href="#FingerPrinttab" aria-controls="FingerPrinttab" role="tab" data-toggle="tab">@Resources.Resources.FingerPrintTitle </a></li>
+                        <li role="presentation" id="ExemptionsPrinttab-li"><a id="ExemptionsPrinttab-link" href="#ExemptionsPrinttab" aria-controls="ExemptionsPrinttab" role="tab" data-toggle="tab">@Resources.Resources.ExemptionsReportTitle </a></li>
+                        
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content top10-buffer">
+                        <div role="tabpanel" class="tab-pane active" id="Reasonstab">@Html.Partial("ReasonsView")</div>
+                        <div role="tabpanel" class="tab-pane" id="Dailytab">@Html.Partial("DailyView")</div>
+                        <div role="tabpanel" class="tab-pane" id="Transactionstab">@Html.Partial("TransactionsView")</div>
+                        <div role="tabpanel" class="tab-pane" id="Monthlytab">@Html.Partial("MonthlyView")</div>
+                        <div role="tabpanel" class="tab-pane" id="Violationtab">@Html.Partial("ViolationView")</div>
+                        <div role="tabpanel" class="tab-pane" id="FingerPrinttab">@Html.Partial("FingerPrintView")</div>
+                        <div role="tabpanel" class="tab-pane" id="ExemptionsPrinttab">@Html.Partial("ExamptionsView")</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("EmployeeDialog")
+    @Html.Partial("SectionDialog")
+    @Html.Partial("ShiftsDialog")
+    @Html.Partial("BranchesDialog")
+    @Html.Partial("LocationDialog") 
+    @Html.Partial("YearDialog") 
+    @Html.Partial("MonthDialog")
+    <script>
+        jQuery(function () {
+            InitializeTimeSheetView();
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,717 @@
+﻿/*html {
+    overflow-y:scroll;
+}*/
+body {
+    padding-top: 110px;
+    padding-bottom: 5px;
+    zoom: 90%;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+span.input-group-addon {
+    cursor: pointer;
+}
+
+span.disabled {
+    cursor: not-allowed;
+}
+
+.flag-icon-background {
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+.flag-icon {
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    position: relative;
+    display: inline-block;
+    width: 1.33333333em;
+    line-height: 1em;
+}
+
+    .flag-icon:before {
+        content: "\00a0";
+    }
+
+.flag-icon-sa {
+    background-image: url(flags/4x3/sa.svg);
+}
+
+    .flag-icon-sa.flag-icon-squared {
+        background-image: url(flags/1x1/sa.svg);
+    }
+
+.flag-icon-us {
+    background-image: url(flags/4x3/us.svg);
+}
+
+    .flag-icon-us.flag-icon-squared {
+        background-image: url(flags/1x1/us.svg);
+    }
+
+
+.control-label {
+    text-align: left !important;
+}
+
+.form-control, checkbox {
+    font-family: 'TimeAtt';
+    /*font-size: 17px !important;
+    font-weight: bold;*/
+}
+
+.secFormdiv {
+    max-width: 600px;
+}
+
+div#spinner {
+    display: none;
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background: url(spiffygif.gif) no-repeat center #fff;
+    text-align: center;
+    padding: 10px;
+    font: normal 16px Tahoma, Geneva, sans-serif;
+    border: 1px solid #666;
+    margin-left: -50px;
+    margin-top: -50px;
+    z-index: 100000;
+    overflow: auto;
+}
+
+fieldset {
+    border: 0px !important;
+    padding: 10px;
+}
+
+.PermCheckBoxes fieldset {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+legend {
+    border-bottom: 1px solid #e5e5e5 !important;
+}
+
+.fixed-panelWithScroll {
+    min-height: 650px;
+    max-height: 650px;
+    overflow-y: scroll;
+}
+
+.fixed-panelWithScrollTimeSheet {
+    min-height: 545px;
+    max-height: 545px;
+    overflow-y: scroll;
+}
+
+.fixed-panelTimeSheet {
+    min-height: 650px;
+    max-height: 650px;
+}
+
+.panel-body-top {
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    border: 1px,solid,#dddddd;
+}
+
+.blue {
+    color: blue;
+    font-size: 1.2em;
+}
+
+.red {
+    color: red;
+    font-size: 1.2em;
+}
+
+.green {
+    color: green;
+    font-size: 1.2em;
+}
+
+.fixed-panel {
+    min-height: 650px;
+    max-height: 100%;
+}
+
+.EmployeePanel {
+    min-height: 180px;
+    max-height: 180px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-right: 0px;
+}
+
+.TransPanel {
+    min-height: 150px;
+    max-height: 150px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-right: 10px;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.col-delete {
+    color: red;
+    font-size: 1.5em;
+}
+
+.col-edit {
+    color: blueviolet;
+    font-size: 1.5em;
+}
+
+.col-add {
+    color: green;
+    font-size: 1.5em;
+}
+
+.dataTables_paginate {
+    text-align: center !important;
+}
+
+.dataTable tr {
+    text-align: start;
+}
+
+.page-header h2, h3, h4 {
+    margin-bottom: 0px !important;
+}
+
+.page-header {
+    margin: 20px 0 20px !important;
+}
+
+.panel-heading h2, h3, h4 {
+    margin-bottom: 0px !important;
+}
+
+.list-unstyled {
+    margin-bottom: -10px !important;
+}
+
+.handcursor {
+    cursor: pointer;
+}
+
+/*table.dataTable.display tbody tr.odd.selected {
+    background-color: yellow !important;
+}
+
+table.dataTable tbody tr.selected {
+    background-color: yellow !important;
+}*/
+
+
+
+
+/*#SectionsTablediv, #EmployeeListTablediv, #ScheduleListTablediv {
+    font-size: 14px;
+    font-weight: bold;
+}*/
+
+.view-pager {
+    font-size: 12px !important;
+    font-weight: bold;
+}
+/*.dataTables_filter input[type="search"]
+{
+     height:18px!important;
+}*/
+.table {
+    margin-bottom: 0px;
+}
+/*.top-buffer { margin-top:30px !important; }*/
+
+.space2 {
+    margin: 2px !important;
+}
+
+.modal {
+    text-align: center;
+    padding: 0 !important;
+    overflow-y: hidden !important;
+}
+
+body.modal-open {
+    overflow: hidden !important;
+}
+
+.modal:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
+}
+
+.modal-dialog {
+    display: inline-block;
+    overflow: hidden !important;
+    vertical-align: middle;
+}
+
+.modal-header {
+    text-align: start !important;
+}
+
+.companyImage{
+min-height: 100px;
+  min-width: 100px;
+  max-height:192px;
+  max-width:192px;
+}
+.Settings {
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.Settingsimage {
+    height: 25px;
+    width: 25px;
+    background: url(setting.png) no-repeat;
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+}
+
+.Lang {
+    margin-right: 8px;
+    margin-left: 8px;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+}
+
+    .Lang .arlangimag {
+        height: 25px;
+        width: 25px;
+        background: url(ar-SA.png) no-repeat;
+        background-size: 25px 25px;
+        background-repeat: no-repeat;
+    }
+
+    .Lang .enlangimag {
+        height: 25px;
+        width: 25px;
+        background: url(en-US.png) no-repeat;
+        background-size: 25px 25px;
+        background-repeat: no-repeat;
+    }
+
+.table tr {
+    font-size: 90%;
+}
+
+#lb_Select_Employee {
+    padding-top: 7px;
+}
+
+.navbar {
+    margin-bottom: 5px !important;
+}
+
+.top10-buffer {
+    margin-top: 10px;
+}
+
+.bottom5-buffer {
+    margin-bottom: 5px;
+}
+
+.ChangeScheduleRadiosdiv {
+    margin-top: 15px;
+}
+
+.fixed-panel-60 {
+    min-height: 60px !important;
+    max-height: 60px !important;
+}
+
+.fixed-panel-15 {
+    min-height: 15px !important;
+    max-height: 15px !important;
+}
+
+.bottom15-buffer {
+    margin-bottom: 15px;
+}
+
+.forshifttime {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+    /*width: 70%;*/
+}
+
+.fordates {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+    .fordates .form-group {
+        margin-bottom: 5px !important;
+        margin-right: 10px;
+    }
+
+.shidtFormdiv .row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.forshifttime .form-group {
+    margin-bottom: 5px !important;
+    margin-right: 10px;
+}
+
+.colorgraph {
+    height: 5px;
+    border-top: 0;
+    background: #c4e17f;
+    border-radius: 5px;
+    background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+
+#shiftfromtime, #shifttotime, #shiftfromtimetrans {
+    /*max-width: 250px;*/
+}
+
+.Helpmsg {
+    margin-bottom: 10px;
+    display: block;
+    color: gray;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.help-block {
+    display: inline;
+    margin-bottom: 3px !important;
+}
+
+label.radio-inline, label.checkbox-inline, label.radio, label.checkbox {
+    background-color: #dcdfd4;
+    cursor: pointer;
+    font-weight: 400;
+    margin-bottom: 3px !important;
+    margin-top: 3px !important;
+    /*margin-right: 2%;*/
+    margin-left: 0;
+    padding: 10px 10px 10px 30px;
+}
+
+    label.radio-inline.checked, label.checkbox-inline.checked, label.radio.checked, label.checkbox.checked {
+        background-color: #266c8e;
+        color: #fff !important;
+        text-shadow: 1px 1px 2px #000 !important;
+    }
+
+.columns label.radio-inline, .columns label.checkbox-inline {
+    min-width: 200px;
+    vertical-align: top;
+    /*width: 25%;*/
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.padding10bottom {
+    padding-bottom: 10px;
+}
+
+.checkbox-inline + .checkbox-inline, .radio-inline + .radio-inline {
+    margin-left: 0;
+}
+
+.spinnerinput {
+    max-width: 180px;
+}
+
+.spinnerinputs {
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.has-feedback .input-group .form-control-feedback {
+    right: 45px;
+}
+
+.smallmargin-bottom .list-unstyled {
+    margin-bottom: -20px !important;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* for firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type="number"]:hover,
+input[type="number"]:focus {
+    -moz-appearance: number-input;
+}
+
+.texr-start {
+    text-align: start;
+    margin: 5px;
+}
+
+.toggle {
+    min-width: 90px !important;
+}
+
+
+.clickable {
+    cursor: pointer;
+}
+
+.panel-heading span {
+    margin-top: -20px;
+    font-size: 15px;
+}
+
+.dateinput {
+    max-width: 210px;
+}
+
+.dateinput2 {
+    max-width: 220px;
+    min-width: 206px;
+    padding-right: 30px;
+    padding-left: 20px;
+}
+
+.timesheet-filter {
+    min-width: 150px;
+    min-height: 30px;
+}
+
+.timesheet-table {
+    font-size: 13px !important;
+    font-weight: bold;
+}
+
+.panel-timesheetfilter {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.searchBy .form-group {
+    width: 330px;
+}
+
+.alertIco-off {
+    width: 20px !important;
+    height: 20px !important;
+    background: url('Alert_ico-off.png') no-repeat;
+    border: 0px !important;
+    margin: 0 auto !important;
+    padding: 0px !important;
+}
+
+.alertIco {
+    width: 20px !important;
+    height: 20px !important;
+    background: url('Alert_ico.gif') no-repeat;
+    border: 0px !important;
+    cursor: pointer;
+    margin: 0 auto !important;
+    padding: 0px !important;
+}
+
+.tooltip-inner {
+    white-space: pre;
+    max-width: none;
+}
+
+div.toolbar span {
+    margin-left: 5px;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+td a span {
+    color: darkslateblue;
+}
+
+tr.selected {
+    color: black;
+}
+
+.alert {
+    padding: 3px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-incomplete {
+    background-color: pink;
+    border-color: #bce8f1;
+    color: black;
+    background-image: -webkit-linear-gradient(top, #FFEB3B 0%, #FFEB3B 100%);
+    background-image: -o-linear-gradient(top, #FFEB3B 0%, #FFEB3B 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FFEB3B), to(#FFEB3B));
+    background-image: linear-gradient(to bottom, #FFEB3B 0%, ##FFEB3B 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEB3B', endColorstr='#FFEB3B', GradientType=0);
+    border-color: #f5e79e;
+    padding: 3px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.smallText {
+    max-width: 150px;
+}
+
+.smallerText {
+    max-width: 100px;
+}
+
+.padding15 {
+    padding: 15px;
+}
+
+.padding10 {
+    padding: 10px;
+}
+
+.toolbar {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.table thead {
+    background-color: #03A9F4 !important;
+    color: white;
+}
+
+.table th {
+    background-color: #03A9F4 !important;
+    color: white;
+}
+
+button {
+    min-width: 80px;
+}
+
+.padding0 {
+    padding: 0px !important;
+}
+
+#MonthlyTimeSheetTable tr.even {
+    background-color: #dddddd;
+}
+
+.modal.modal-wide .modal-dialog {
+    width: 70% !important;
+    min-width: 600px !important;
+    text-align: start;
+}
+
+.tooltip > .tooltip-inner {
+    background-color: #73AD21;
+    color: #FFFFFF;
+    border: 1px solid green;
+    padding: 15px;
+    font-size: 15px;
+    z-index: 10 !important;
+    font-family: 'TimeAtt' !important;
+}
+
+.tooltip.top > .tooltip-arrow {
+    border-top: 5px solid green;
+}
+/* Tooltip on bottom */
+.tooltip.bottom > .tooltip-arrow {
+    border-bottom: 5px solid blue;
+}
+/* Tooltip on left */
+.tooltip.left > .tooltip-arrow {
+    border-left: 5px solid red;
+}
+/* Tooltip on right */
+.tooltip.right > .tooltip-arrow {
+    border-right: 5px solid black;
+}
+
+.bigCheckbox {
+    width: 20px !important;
+    height: 18px !important;
+    font-size: 60% !important;
+    color: green !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+label.col-md-2 {
+    width: 14.2% !important;
+}
+
+select.form-control {
+    padding-top: 0px !important;
+}
+
+.ui-timepicker-wrapper {
+    width: 15em;
+}
+
+.usernotactive {
+    color: red !important;
+}
+
+#frmChangePasswordFormDialog div {
+    margin-right: 1px;
+    margin-left: 1px;
+}
+#frmSettingsFormDialog div {
+    margin-right: 1px;
+    margin-left: 1px;
+}
+.checkboxclosefeidset{
+    margin-top: 7px !important;
+}

@@ -1,0 +1,64 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated && @User !=null)
+{
+    using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right pull-right flip" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("usernameHF", @User.UserName)
+        @Html.Hidden("userPasswordHF", @User.PasswordHash)
+        @Html.Hidden("userIDHF", @User.UserId.ToString())
+    <ul class="nav navbar-nav navbar-right  pull-right flip">
+        <li class="pull-right flip">
+            <a class="Lang" href="@Url.Action("SetCulture", "Home", new { returnUrl = HttpContext.Current.Request.Url.PathAndQuery })">
+                @*<img src="@Resources.Resources.LangImageSrc" title="@Resources.Resources.LangTitle">*@
+                <div class="@Resources.Resources.LangImageSrc" title="@Resources.Resources.LangTitle">
+
+                </div>
+            </a>
+           
+        </li>
+        @if (User.UserPer == 1)
+        {
+            <li class="pull-right flip">
+                <a class="Settings" href="javascript:ShowSettings()">
+                    <div class="Settingsimage" title="@Resources.Resources.SystemSettingsTitle">
+
+                    </div>
+                </a>
+            </li>
+        }
+      
+        <li>
+            <a href="#">@(Resources.Resources.HelloUser + " " + User.EmployeeName)</a>
+        </li>
+        @if (User.AuthType != "W")
+        {
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">@Resources.Resources.LinkLogoff </a></li>
+            <li><a href="javascript:ChangePassword()">@Resources.Resources.ChangePassword</a></li>
+        }
+        
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right pull-right flip">
+        <li class="pull-right flip">
+          
+            <a class="Lang" href="@Url.Action("SetCulture", "Home", new { returnUrl = HttpContext.Current.Request.Url.PathAndQuery })">
+                @*<img src="@Resources.Resources.LangImageSrc" title="@Resources.Resources.LangTitle">*@
+                <div class="@Resources.Resources.LangImageSrc" title="@Resources.Resources.LangTitle">
+
+                </div>
+            </a>
+           
+        </li>
+        <li>@Html.ActionLink(Resources.Resources.LinkLogin, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        
+
+
+
+    </ul>
+}
+
+   

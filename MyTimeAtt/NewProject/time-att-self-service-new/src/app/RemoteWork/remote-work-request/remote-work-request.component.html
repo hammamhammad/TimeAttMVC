@@ -1,0 +1,95 @@
+<div class="container PT20">
+    <div id="execuserequest" class="col-md-6">
+      
+<div class="remote-work-request">
+    <form [formGroup]="remoteWorkForm" (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="startDate">{{"PS_StartDate" | translate }}</label>
+        <input formControlName="startDate" type="date" id="startDate" class="form-control" (change)="getShiftInfo()">
+      </div>
+      <div class="form-group">
+        <label for="endDate"> {{"PS_EndDate" | translate }} </label>
+        <input formControlName="endDate" type="date" id="endDate" class="form-control">
+      </div>
+      <div id="divExcuseTime" style="display:none">
+        <div class="form-group">
+
+            <label>{{"ExcuseTime" | translate }} </label>
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label> {{"FromLable" | translate }} </label>
+                    <input class="timepicker form-control"  name="exc_ftime" id="exc_ftime" data-scroll-default="07:30" type="time" >
+                </div>
+                <div class="col-md-6 form-group">
+                    <label> {{"ToLable" | translate }} </label>
+                    <input class="timepicker form-control" name="exc_ttime" id="exc_ttime" data-scroll-default="09:30" type="time" >
+                </div>
+            </div>
+
+        </div>
+    </div>
+      <div class="form-group">
+    
+        <label for="notes">{{"NotesLable" | translate }}</label>
+        <textarea formControlName="notes" id="notes" class="form-control"></textarea>
+      </div>
+      <button type="submit" [disabled]="!remoteWorkForm.valid" class="btn btn-primary btn-lg">{{"AddRequest" | translate }}</button>
+      <div class="alert alert-danger" id="errexecusemsg" style="display:none"></div>
+    
+      <div style="display: none">
+        <div id="ExecConfairmDiv">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div>
+                        <span>{{"RemoteWorkConfirm" | translate }}</span>
+                    </div>
+                </div>
+                <div id="ExecBodyDiv" class="panel-body">
+                    <div class="">
+                        <div>
+                            <div class="form-detail">
+                                <label class="cell-3 pr0" res-type="H" res-name="ExcuseDateClm">{{"ExcuseDateClm" | translate }} :- </label>
+                                <span id="lb_execdatefrom">{{remoteWorkForm.get('startDate')?.value}}  -  {{remoteWorkForm.get('endDate')?.value}} </span>
+                            </div>
+                           
+                            
+                            <div class="form-detail">
+                                <label class="cell-3 pr0" res-type="H" res-name="NotesLable">{{"NotesLable" | translate }} :- </label>
+                                <span id="lb_execnote">{{remoteWorkForm.get('notes')?.value}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+
+  </div>
+
+  <div id="execusemsgsuccess" style="display: none">
+    <div class="S-alert-s1">
+        <span>{{"Yourrequestimplementedsuccessfully" | translate }}</span>
+
+        <br>
+        <br>
+        <div>
+        </div>
+    </div>
+</div>
+<div id="execusemsgerror" style="display: none">
+    <div class="E-alert-s1">
+        <span>{{"AddExcuseErrorMsg" | translate }}</span>
+
+        <br>
+        <br>
+        <div>
+        </div>
+    </div>
+</div>
+  </div>
+  </div>
+<alertmsg #alert backdropModal='static'  (onClose)="onCloseAlert()" (onOpened)="onOpenAlert()" (onDismissed)="onDismissAlert()">
+</alertmsg>

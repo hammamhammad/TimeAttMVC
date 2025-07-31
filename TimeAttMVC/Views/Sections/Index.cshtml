@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title =  Resources.Resources.SectionsManagmentTitle;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewBag.Title</title>
+    @Scripts.Render("~/bundles/timeattsections")
+</head>
+<body>
+    <div class="page-header">
+        <h2>@Resources.Resources.SectionsManagmentTitle</h2>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+
+
+            <div class="col-md-5 col-lg-5 col-sm-4 pull-left flip">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="pull-right flip">
+                            <a href="#" class="btn btn-success btn-md" id="searchtree">@Resources.Resources.btSearch </a>
+                            <a href="#" class="btn btn-info btn-md" id="printtree">@Resources.Resources.btPrint</a>
+                            <a href="#" class="btn btn-primary btn-md" id="reloadtree">@Resources.Resources.btReload</a>
+                        </div>
+                        <h4>@Resources.Resources.SectionTree</h4>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-body fixed-panelWithScroll">
+
+                        @Html.Partial("SectionsTree")
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7 col-lg-7 col-sm-8 pull-right flip">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="pull-right flip">
+                            <button class="btn btn-info btn-md" id="bt_AddSection">@Resources.Resources.btAdd</button>
+                            <button class="btn btn-info btn-md" id="bt_EditSection">@Resources.Resources.btEdit</button>
+                            <button class="btn btn-danger btn-md" id="bt_DeleteSection">@Resources.Resources.btDelete</button>
+                        </div>
+                        <h4 id="secSelectedTitle">@Resources.Resources.InformationTitle</h4>
+                    </div>
+
+                    <div class="panel-body fixed-panel">
+
+                        @Html.Partial("SectionForm")
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    @Html.Partial("EmployeeDialog")
+    @Html.Partial("ScheduleDialog")
+
+    <script>
+        jQuery(function () {
+            InitializeSectionView();
+        });
+    </script>
+</body>
+</html>

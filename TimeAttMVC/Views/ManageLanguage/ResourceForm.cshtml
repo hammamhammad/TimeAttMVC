@@ -1,0 +1,46 @@
+﻿<div class="modal fade unfold-3d" role="dialog" id="ResorceFormDialog" data-backdrop="static">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="ResorceFormDialogTitle">New Resource  </h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="form form-horizontal"  id="ResorceForm" role="form" >
+                            <div class="col-md-12">
+                                <div class="form-group has-feedback col-md-12">
+                                    <label for="dd_ResourceSet_Edit" class="control-lable">Resource Set</label>
+                                    <input list="dd_ResourceSet_Edit" name="dd_ResourceSet_Edit" class="form-control"  type="text" placeholder="Resources Set" id="txt_ResourceSet" required />
+                                    <datalist id="dd_ResourceSet_Edit">
+                                    </datalist>
+                                </div>
+                                <div class="form-group has-feedback col-md-12">
+                                    <label for="txt_ResourceID" class="control-lable">Resource ID</label>
+                                    <input id="txt_ResourceID" type="text" name="txt_ResourceID" class="form-control" placeholder="Resource ID" required/>
+                                </div>
+                                <div class="form-group has-feedback col-md-12">
+                                    <label for="txt_ResourceEn" class="control-lable">English Value</label>
+                                    <textarea id="txt_ResourceEn" name="txt_ResourceEn"   class="form-control" placeholder="English Value" required></textarea>
+                                </div>
+                                <div class="form-group has-feedback col-md-12">
+                                    <label for="txt_ResourceAr" class="control-lable">Arabic Value</label>
+                                    <textarea id="txt_ResourceAr" name="txt_ResourceAr"  class="form-control" placeholder="Arabic Value" required ></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-md" id="bt_save"><span class="glyphicon glyphicon-ok">&nbsp;</span>Save</button>
+                <button type="button" class="btn btn-warning btn-md" id="bt_Cancel" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove">&nbsp;</span>Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+                  

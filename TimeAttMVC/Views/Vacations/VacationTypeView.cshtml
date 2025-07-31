@@ -1,0 +1,68 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body-top">
+        <div class="pull-right flip padding10bottom">
+            <button class="btn btn-info btn-md" id="bt_AddVacationType">@Resources.Resources.btAdd</button>
+            <button class="btn btn-primary btn-md" id="bt_ReloadVacationType" onclick="ReloadVacationType();">@Resources.Resources.btReload</button>
+        </div>
+
+        <table id="VacationTypeTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>@Resources.Resources.VacationTypeClm</th>
+                    <th>@Resources.Resources.IsBusnissTrip</th>
+                    <th>@Resources.Resources.ClmEdit</th>
+                    <th>@Resources.Resources.ClmDelete</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="modal fade unfold-3d" role="dialog" id="VacationTypeDialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    @*<div class="pull-right flip">
+
+                        </div>*@
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalVacationtype">@Resources.Resources.VacationTypeAddTitle </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <form class="form form-horizontal" data-delay="0" role="form" id="VacationTypeForm">
+                                <div class="col-md-12">
+                                    <div class="form-group has-feedback">
+                                        <label for="txt_VacationTypeName_Edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.VacationTypeClm  </label>
+                                        <div class="col-xs-10 col-sm-9 col-md-10">
+                                            <div>
+                                                <input type="text" id="txt_VacationTypeName_Edit" class="form-control" placeholder="@Resources.Resources.VacationTypeClm" data-required="true" data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                                <span class="help-block with-errors smallmargin-bottom pull-left flip"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 ">
+                                    <label for="chk_Isbusnisstrip" class="control-label col-md-2">@Resources.Resources.IsBusnissTrip</label>
+                                    <div class="form-group ">
+
+
+                                        <div class="col-xs-10 col-sm-9 checkbox" id="togglechk">
+                                            <input data-toggle="toggle" data-on="@Resources.Resources.YesLable" data-width="150" data-off="@Resources.Resources.NoLable" type="checkbox" id="chk_Isbusnisstrip">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-lg" id="bt_saveVacationType"><span class="glyphicon glyphicon-ok"></span> @Resources.Resources.btSave</button>
+                    <button type="button" class="btn btn-warning btn-lg" id="bt_CancelVacationType" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span>@Resources.Resources.btCancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>      

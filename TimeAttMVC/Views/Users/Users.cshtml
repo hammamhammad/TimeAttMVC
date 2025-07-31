@@ -1,0 +1,38 @@
+﻿<nav class="navbar navbar-default">
+    <div class=" col-md-12">
+        <div class="form-group ChangeUserTypeRadios">
+            <label for="RB_All" class="radio-inline">
+                <input id="RB_All" name="UserType" value="0" type="radio" checked onchange="UserTypeRadioChanged(this);">
+                @Resources.Resources.AllUserType
+            </label>
+
+
+            <label for="RB_Employee" class="radio-inline">
+                <input id="RB_Employee" name="UserType" value="3" type="radio" onchange="UserTypeRadioChanged(this);">
+                @Resources.Resources.EmployeeUserType
+            </label>
+
+            <label for="RB_Manager" class="radio-inline">
+                <input id="RB_Manager" name="UserType" value="2" type="radio" onchange="UserTypeRadioChanged(this);">
+                @Resources.Resources.ManagerUserType
+            </label>
+            <label for="RB_Admin" class="radio-inline">
+                <input id="RB_Admin" name="UserType" value="1" type="radio" onchange="UserTypeRadioChanged(this);">
+                @Resources.Resources.AdminUserType
+            </label>
+        </div>
+    </div>
+ </nav>
+    <div id="UsersInfoTablediv">
+        <table id="UsersInfoTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+
+                    <th>@Resources.Resources.UserNameLable</th>
+                    <th>@Resources.Resources.ClmEmployeeName</th>
+                    <th>@Resources.Resources.GroupNameLable</th>
+                    <th>@Resources.Resources.UserTypeClm</th>
+                </tr>
+            </thead>
+        </table>
+    </div>

@@ -1,0 +1,462 @@
+﻿
+<div class="panel panel-default">
+    <div class="panel-body-top">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">@Resources.Resources.SearchOptionsTitle</h3>
+                        <span class="pull-right flip clickable" id="pn_dailyspan"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                    </div>
+                    <div class="panel-body" id="pn_dailybody">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-inline">
+                                <div class="form-group">
+                                    <label for="dailay_FromDate" class="control-label">@Resources.Resources.FromLable</label>
+                                    <div class="input-group dateinput">
+                                        <input type="text" id="dailay_FromDate" class="form-control dpd" data-date-autoclose="true" data-date-format="yyyy-mm-dd" data-date-language="@Resources.Resources.lang" placeholder="@Resources.Resources.FromDateLable" readonly>
+                                        <span class="input-group-addon add-on" onclick="$('#dailay_FromDate').datepicker('show');"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="dailay_ToDate" class="control-label">@Resources.Resources.ToLable</label>
+                                    <div class="input-group dateinput">
+                                        <input type="text" id="dailay_ToDate" class="form-control dpd" data-date-autoclose="true" data-date-format="yyyy-mm-dd" data-date-language="@Resources.Resources.lang" placeholder="@Resources.Resources.ToDateLable" readonly>
+                                        <span class="input-group-addon add-on" onclick="$('#dailay_ToDate').datepicker('show');"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+
+
+                                </div>
+                                <div class="pull-right flip">
+                                    <select id="dd_filter" class="timesheet-filter">
+                                        <option selected="selected" value="ra_all">@Resources.Resources.AllLable</option>
+                                        <option value="ra_Attendance">@Resources.Resources.AttendLable</option>
+                                        <option value="ra_absent">@Resources.Resources.AbsentLable</option>
+                                        <option value="ra_off">@Resources.Resources.WeekendLable</option>
+                                        <option value="ra_vication">@Resources.Resources.VacationsLable</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="filterdiv" class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-info  panel-timesheetfilter">
+                                    <div class="panel-body ">
+                                        <div class="form-group TimeSheetRadios">
+                                            <div class=" col-md-12">
+                                                <label for="ra_onlyin" class="checkbox-inline">
+                                                    <input type="checkbox" name="timesheetfilter" id="ra_onlyin">
+                                                    @Resources.Resources.OnlyInLable
+                                                </label>
+                                                <label for="ra_latein" class="checkbox-inline">
+                                                    <input type="checkbox" name="timesheetfilter" id="ra_latein">
+                                                    @Resources.Resources.LateInLable
+                                                </label>
+
+                                                <label for="ra_earlyout" class="checkbox-inline">
+                                                    <input type="checkbox" name="timesheetfilter" id="ra_earlyout">
+                                                    @Resources.Resources.EarlyOutLable
+                                                </label>
+                                                <label for="ra_late" class="checkbox-inline">
+                                                    <input type="checkbox" name="timesheetfilter" id="ra_late">
+                                                    @Resources.Resources.LateLable
+                                                </label>
+
+                                                <label for="ra_over" class="checkbox-inline">
+                                                    <input type="checkbox" name="timesheetfilter" id="ra_over">
+                                                    @Resources.Resources.OverTiemLable
+                                                </label>
+                                                <label for="ra_exc" class="checkbox-inline">
+                                                    <input type="checkbox" name="timesheetfilter" id="ra_exc">
+                                                    @Resources.Resources.ExecusesLable
+                                                </label>
+                                                <label for="ra_incomplete" class="checkbox-inline">
+                                                    <input type="checkbox" name="timesheetfilter" id="ra_incomplete">
+                                                    @Resources.Resources.IncompleteLable
+                                                </label>
+
+                                                <label for="ra_manule" class="checkbox-inline">
+                                                    <input type="checkbox" name="timesheetfilter" id="ra_manule">
+                                                    @Resources.Resources.ManulaLable
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row top10-buffer">
+                            <div class="col-md-12">
+                                <div class="searchBy">
+                                    <div class="col-md-3">
+                                        <label for="txt_Select_DailySection" class="control-label">@Resources.Resources.SectionLabe</label>
+                                        <div class="input-group">
+                                            <input type="text" id="txt_Select_DailySection" class="form-control" placeholder="@Resources.Resources.SectionNameLable" data-id="0" readonly>
+                                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_DailySection:not(:disabled)').length == 0) { return }; Select_Section_Control = $('#txt_Select_DailySection'); $('#SectionDialog').modal('show'); LoadSectionListTable()"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_DailySection:not(:disabled)').length == 0) { return }; $('#txt_Select_DailySection').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="txt_Select_DailyBranch" class="control-label">@Resources.Resources.BranchLable</label>
+
+
+                                        <div class="input-group">
+                                            <input type="text" id="txt_Select_DailyBranch" class="form-control" placeholder="@Resources.Resources.BranchNameLable" data-id="0" readonly>
+                                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_DailyBranch:not(:disabled)').length == 0) { return }; Select_Branch_Control = $('#txt_Select_DailyBranch'); $('#BranchDialog').modal('show'); LoadBranchListTable()"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_DailyBranch:not(:disabled)').length == 0) { return }; $('#txt_Select_DailyBranch').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="txt_Select_DailyLocation" class="control-label">@Resources.Resources.LocationNameLable</label>
+                                        <div class="input-group">
+                                            <input type="text" id="txt_Select_DailyLocation" class="form-control" placeholder="@Resources.Resources.LocationNameLable" data-id="0" readonly>
+                                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_DailyLocation:not(:disabled)').length == 0) { return }; Select_Location_Control = $('#txt_Select_DailyLocation'); $('#LocationDialog').modal('show'); LoadLocationListTable()"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_DailyLocation:not(:disabled)').length == 0) { return }; $('#txt_Select_DailyLocation').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="txt_Select_DailyEmployee" class="control-label">@Resources.Resources.EmployeeLable</label>
+
+
+                                        <div class="input-group">
+                                            <input type="text" id="txt_Select_DailyEmployee" class="form-control" placeholder="@Resources.Resources.EmployeeNameLable" data-id="0" readonly>
+                                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_DailyEmployee:not(:disabled)').length == 0) { return }; Select_Employee_Control = $('#txt_Select_DailyEmployee'); $('#EmployeeDialog').modal('show'); /*EmployeeListData = null;*/ LoadEmployeeListTable($('#txt_Select_DailySection').attr('data-id'), $('#txt_Select_DailyBranch').attr('data-id'))"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_DailyEmployee:not(:disabled)').length == 0) { return }; $('#txt_Select_DailyEmployee').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row col-centered">
+                            <hr />
+                            <button class="btn btn-success btn-lg" id="DailybtSearch" onclick="SearchDaily();">@Resources.Resources.btSearch </button>
+                            <button class="btn btn-info btn-lg" id="printDaily">@Resources.Resources.btPrint</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body-top fixed-panelWithScrollTimeSheet">
+
+                        <div id="DailyTimeSheetTablediv">
+                            <table id="DailyTimeSheetTable" class="table  table-bordered timesheet-table" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>@Resources.Resources.ClmEmpNo </th>
+                                        <th>@Resources.Resources.ClmEmployeeName</th>
+                                        <th>@Resources.Resources.ClmDate</th>
+                                        <th>@Resources.Resources.ClmIN</th>
+                                        <th>@Resources.Resources.ClmOut</th>
+                                        <th>@Resources.Resources.ClmLateIn</th>
+                                        <th>@Resources.Resources.ClmEarlyOut</th>
+                                        <th>@Resources.Resources.ClmTimeTotal</th>
+                                        <th>@Resources.Resources.ClmActualTime</th>
+                                        <th>@Resources.Resources.ClmLateHours</th>
+                                        <th>@Resources.Resources.ClmOverHours</th>
+                                        <th>@Resources.Resources.ClmExecuse</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade unfold-3d" data-backdrop="static" role="dialog" id="DailyDetailsAttendanceDialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="pull-right flip">
+                    <button type="button" class="btn btn-toolbar space2" aria-label="Close"><span class="glyphicon glyphicon-remove"></span></button>
+                </div>
+                <h4 class="modal-title" id="gridSystemModalDetailsAttendance">@Resources.Resources.DetailsAttendanceTitle </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div id="divtransmsg" role="alert">
+
+                        </div>
+
+                        <div class="panel panel-info  panel-timesheetfilter">
+                            <div class="panel-body form-inline">
+                                <div class="form-group">
+                                    <label for="txt_employeno_transdetails" class="control-label">@Resources.Resources.EmployeeNoLable</label>
+                                    <input type="text" id="txt_employeno_transdetails" readonly="readonly" class="smallText form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="txt_employename_transdetails" class="control-label">@Resources.Resources.EmployeeNameLable</label>
+                                    <input type="text" id="txt_employename_transdetails" readonly="readonly" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="txt_attdate_transdetails" class="control-label">@Resources.Resources.ClmDate</label>
+                                    <input type="text" id="txt_attdate_transdetails" readonly="readonly" class="smallText form-control" />
+                                </div>
+                            </div>
+                            <div class="panel panel-default texr-start">
+                                <div class="panel-heading">
+                                    <div class="pull-right flip">
+                                        <button class="btn btn-info btn-md" id="bt_AddTransaction">@Resources.Resources.btAdd</button>
+
+                                    </div>
+                                    <h4>@Resources.Resources.TransactioninfoTitle</h4>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="panel-body TransPanel">
+
+                                    <div>
+
+                                        <table id="DailyTimeSheetTransactions" class="table  table-bordered timesheet-table" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>@Resources.Resources.ClmTime</th>
+                                                    <th>@Resources.Resources.ClmStatus</th>
+                                                    <th>@Resources.Resources.ClmDeviceName</th>
+                                                    <th>@Resources.Resources.ClmTheReason</th>
+                                                    <th>@Resources.Resources.ClmEdit</th>
+                                                    <th>@Resources.Resources.ClmIncludeExclude</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="panel panel-default texr-start">
+                                <div class="panel-heading">
+                                    <div class="pull-right flip">
+                                        <button class="btn btn-info btn-md" id="bt_SaveShift">@Resources.Resources.bt_SaveOnly</button>
+
+                                    </div>
+                                    <h4>@Resources.Resources.ShiftTitle</h4>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="form-inline">
+                                        <div class="form-group">
+                                            <label class="control-label" for="txt_detailsCurrentShift">@Resources.Resources.CurrentShiftLable</label>
+                                            <input type="text" id="txt_detailsCurrentShift" readonly="readonly" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="txt_changeShift">@Resources.Resources.ChangeToLable</label>
+                                            <div class="input-group">
+                                                <input type="text" id="txt_changeShift" class="form-control" placeholder="@Resources.Resources.ShiftNameLable" data-id="0" readonly>
+                                                <span class="input-group-addon add-on" onclick="if (IsDisabled(this)) { return }; Select_Shift_Control = $('#txt_changeShift'); $('#ShiftDialog').modal('show'); LoadShiftListTable()"><span class="glyphicon glyphicon-list-alt blue "></span></span>
+                                                <span class="input-group-addon add-on" onclick="if ($('#txt_changeShift:not(:disabled)').length == 0) { return }; $('#txt_changeShift').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default texr-start" id="exc_panel">
+                                <div class="panel-heading">
+                                    <div class="pull-right flip">
+                                        <button class="btn btn-info btn-md" id="bt_AddExcuse">@Resources.Resources.btAdd</button>
+
+                                    </div>
+                                    <h4>@Resources.Resources.ExcuseInfoTitle</h4>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="panel-body">
+                                    <p class="bg-info padding15" id="exc_info" data-id="0">...</p>
+                                </div>
+                            </div>
+                            <div class="panel panel-default texr-start" id="vac_panel">
+                                <div class="panel-heading">
+                                    <h4>@Resources.Resources.VacationInfoTitle</h4>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="panel-body">
+                                    <p class="bg-info padding15" id="vac_info">...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="TransactionFormDialog" class="modal fade" data-backdrop="static" role="dialog">
+
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="pull-right flip">
+                    <button type="button" class="btn btn-toolbar space2" aria-label="Close"><span class="glyphicon glyphicon-remove"></span></button>
+                </div>
+                <h4 class="modal-title" id="gridSystemModalTransactionTitle">@Resources.Resources.AddTransactionTitle </h4>
+            </div>
+            <div class="modal-body texr-start">
+                <div class="row">
+                    <form data-toggle="validator" data-delay="0" role="form" id="frmTransactionFormDialog">
+                        <div class="col-md-12 ">
+                            <div class="form-group has-feedback col-md-4">
+                                <label for="shiftfromtimetrans" class="control-label"> @Resources.Resources.ClmTime </label>
+                                <div>
+                                    <input autocomplete="off" id="shiftfromtimetrans" class="form-control" placeholder="@Resources.Resources.ClmTime" data-scroll-default="07:30" type="text" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                    <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group has-feedback col-md-8">
+                                <label for="dd_Reason_edit" class="control-label">@Resources.Resources.ClmTheReason</label>
+                                <div>
+                                    <select class="form-control" id="dd_Reason_edit" required data-error="@Resources.Resources.FieldRequiredValidationMsg"></select>
+                                    <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group col-md-12 PlusOneDay">
+                                <label for="plusoneday" class="checkbox-inline">
+                                    <input type="checkbox" id="plusoneday" name="plusoneday" /> @Resources.Resources.ActualDateForTransacionPlusOneDay
+                                </label>
+
+                            </div>
+                            <div id="ShiftINOUT_CVCode" style="display:none">
+                                <div class="form-group ChangeShiftINOUTRadios">
+                                    <div class=" col-md-12 columns">
+
+                                        <label for="Chk_ShiftFirstIN" class="radio-inline">
+                                            <input id="Chk_ShiftFirstIN" name="shiftINOUT" type="radio" value="1">
+                                            @Resources.Resources.lb_ShiftFirstIN
+                                        </label>
+
+                                        <label for="Chk_ShiftFirstOUT" class="radio-inline">
+                                            <input id="Chk_ShiftFirstOUT" name="shiftINOUT" type="radio" value="2">
+                                            @Resources.Resources.lb_ShiftFirstOUT
+                                        </label>
+                                        <label for="Chk_ShiftSecondIN" class="radio-inline">
+                                            <input id="Chk_ShiftSecondIN" name="shiftINOUT" type="radio" value="3">
+                                            @Resources.Resources.lb_ShiftSecondIN
+                                        </label>
+
+                                        <label for="Chk_ShiftSecondOUT" class="radio-inline">
+                                            <input id="Chk_ShiftSecondOUT" name="shiftINOUT" type="radio" value="4">
+                                            @Resources.Resources.lb_ShiftSecondOUT
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-lg" id="bt_saveTrans"><span class="glyphicon glyphicon-ok"></span> @Resources.Resources.btSave</button>
+                <button type="button" class="btn btn-warning btn-lg" id="bt_CancelTrans" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove"></span>@Resources.Resources.btCancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ExcuseDailyFormDialog" class="modal fade" data-backdrop="static" role="dialog">
+
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="pull-right flip">
+                    <button type="button" class="btn btn-toolbar space2" aria-label="Close"><span class="glyphicon glyphicon-remove"></span></button>
+                </div>
+                <h4 class="modal-title" id="gridSystemModalExcuseDailyTitle">@Resources.Resources.AddExcuseTitle </h4>
+            </div>
+            <div class="modal-body texr-start">
+                <div class="row">
+                    <form data-toggle="validator" class="form-horizontal" data-delay="0" role="form" id="frmExcuseDailyFormDialog">
+
+                        <div class="col-md-12 ">
+                            <label for="ExcuseType" class="control-label col-md-2"> @Resources.Resources.ExcuseTypeLable  </label>
+                            <div class="form-group has-feedback">
+                                <div class="col-md-9 ExcuseTypeRadios columns">
+                                    <label for="RB_ExcuseNormalType" class="radio-inline">
+                                        <input id="RB_ExcuseNormalType" name="ExcuseType" value="1" type="radio" onchange="ExcuseTypeRadioChanged(this);">
+                                        @Resources.Resources.NormalLable
+                                    </label>
+                                    <label for="RB_ExcuseJobType" class="radio-inline">
+                                        <input id="RB_ExcuseJobType" name="ExcuseType" value="2" type="radio" onchange="ExcuseTypeRadioChanged(this);">
+                                        @Resources.Resources.JobMissionLable
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-12 ">
+                            <label for="dd_ExcuseReason_edit" class="control-label col-md-2"> @Resources.Resources.ExcuseReason  </label>
+                            <div class="form-group has-feedback">
+                                <div class="col-md-9">
+                                    <select class="form-control" id="dd_ExcuseReason_edit" required data-error="@Resources.Resources.FieldRequiredValidationMsg"></select>
+                                    <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 ">
+                            <label for="shiftfromtimes" class="control-label col-md-2"> @Resources.Resources.ExcuseTime  </label>
+
+                            <div class="col-md-10">
+                                <div class="col-md-5 ">
+                                    <div class=" form-group  has-feedback">
+
+                                        <div>
+                                            <input autocomplete="off" id="shiftfromtime" class="form-control" placeholder="@Resources.Resources.TimeFromLable" data-scroll-default="07:00" type="text" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                        </div>
+                                        <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 ">
+                                    <div class="form-group  has-feedback ">
+
+                                        <div>
+                                            <input autocomplete="off" id="shifttotime" class="form-control" data-scroll-default="16:00" placeholder="@Resources.Resources.TimeToLable" type="text" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                        </div>
+                                        <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-12 ">
+                            <label for="excNotes_edit" class="control-label col-md-2"> @Resources.Resources.NotesLable  </label>
+                            <div class="form-group has-feedback">
+
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="excNotes_edit" placeholder="@Resources.Resources.NotesLable">
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-lg" id="bt_saveExcuse"><span class="glyphicon glyphicon-ok"></span> @Resources.Resources.btSave</button>
+                <button type="button" class="btn btn-warning btn-lg" id="bt_CancelExcuse" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove"></span>@Resources.Resources.btCancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

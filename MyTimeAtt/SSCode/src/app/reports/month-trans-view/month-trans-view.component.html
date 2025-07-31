@@ -1,0 +1,91 @@
+<div >
+    <div class="col-md-12 float-none">
+
+    <div class="PopDate">
+        <h4 class="cntr" id="transactiondateM">{{transDetails?.m_date}}</h4>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>{{'EmployeeInformation' | translate}}</h4>
+        </div>
+        <div class="panel-body">
+            <div class="form-detail">
+                <label class="cell-2 pr0">{{'EmployeeNo' | translate}} :</label>
+                <span id="timesheetmpno">{{transDetails?.emp_no}}</span>
+            </div>
+            <div class="form-detail">
+                <label class="cell-2 pr0">{{'EmployeeName' | translate}} :</label>
+                <span id="timesheetempname">{{transDetails?.emp_name}}</span>
+            </div>
+            <div class="form-detail">
+                <label class="cell-2 pr0">{{'DepartmentName' | translate}} :</label>
+                <span id="timesheetsecname">{{transDetails?.sec_name}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="Timesheetformanagerdiv">
+        <h4>{{'AttendanceInformations' | translate}}</h4>
+        <button class="btn btn-primary btn-lg" id="bt_PrintForEmployeeMGR" (click)="printMonthlyReport()">{{'PrintModeTitle' | translate }}</button>
+        <table id="timesheetdetailsformanager" class="dataTable table table-striped table-bordered table-hover no-footer" cellspacing="1">
+            <thead>
+                <tr>
+                    <th class="essential persist">{{'Date' | translate}}</th>
+                    <th>{{'CheckInTime' | translate}}</th>
+                    <th>{{'CheckOutTime' | translate}}</th>
+                    <th>{{'DelayedCheck' | translate}}</th>
+                    <th>{{'CheckOutEarly' | translate}}</th>
+                    <th>{{'WorkHours' | translate}}</th>
+                    <th class="essential persist">{{'HoursRequired' | translate}}</th>
+                    <th class="essential persist">{{'HoursDelay' | translate}}</th>
+                    <th *ngIf="1!=1" class="essential persist">{{'OvertimeAfterWork' | translate}}</th>
+                    <th>إذن</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of transDetails?.TransData; let i = index">
+                    <td>{{row.m_date}}</td>
+                    <td>{{row.timefin}}</td>
+                    <td>{{row.timefout}}</td>
+                    <td>{{row.LateIn}}</td>
+                    <td>{{row.Earlyout}}</td>
+                    <td>{{row.timeTotal}}</td>
+                    <td>{{row.ActualTime}}</td>
+                    <td>{{row.TotalLate}}</td>
+                    <td *ngIf="1!=1">{{row.OverTime}}</td>
+                    <td>{{row.Excuseinfo}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="timesheetsummaryformanager" class="Vlt dataTable table table-striped table-bordered table-hover no-footer" cellspacing="1">
+            <thead>
+                <tr>
+                    <th class="essential persist">{{'WorkingDay' | translate}}</th>
+                    <th class="essential persist">{{'AbsenceDays' | translate}}</th>
+                    <th>{{'Holidays' | translate}}</th>
+                    <th class="essential persist">{{'VacationDays' | translate}}</th>
+                    <th>{{'WorkHours' | translate}}</th>
+                    <th>{{'HoursRequired' | translate}}</th>
+                    <th>{{'HoursDelay' | translate}}</th>
+                    <th *ngIf="1!=1">{{'OvertimeAfterWork' | translate}}</th>
+                    <th class="essential persist">{{'HoursPermission' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{transDetails?.daysno}}</td>
+                    <td>{{transDetails?.daysabsent}}</td>
+                    <td>{{transDetails?.daysoff}}</td>
+                    <td>{{transDetails?.daysvication}}</td>
+                    <td>{{transDetails?.totalwork}}</td>
+                    <td>{{transDetails?.ac_work}}</td>
+                    <td>{{transDetails?.totallate}}</td>
+                    <td *ngIf="1!=1">{{transDetails?.totalover}}</td>
+                    <td>{{transDetails?.totalExecuse}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    </div>
+</div>

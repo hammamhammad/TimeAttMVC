@@ -1,0 +1,48 @@
+﻿<div class="modal fade unfold-3d" role="dialog" id="BranchFormDialog" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="BranchFormDialogTitle">@Resources.Resources.BranchesTitle  </h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="form form-horizontal" data-delay="0" role="form" id="BranchForm">
+                            <div class="col-md-12">
+                                <div class="form-group has-feedback">
+                                    <label for="txt_BranchNumber_Edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.BranchNumberLable  </label>
+                                    <div class="col-xs-10 col-sm-9 col-md-10">
+
+                                        <div >
+                                            <input type="number" id="txt_BranchNumber_Edit" class="form-control" placeholder="@Resources.Resources.BranchNumberLable" min="1" max="999999" maxlength="6" data-required="true" data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <span class="help-block with-errors smallmargin-bottom pull-left flip"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label for="txt_BranchName_Edit" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.BranchNameLable  </label>
+                                    <div class="col-xs-10 col-sm-9 col-md-10">
+
+                                        <div >
+                                            <input type="text" id="txt_BranchName_Edit" class="form-control" placeholder="@Resources.Resources.BranchNameLable" data-required="true" data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <span class="help-block with-errors smallmargin-bottom pull-left flip"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-lg" id="bt_saveBranch" ><span class="glyphicon glyphicon-ok"></span> @Resources.Resources.btSave</button>
+                <button type="button" class="btn btn-warning btn-lg" id="bt_CancelBranch" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove"></span>@Resources.Resources.btCancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="@TimeAttMVC.Helpper.CultureHelper.GetCurrentNeutralCulture()" dir="@(TimeAttMVC.Helpper.CultureHelper.IsRighToLeft() ? "rtl" : "ltr")">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
+    <title>@Resources.Resources.ApplicationName  -  @ViewBag.Title</title>
+    @Styles.Render("~/Content/DataTablecss")
+    @Styles.Render("~/Content/plugincss")
+    @Styles.Render("~/Content/css" + (TimeAttMVC.Helpper.CultureHelper.IsRighToLeft() ? "-rtl" : ""))
+  
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrap" + (TimeAttMVC.Helpper.CultureHelper.IsRighToLeft() ? "-rtl" : ""))
+    @Scripts.Render("~/bundles/DataTable")
+    @Scripts.Render("~/bundles/timeattcommon")
+  
+    @RenderSection("scripts",required: false)
+
+
+  
+
+</head>
+<body >
+    @Html.Hidden("LogOutUrlHF", @Url.Action("LogOut", "Account", null))
+    @Html.Hidden("ResourceUrlHF", @Url.Action("GetResources", "Resource", null))
+    @Html.Hidden("RootUrlHF", @Url.Content("~"))
+   
+    <script>
+        loadResource();
+        setAllowTwoShifts();
+    </script>
+    <div id="spinner"></div>
+   
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink(Resources.Resources.ApplicationName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            
+            </div>
+            <div class="pull-right flip">
+                @Html.Partial("_LoginPartial")
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink(Resources.Resources.SectionsManagmentTitle, "Index", "Sections")</li>
+                    <li>@Html.ActionLink(Resources.Resources.SchedulesManagmentTitle, "Index", "Schedule")</li>
+                    <li>@Html.ActionLink(Resources.Resources.BranchesManagmentTitle, "Index", "Branches")</li>
+                    <li>@Html.ActionLink(Resources.Resources.EmployeesManagmentTitle, "Index", "Employees")</li>
+                    <li>@Html.ActionLink(Resources.Resources.TimeSheetManagmentTitle, "Index", "TimeSheet")</li>
+                    <li>@Html.ActionLink(Resources.Resources.VacationsManagmentTitle, "Index", "Vacations")</li>
+                    <li>@Html.ActionLink(Resources.Resources.ExcuseManagmentTitle, "Index", "Excuses")</li>
+                    @if (User!=null && User.UserPer == 1)
+                    {
+                        <li>@Html.ActionLink(Resources.Resources.UsersManagmentTitle, "Index", "Users")</li>
+                        <li>@Html.ActionLink(Resources.Resources.ManageLanguage, "Index", "ManageLanguage")</li>
+                    }
+
+                   @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                </ul>
+              
+
+            </div>
+        </div>
+        <div id="notes"></div>
+        <div id="messages"></div>
+    </div>
+    <div class="container-fluid body-content">
+
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>  @Resources.Resources.ApplicationName -  @DateTime.Now.Year &copy;</p>
+        </footer>
+    </div>
+    
+    <script type="text/javascript">
+
+    jQuery(function () {
+
+        $("button[aria-label=Close]").click(function (e) {
+            e.preventDefault();
+
+            $("#" + $(this).parents(".modal").prop("id")).modal('hide');
+        });
+    })
+    </script>
+
+    @Html.Partial("ChangePasswordView")
+    @Html.Partial("SettingsView")
+    @Html.Partial("PrintModeView")
+</body>
+</html>

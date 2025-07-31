@@ -1,0 +1,304 @@
+﻿
+<div class="panel panel-default">
+    <div class="panel-body-top">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">@Resources.Resources.SearchOptionsTitle</h3>
+                        <span class="pull-right flip clickable" id="pn_Fingerspan"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                    </div>
+                    <div class="panel-body" id="pn_Fingerbody">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-inline">
+                                <div class="form-group">
+                                    <label for="Finger_FromDate" class="control-label">@Resources.Resources.FromLable</label>
+                                    <div class="input-group dateinput">
+                                        <input type="text" id="Finger_FromDate" class="form-control dpd" data-date-autoclose="true" data-date-format="yyyy-mm-dd" data-date-language="@Resources.Resources.lang" placeholder="@Resources.Resources.FromDateLable" readonly>
+                                        <span class="input-group-addon add-on" onclick="$('#Finger_FromDate').datepicker('show');"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Finger_ToDate" class="control-label">@Resources.Resources.ToLable</label>
+                                    <div class="input-group dateinput">
+                                        <input type="text" id="Finger_ToDate" class="form-control dpd" data-date-autoclose="true" data-date-format="yyyy-mm-dd" data-date-language="@Resources.Resources.lang" placeholder="@Resources.Resources.ToDateLable" readonly>
+                                        <span class="input-group-addon add-on" onclick="$('#Finger_ToDate').datepicker('show');"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row top10-buffer">
+                            <div class="col-md-12">
+                                <div class="searchBy">
+                                    <div class="col-md-3">
+                                        <label for="txt_Select_FingerSection" class="control-label">@Resources.Resources.SectionLabe</label>
+                                        <div class="input-group">
+                                            <input type="text" id="txt_Select_FingerSection" class="form-control" placeholder="@Resources.Resources.SectionNameLable" data-id="0" readonly>
+                                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_FingerSection:not(:disabled)').length == 0) { return }; Select_Section_Control = $('#txt_Select_FingerSection'); $('#SectionDialog').modal('show'); LoadSectionListTable()"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_FingerSection:not(:disabled)').length == 0) { return }; $('#txt_Select_FingerSection').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="txt_Select_FingerBranch" class="control-label">@Resources.Resources.BranchLable</label>
+                                        <div class="input-group">
+                                            <input type="text" id="txt_Select_FingerBranch" class="form-control" placeholder="@Resources.Resources.BranchNameLable" data-id="0" readonly>
+                                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_FingerBranch:not(:disabled)').length == 0) { return }; Select_Branch_Control = $('#txt_Select_FingerBranch'); $('#BranchDialog').modal('show'); LoadBranchListTable()"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_FingerBranch:not(:disabled)').length == 0) { return }; $('#txt_Select_FingerBranch').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="txt_Select_FingerEmployee" class="control-label">@Resources.Resources.EmployeeLable</label>
+                                        <div class="input-group">
+                                            <input type="text" id="txt_Select_FingerEmployee" class="form-control" placeholder="@Resources.Resources.EmployeeNameLable" data-id="0" readonly>
+                                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_FingerEmployee:not(:disabled)').length == 0) { return }; Select_Employee_Control = $('#txt_Select_FingerEmployee'); $('#EmployeeDialog').modal('show'); /*EmployeeListData = null;*/ LoadEmployeeListTable($('#txt_Select_FingerSection').attr('data-id'), $('#txt_Select_FingerBranch').attr('data-id'))"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_FingerEmployee:not(:disabled)').length == 0) { return }; $('#txt_Select_FingerEmployee').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="txt_Select_FingerReason" class="control-label">@Resources.Resources.TransactionEditReasonsTitle</label>
+                                        <div class="input-group">
+                                            <input type="text" id="txt_Select_FingerReason" class="form-control" placeholder="@Resources.Resources.TransactionEditReasonsTitle" data-id="0" readonly>
+                                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_FingerReason:not(:disabled)').length == 0) { return }; Select_FingerReason_Control = $('#txt_Select_FingerReason'); $('#FingerReasonListDialog').modal('show');"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+                                            <span class="input-group-addon add-on" onclick="if ($('#txt_Select_FingerReason:not(:disabled)').length == 0) { return }; $('#txt_Select_FingerReason').attr('data-id', 0).val('').html('');"><span class="glyphicon glyphicon-remove red"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row col-centered">
+                            <hr />
+                            <button class="btn btn-success btn-lg" id="FingerbtSearch" onclick="SearchFinger();">@Resources.Resources.btSearch </button>
+                            <button class="btn btn-info btn-lg" id="printFinger" onclick="printFingerTrans();">@Resources.Resources.btPrint</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pull-right flip padding10bottom">
+                    <button class="btn btn-info btn-md" id="bt_AddFinger">@Resources.Resources.btAdd</button>
+                </div>
+                <div class="clearfix"></div>
+                <div class="panel panel-default">
+                    <div class="panel-body-top fixed-panelWithScrollTimeSheet">
+                        <div id="FingerTimeSheetTablediv">
+                            <table id="FingerTimeSheetTable" class="table  table-bordered timesheet-table" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>@Resources.Resources.ClmEmpNo </th>
+                                        <th>@Resources.Resources.ClmEmployeeName</th>
+                                        <th>@Resources.Resources.ClmTheReason</th>
+                                        <th>@Resources.Resources.ClmDate</th>
+                                        <th>@Resources.Resources.ClmTime</th>
+                                        <th>@Resources.Resources.ClmStatus</th>
+                                        <th>@Resources.Resources.ClmEdit</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="fb_RequestDataDialog" class="modal fade" data-backdrop="static" role="dialog">
+
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="pull-right flip">
+                    <button type="button" class="btn btn-toolbar space2" aria-label="Close"><span class="glyphicon glyphicon-remove"></span></button>
+                </div>
+                <h4 class="modal-title" id="gridSystemModalRequestDataTitle">@Resources.Resources.UpdateTransRequestTitle </h4>
+            </div>
+            <div class="modal-body texr-start">
+                <div class="row">
+                    <form data-toggle="validator" class="form-horizontal" data-delay="0" role="form" id="frmRequestDataDialog">
+                        <div class="col-md-12 ">
+                            <label class="control-label col-md-2">@Resources.Resources.EmployeeNameLable </label>
+                            <div class="form-group has-feedback col-md-9">
+                                <span id="lblRequestEmployee" class="form-control"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 ">
+                                <label for="TransRequest_Date" class="control-label col-md-2">@Resources.Resources.ClmDate</label>
+                                <div class="form-group has-feedback col-md-9">
+                                    <div class="input-group ">
+                                        <input type="text" id="TransRequest_Date" class="form-control dpef" data-date-autoclose="true" data-date-format="yyyy-mm-dd" data-date-language="@Resources.Resources.lang" placeholder="@Resources.Resources.ClmDate" readonly data-required="true" data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        <span class="input-group-addon add-on" onclick="$('#TransRequest_Date').datepicker('show');"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                    <span class="help-block with-errors smallmargin-bottom pull-left flip"></span>
+                                </div>
+                        </div>
+                        <div class="col-md-12 ">
+                            <label for="fb_TransRequestTime" class="control-label col-md-2"> @Resources.Resources.ClmTime </label>
+                            <div class="form-group has-feedback col-md-9">
+                                <input autocomplete="off" id="fb_TransRequestTime" class="form-control" placeholder="@Resources.Resources.ClmTime" data-scroll-default="07:30" type="text" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 ">
+                            <label for="fb_Reason_TransRequest" class="control-label col-md-2">@Resources.Resources.ClmTheReason</label>
+                            <div class="form-group has-feedback col-md-9">
+                                <select class="form-control" id="fb_Reason_TransRequest" required data-error="@Resources.Resources.FieldRequiredValidationMsg"></select>
+                                <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 ">
+                            <label for="fb_TransRequestNotes_edit" class="control-label col-md-2"> @Resources.Resources.NotesLable  </label>
+                            <div class="form-group has-feedback col-md-9">
+                                <input type="text" class="form-control" id="fb_TransRequestNotes_edit" placeholder="@Resources.Resources.NotesLable">
+                            </div>
+                        </div>
+                        <div class="col-md-12 ">
+                            <label for="chk_IsApproved" class="control-label col-md-2">@Resources.Resources.ClmStatus</label>
+                            <div class="form-group ">
+                                <div class="col-xs-10 col-sm-9 checkbox" id="togglechk">
+                                    <input data-toggle="toggle" data-on="@Resources.Resources.chk_Approved" data-width="150" data-off="@Resources.Resources.chk_NotApproved" type="checkbox" id="chk_IsApproved">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-lg" id="fb_bt_saveRequestData"><span class="glyphicon glyphicon-ok"></span> @Resources.Resources.btSave</button>
+                <button type="button" class="btn btn-warning btn-lg" id="fb_bt_CancelRequestData" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove"></span>@Resources.Resources.btCancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="fb_TransactionFormDialog" class="modal fade" data-backdrop="static" role="dialog">
+
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="pull-right flip">
+                    <button type="button" class="btn btn-toolbar space2" aria-label="Close"><span class="glyphicon glyphicon-remove"></span></button>
+                </div>
+                <h4 class="modal-title" id="gridSystemModalTransactionTitle">@Resources.Resources.AddTransactionTitle </h4>
+            </div>
+            <div class="modal-body texr-start">
+                <div class="row">
+                    <form data-toggle="validator" data-delay="0" role="form" id="frmTransactionFormDialog">
+                        <div class="col-md-12 ">
+                            <label for="txt_Select_FingerformEmployee" class="control-label col-xs-2 col-sm-3 col-md-2">@Resources.Resources.EmployeeNameLable </label>
+                            <div class="form-group has-feedback">
+                                <div class="col-xs-10 col-sm-9 col-md-10">
+                                    <div class="input-group">
+                                        <input type="text" id="txt_Select_FingerformEmployee" class="form-control" placeholder="@Resources.Resources.EmployeeNameLable" data-id="0" readonly data-required="true" data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        <span class="input-group-addon add-on" onclick="if ($('#txt_Select_FingerformEmployee:not(:disabled)').length == 0) { return }; Select_Employee_Control = $('#txt_Select_FingerformEmployee'); $('#EmployeeDialog').modal('show'); LoadEmployeeListTable(0, 0)"><span class="glyphicon glyphicon-list-alt blue"></span></span>
+
+                                    </div>
+                                    <span class="help-block with-errors smallmargin-bottom pull-left flip"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12 ">
+                            <div class="form-group has-feedback">
+                                <label for="Excuseform_FromDate" class="control-label col-md-2">@Resources.Resources.ClmDate</label>
+                                <div class="col-xs-10 col-sm-9 col-md-10">
+                                    <div class="input-group ">
+                                        <input type="text" id="addTrans_Date" class="form-control dpef" data-date-autoclose="true" data-date-format="yyyy-mm-dd" data-date-language="@Resources.Resources.lang" placeholder="@Resources.Resources.ClmDate" readonly data-required="true" data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        <span class="input-group-addon add-on" onclick="$('#addTrans_Date').datepicker('show');"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                    <span class="help-block with-errors smallmargin-bottom pull-left flip"></span>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback col-md-4">
+                                <label for="fb_shiftfromtimetrans" class="control-label"> @Resources.Resources.ClmTime </label>
+                                <div>
+                                    <input autocomplete="off" id="fb_shiftfromtimetrans" class="form-control" placeholder="@Resources.Resources.ClmTime" data-scroll-default="07:30" type="text" required data-error="@Resources.Resources.FieldRequiredValidationMsg">
+                                    <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback col-md-8">
+                                <label for="fb_Reason_AddTrans" class="control-label">@Resources.Resources.ClmTheReason</label>
+                                <div>
+                                    <select class="form-control" id="fb_Reason_AddTrans" required data-error="@Resources.Resources.FieldRequiredValidationMsg"></select>
+                                    <span class="glyphicon form-control-feedback pull-right flip" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12 PlusOneDay">
+                                <label for="fb_plusoneday" class="checkbox-inline">
+                                    <input type="checkbox" id="fb_plusoneday" name="plusoneday" /> @Resources.Resources.ActualDateForTransacionPlusOneDay
+                                </label>
+
+                            </div>
+                            <div id="fb_ShiftINOUT_CVCode" style="display:none">
+                                <div class="form-group ChangeShiftINOUTRadios">
+                                    <div class=" col-md-12 columns">
+
+                                        <label for="fb_Chk_ShiftFirstIN" class="radio-inline">
+                                            <input id="fb_Chk_ShiftFirstIN" name="fb_shiftINOUT" type="radio" value="1">
+                                            @Resources.Resources.lb_ShiftFirstIN
+                                        </label>
+
+                                        <label for="fb_Chk_ShiftFirstOUT" class="radio-inline">
+                                            <input id="fb_Chk_ShiftFirstOUT" name="fb_shiftINOUT" type="radio" value="2">
+                                            @Resources.Resources.lb_ShiftFirstOUT
+                                        </label>
+                                        <label for="fb_Chk_ShiftSecondIN" class="radio-inline">
+                                            <input id="fb_Chk_ShiftSecondIN" name="fb_shiftINOUT" type="radio" value="3">
+                                            @Resources.Resources.lb_ShiftSecondIN
+                                        </label>
+
+                                        <label for="fb_Chk_ShiftSecondOUT" class="radio-inline">
+                                            <input id="fb_Chk_ShiftSecondOUT" name="fb_shiftINOUT" type="radio" value="4">
+                                            @Resources.Resources.lb_ShiftSecondOUT
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-lg" id="fb_bt_saveFingerTrans"><span class="glyphicon glyphicon-ok"></span> @Resources.Resources.btSave</button>
+                <button type="button" class="btn btn-warning btn-lg" id="fb_bt_CancelFingerTrans" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove"></span>@Resources.Resources.btCancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" role="dialog" id="FingerReasonListDialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="pull-right flip">
+                    <button type="button" class="btn btn-toolbar space2" onclick="ReloadFingerReasons(true); ReloadFingerReasonList(false);" title="@Resources.Resources.btReload"><span class="glyphicon glyphicon-refresh"></span></button>
+
+                    <button type="button" class="btn btn-toolbar space2" aria-label="Close"><span class="glyphicon glyphicon-remove"></span></button>
+                </div>
+                <h4 class="modal-title" id="gridSystemModalFingerReasonListDialogLabel">@Resources.Resources.TransactionEditReasonsTitle </h4>
+
+            </div>
+            <div class="modal-body">
+                <div id="FingerReasoListTablediv">
+                    <table id="FingerReasoListTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>@Resources.Resources.ClmTheReason</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

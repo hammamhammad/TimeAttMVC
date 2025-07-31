@@ -1,0 +1,101 @@
+<form #f="ngForm" (ngSubmit)="submit()">
+  <div class="container PT20">
+    <div id="vacationrequest" class="col-md-6">
+      <div class="cell-8">
+        <div class="form-input">
+          <label for="sel_VacationType">{{"VacationTypeClm" | translate }}</label>
+          <select id="sel_VacationType" name="vac_type" [(ngModel)]="vacationForm.vac_type" class="form-control" #execuseReason_ID="ngModel"
+            required>
+            <option [value]="null" disabled>{{"lb_PLZSelect" | translate }}</option>
+            <option *ngFor="let type of vacationTypes" [value]="type.vtype_id">{{ type.vtype_name }}</option>
+          </select>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error':!f?.controls?.vac_fdateF?.valid && f?.controls?.vac_fdateF?.touched}">
+          <label for="">{{"FromLable" | translate }}</label>
+          <div>
+            <datepicker-popup (dateSelected)="onDateChange($event,'PS')" name="vac_fdateF" [(ngModel)]="vacationForm.vac_fdateF" required>
+            </datepicker-popup>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error':!f?.controls?.vac_tdateF?.valid && f?.controls?.vac_tdateF?.touched}">
+          <label for="">{{"ToLable" | translate }}</label>
+          <div>
+            <datepicker-popup (dateSelected)="onDateChange($event,'PS')" name="vac_tdateF" [(ngModel)]="vacationForm.vac_tdateF" required>
+            </datepicker-popup>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>{{"lblAttach" | translate }}</label>
+          <input class="uploadfile-style" [(ngModel)]="vacationForm.vac_Attach" (change)="fileChange($event)" name="vac_Attach" id="vac_Attach"
+            size="10" type="file">
+        </div>
+        <div class="form-group">
+
+          <label>{{"NotesLable" | translate }}</label>
+          <textarea name="vac_reason" id="vac_reason" [(ngModel)]="vacationForm.vac_reason" col="30" rows="10" class="form-control"
+            required></textarea>
+        </div>
+        <div class="form-input form-btn">
+          <button id="bt_AddVication" class="btn btn-primary" [disabled]="!f.valid">{{"AddRequest" | translate }}</button>
+        </div>
+        <div id="errmsg" class="alert alert-danger" style="display: none"></div>
+
+      </div>
+    </div>
+    <div id="msgsuccess" style="display: none">
+      <div class="S-alert-s1">
+        <span>{{"Yourrequestimplementedsuccessfully" | translate }}</span>
+        <br />
+        <br />
+      </div>
+    </div>
+    <div id="ErrorMsg" style="display: none">
+      <div class="E-alert-s1">
+        <span>{{"AddVactionErrorMsg" | translate }}</span>
+        <br />
+        <span id="Vacationerrorcontent"></span>
+        <br />
+      </div>
+    </div>
+    <div style="display: none">
+      <div id="VacationConfairmDiv">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div>
+              <span>{{"VacationConfairmMSG" | translate }}</span>
+            </div>
+          </div>
+          <div id="VacationBodyDiv" class="panel-body">
+            <div class="">
+              <div>
+                <div class="form-detail">
+                  <label class="cell-3 pr0">{{"VacationTypeClm" | translate }}</label>
+                  <span id="lb_execdate"> {{this.getSelectedTypeText()}} </span>
+                </div>
+                <div class="form-detail">
+                  <label class="cell-3 pr0">{{"FromLable" | translate }}</label>
+                  <span id="lb_exectype">{{this.vacationForm.vac_fdateF}}</span>
+                </div>
+                <div class="form-detail">
+                  <label class="cell-3 pr0">{{"ToLable" | translate }}</label>
+                  <span id="lb_execreseon">{{this.vacationForm.vac_tdateF}} </span>
+                </div>
+                <div class="form-detail">
+                  <label class="cell-3 pr0">{{"TotalDaysLable" | translate }}</label>
+                  <span id="lb_exectime"> {{this.getTotalDays()}} </span>
+                </div>
+                <div class="form-detail">
+                    <label class="cell-3 pr0" res-type="H" res-name="NotesLable">{{"NotesLable" | translate }}</label>
+                    <span id="lb_execnote">{{ this.vacationForm.vac_reason }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<alertmsg #alert backdropModal='static' show-close="true" (onClose)="onCloseAlert($event)" (onOpened)="onOpenAlert()" (onDismissed)="onDismissAlert()">
+</alertmsg>

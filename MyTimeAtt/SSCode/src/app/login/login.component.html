@@ -1,0 +1,58 @@
+<div dir="ltr" class="container PT20" *ngIf="!pleaseWait">
+    <div class="parent-form_login">
+        <div class="row">
+            <div class="">
+                <h1 class="text-center login-title">
+                    Log In
+                </h1>
+                <div class="account-wall">
+                    <img class="profile-img" src="assets/img/male.png" alt="">
+                    <form [formGroup]='hfloginpage' (ngSubmit)="login()" id="login-form" class="form-signin" novalidate="novalidate">
+                        <div *ngIf="UserInfo">
+                          
+                            <span class="profile-email">{{UserInfo.UserName}}</span>
+
+                            <div class="form-group" [ngClass]="{'has-error alert alert-danger':!hfloginpage.controls.Password.valid && hfloginpage.controls.Password.touched}">
+                                <input type="password" class="form-control" #password formControlName="Password" required placeholder="Password/ كلمة المرور">
+                            </div>
+
+
+                        </div>
+                        <div *ngIf="!UserInfo">
+                            <div class="form-group" [ngClass]="{'has-error alert alert-danger':!hfloginpage.controls.Username.valid && hfloginpage.controls.Username.touched}">
+
+                                <input autocomplete="on" class="form-control" autofocus type="text" #email formControlName="Username" required placeholder="Username/اسم المستخدم">
+                            </div>
+                            <div class="form-group" [ngClass]="{'has-error alert alert-danger':!hfloginpage.controls.Password.valid && hfloginpage.controls.Password.touched}">
+                                <input type="password" class="form-control" #password formControlName="Password" required placeholder="Password/كلمة المرور">
+                            </div>
+                        </div>
+                        <div class="checkbox">
+                            <label> <input type="checkbox"  formControlName="RememberMe" >
+                                <span class="cr">
+                                  <i class="cr-icon glyphicon glyphicon-ok"></i>
+                                </span>Remember Me/تذكرني</label>
+                        </div>
+
+
+
+
+                        <button type="submit" [disabled]="!hfloginpage.valid" class="btn btn-lg btn-primary btn-block">
+										Log in/تسجيل الدخول
+									</button>
+                        <!-- <a href="#" class="need-help">Forgot password?/نسيت كلمة المرور؟ </a><span class="clearfix"></span> -->
+                    </form>
+
+
+                </div>
+                <div *ngIf="UserInfo">
+                    <a href="#" (click)="signwithDiff($event)" class="text-center new-account">Sign in with a different account/التسجيل بحساب آخر</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div id="preloader" *ngIf="pleaseWait">
+    <div></div>
+</div>
